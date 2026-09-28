@@ -582,6 +582,7 @@ mod tests {
 
     #[test]
     fn default_train_dir_resolves_against_home() {
+        let _guard = ENV_LOCK.lock().unwrap();
         let saved_home = std::env::var("HOME").ok();
         let saved_train = std::env::var_os("NIB_TRAIN_DIR");
         unsafe { std::env::remove_var("NIB_TRAIN_DIR"); }

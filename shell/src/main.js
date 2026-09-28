@@ -625,9 +625,27 @@ trainRestart.addEventListener("click", async () => {
 trainInstall.addEventListener("click", async () => {
   try {
     const dest = await invoke("train_personal_install");
+    // The install already attempted a hot-reload on the Rust side; this
+    // second call is idempotent and picks up the live state for the UI.
+    try {
+      const live = await invoke("reload_personal_adapter");
+      if (live === true) {
+        trainStage.textContent = `installed → ${dest}\nPersonal adapter live – no relaunch needed`;
+        trainInstall.disabled = true;
+        trainInstall.textContent = "✓ Installed — live";
+        if (relaunchBadge) relaunchBadge.classList.add("hidden");
+        flashToast("Personal adapter live – no relaunch needed");
+        await probeCapabilities();
+        refreshConfig();
+        return;
+      }
+    } catch (e) {
+      /* reload failed — fall through to the relaunch badge */
+    }
     trainStage.textContent = `installed → ${dest}\nQuit and relaunch Nib to load the adapter.`;
     trainInstall.disabled = true;
     trainInstall.textContent = "✓ Installed — relaunch Nib";
+    refreshConfig();
   } catch (e) {
     trainError.textContent = String(e);
   }

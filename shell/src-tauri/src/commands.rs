@@ -256,27 +256,52 @@ pub fn train_personal_status(training: State<'_, SharedTraining>) -> TrainingSta
 }
 
 /// Copy a successfully-produced adapter into Nib's Application Support
-/// dir. Nib auto-loads it on next launch. Also stamps the retrain
-/// bookkeeping — without this, a manually-run training left
-/// `last_train_event_count` stale and the auto-retrain scheduler
-/// immediately re-fired on the same events.
+/// dir. Tries to hot-reload it into the running engine so no relaunch is
+/// needed; only stamps `pending_relaunch` (the relaunch badge fallback)
+/// when the reload fails or leaves the adapter inactive.
+/// Also stamps the retrain bookkeeping — without this, a manually-run
+/// training left `last_train_event_count` stale and the auto-retrain
+/// scheduler immediately re-fired on the same events.
 #[tauri::command]
 pub fn train_personal_install(
     training: State<'_, SharedTraining>,
     journal: State<'_, Arc<Journal>>,
     config: State<'_, Arc<crate::config::ConfigStore>>,
+    rewrite: State<'_, RewriteState>,
+    app: tauri::AppHandle,
 ) -> Result<String, String> {
     let dest = crate::state::personal_adapter_path()
         .ok_or_else(|| "HOME not resolvable".to_string())?;
     let bytes = training.install(&dest)?;
     eprintln!("[nib][train] installed {bytes}B → {}", dest.display());
+    // Hot-reload first — badge is only the fallback.
+    let reloaded = rewrite.reload_personal_adapter(&app).unwrap_or(false);
+    if !reloaded {
+        eprintln!("[nib][train] hot-reload did not activate adapter — keeping relaunch badge");
+    }
     let stats = journal.stats();
     let _ = config.update(|c| {
         c.last_train_event_count = stats.applied + stats.rewrite_applied;
         c.last_train_at = Some(crate::config::now_rfc3339());
-        c.pending_relaunch = true;
+        c.pending_relaunch = !reloaded;
     });
     Ok(dest.display().to_string())
+}
+
+/// Hot-reload the personal adapter into the running engine without a
+/// relaunch. Clears `pending_relaunch` when the adapter is now active;
+/// otherwise the relaunch badge stays as the fallback.
+#[tauri::command]
+pub fn reload_personal_adapter(
+    rewrite: State<'_, RewriteState>,
+    app: tauri::AppHandle,
+    config: State<'_, Arc<crate::config::ConfigStore>>,
+) -> Result<bool, String> {
+    let live = rewrite.reload_personal_adapter(&app)?;
+    if live {
+        let _ = config.update(|c| c.pending_relaunch = false);
+    }
+    Ok(live)
 }
 
 #[tauri::command]
