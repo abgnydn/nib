@@ -142,6 +142,91 @@ impl RewriteState {
             .map(|g| g.as_ref().map(|e| e.has_adapter()).unwrap_or(false))
             .unwrap_or(false)
     }
+
+    /// Hot-reload the personal adapter in place so a fresh retrain applies
+    /// without relaunch. Re-resolves the base model, layers the personal
+    /// adapter when present + compatible, loads a fresh engine (base-only
+    /// fallback), then swaps it under the lock. Returns true when the new
+    /// engine has an adapter active. Never leaves `None` behind when the
+    /// old engine was `Some` — on load failure the old engine is kept and
+    /// an `Err` is returned.
+    pub fn reload_personal_adapter<R: tauri::Runtime, M: tauri::Manager<R>>(
+        &self,
+        app: &M,
+    ) -> Result<bool, String> {
+        let resolved = resolve_model_paths(app)
+            .ok_or_else(|| "no model path resolved — cannot hot-reload".to_string())?;
+        let base = resolved.base;
+        // Registry adapter (premium tier) wins when the selected model is
+        // an adapter entry; otherwise fall through to the personal adapter
+        // with the same compatibility gate as startup.
+        let mut adapter = resolved.adapter.filter(|p| p.exists());
+        if adapter.is_none() {
+            let personal = personal_adapter_path().filter(|p| p.exists());
+            adapter = match (&base, personal) {
+                (b, Some(ad)) if !personal_adapter_compatible(b, &ad) => {
+                    eprintln!(
+                        "[nib] personal adapter at {} was trained on a different \
+                         base model — skipping hot-reload adapter (retrain to re-enable)",
+                        ad.display()
+                    );
+                    None
+                }
+                (_, ad) => ad,
+            };
+        }
+        if !base.exists() {
+            return Err(format!(
+                "base model path does not exist: {} — keeping current engine",
+                base.display()
+            ));
+        }
+        let new_engine = match inference::RewriteEngine::load_with_adapter(
+            &base,
+            adapter.as_ref(),
+        ) {
+            Ok(e) => Some(e),
+            Err(err) if adapter.is_some() => {
+                eprintln!(
+                    "[nib] hot-reload failed with adapter {:?}: {err:#} — retrying base-only",
+                    adapter,
+                );
+                match inference::RewriteEngine::load(&base) {
+                    Ok(e) => Some(e),
+                    Err(err2) => {
+                        return Err(format!(
+                            "hot-reload failed (base-only retry also failed: {err2:#}) — keeping current engine"
+                        ));
+                    }
+                }
+            }
+            Err(err) => {
+                return Err(format!(
+                    "hot-reload failed for {}: {err:#} — keeping current engine",
+                    base.display()
+                ));
+            }
+        };
+        let adapter_now_active = new_engine
+            .as_ref()
+            .map(|e| e.has_adapter())
+            .unwrap_or(false);
+        let mut guard = self
+            .engine
+            .lock()
+            .map_err(|e| format!("engine mutex poisoned: {e}"))?;
+        // Never leave None behind when we had a working engine.
+        if new_engine.is_none() && guard.is_some() {
+            return Err("hot-reload produced no engine — keeping current engine".to_string());
+        }
+        eprintln!(
+            "[nib] hot-reloaded engine from {} (adapter={})",
+            base.display(),
+            if adapter_now_active { "active" } else { "none" },
+        );
+        *guard = new_engine;
+        Ok(adapter_now_active)
+    }
 }
 
 #[cfg(not(feature = "llm"))]
@@ -151,6 +236,13 @@ pub struct RewriteState;
 impl RewriteState {
     pub fn from_path(_: Option<std::path::PathBuf>) -> Self {
         Self
+    }
+
+    pub fn reload_personal_adapter<R: tauri::Runtime, M: tauri::Manager<R>>(
+        &self,
+        _app: &M,
+    ) -> Result<bool, String> {
+        Err("reload not available — build with --features llm".into())
     }
 
     pub fn is_loaded(&self) -> bool {
@@ -171,14 +263,17 @@ impl RewriteState {
 ///   3. Fall back to the bundled default if the selected model isn't
 ///      fully installed on disk (e.g. user selected an adapter but the
 ///      base wasn't downloaded yet).
-pub fn resolve_model_path(app: &tauri::App) -> Option<std::path::PathBuf> {
+pub fn resolve_model_path<R: tauri::Runtime, M: tauri::Manager<R>>(app: &M) -> Option<std::path::PathBuf> {
     resolve_model_paths(app).map(|p| p.base)
 }
 
 /// Like `resolve_model_path` but also returns the LoRA adapter path
 /// when the selected model is an adapter entry. Returns `(base, None)`
 /// for standalone models.
-pub fn resolve_model_paths(app: &tauri::App) -> Option<crate::models::ModelPaths> {
+///
+/// Generic over `Manager` so both `&tauri::App` (setup-time) and
+/// `&tauri::AppHandle` (command-time hot-reload) work without duplication.
+pub fn resolve_model_paths<R: tauri::Runtime, M: tauri::Manager<R>>(app: &M) -> Option<crate::models::ModelPaths> {
     if let Ok(env) = std::env::var("NIB_MODEL") {
         let p = std::path::PathBuf::from(&env);
         if p.exists() {
@@ -320,6 +415,44 @@ mod tests {
         assert!(s.is_loaded(), "model at {model} should load");
         if adapter.is_some() {
             assert!(s.has_personal_adapter(), "adapter at {adapter:?} should load");
+        }
+    }
+
+    #[cfg(feature = "llm")]
+    #[test]
+    fn reload_with_missing_paths_keeps_old_engine() {
+        // Point NIB_MODEL at a nonexistent file so resolve finds nothing
+        // loadable; reload must return Err or false, never panic, and must
+        // leave the previous engine state untouched.
+        let saved_model = std::env::var("NIB_MODEL").ok();
+        let saved_home = std::env::var("HOME").ok();
+        // SAFETY: tests run single-threaded for env mutation here.
+        unsafe {
+            std::env::set_var("NIB_MODEL", "/tmp/nib-no-such-model-xyz.gguf");
+            std::env::set_var("HOME", "/tmp/nib-test-home-missing");
+        }
+        let app = tauri::test::mock_app();
+        let handle = app.handle();
+        // Old engine empty → still empty, no panic.
+        let empty = RewriteState::from_paths(None, None);
+        assert!(!empty.is_loaded());
+        let r = empty.reload_personal_adapter(handle);
+        assert!(
+            r.is_err() || r == Ok(false),
+            "missing paths → Err or false, got {r:?}"
+        );
+        assert!(!empty.is_loaded(), "failed reload must keep old (empty) engine");
+        assert!(!empty.has_personal_adapter());
+        // Restore env.
+        unsafe {
+            match saved_model {
+                Some(v) => std::env::set_var("NIB_MODEL", v),
+                None => std::env::remove_var("NIB_MODEL"),
+            }
+            match saved_home {
+                Some(v) => std::env::set_var("HOME", v),
+                None => std::env::remove_var("HOME"),
+            }
         }
     }
 }

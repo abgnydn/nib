@@ -9,9 +9,11 @@
 //! successfully, install the adapter and stamp the config so we don't
 //! re-trigger immediately.
 //!
-//! Hot-reload of the engine is NOT done here — the user will see the new
-//! adapter the next time they relaunch Nib. v0.7 will swap the engine
-//! atomically in place.
+//! Hot-reload of the engine IS done here — after a successful auto-install
+//! we swap the engine atomically in place via
+//! `RewriteState::reload_personal_adapter`. The relaunch badge
+//! (`pending_relaunch`) is only the fallback when the reload fails or
+//! leaves the adapter inactive.
 
 #![cfg(feature = "llm")]
 
@@ -24,6 +26,7 @@ use crate::config::ConfigStore;
 use crate::journal::Journal;
 use crate::qvac::BackendConfig;
 use crate::training::{JobState, TrainingState};
+use tauri::Manager;
 
 const POLL_INTERVAL: Duration = Duration::from_secs(30);
 
@@ -32,10 +35,11 @@ pub fn spawn(
     training: Arc<TrainingState>,
     config: Arc<ConfigStore>,
     backend: Arc<BackendConfig>,
+    app: tauri::AppHandle,
 ) {
     thread::Builder::new()
         .name("nib-retrain-scheduler".into())
-        .spawn(move || run(journal, training, config, backend))
+        .spawn(move || run(journal, training, config, backend, app))
         .expect("spawn retrain scheduler");
 }
 
@@ -44,6 +48,7 @@ fn run(
     training: Arc<TrainingState>,
     config: Arc<ConfigStore>,
     backend: Arc<BackendConfig>,
+    app: tauri::AppHandle,
 ) {
     eprintln!("[nib][scheduler] background retrain loop started (poll every {}s)", POLL_INTERVAL.as_secs());
     let mut waiting_on_job_since: Option<Instant> = None;
@@ -75,10 +80,20 @@ fn run(
                                     "[nib][scheduler] auto-installed {bytes}B → {}",
                                     dest.display()
                                 );
+                                // Hot-reload first — badge is only the fallback.
+                                let reloaded = app
+                                    .state::<crate::state::RewriteState>()
+                                    .reload_personal_adapter(&app)
+                                    .unwrap_or(false);
+                                if !reloaded {
+                                    eprintln!(
+                                        "[nib][scheduler] hot-reload did not activate adapter — keeping relaunch badge"
+                                    );
+                                }
                                 let _ = config.update(|c| {
                                     c.last_train_event_count = applied_total;
                                     c.last_train_at = Some(crate::config::now_rfc3339());
-                                    c.pending_relaunch = true;
+                                    c.pending_relaunch = !reloaded;
                                 });
                             }
                             Err(e) => {

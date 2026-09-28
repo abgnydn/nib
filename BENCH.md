@@ -56,7 +56,8 @@ export NIB_MODEL=~/Library/Application\ Support/Nib/models/lfm2.5-350m-q4_k_m.gg
 
 | model | prompt chars | rewrite s (wall) | tok/s | notes |
 |-------|--------------|------------------|-------|-------|
-| _to-fill_ (e.g. lfm2.5-350m-q4_k_m) | _to-fill_ | _to-fill_ | _to-fill_ | `time` + stderr `rewrote in …s` |
+| lfm2.5-350m-q4_k_m (cold, first run after build) | 46 | 0.36s | ~272 tok/s out (~32 tok/s in) | 2026-09-28, MacBook Pro Mac14,5 Apple M2 Max arm64 32GB, `rewrote in 0.36s (46 in, 392 out)`, `loaded in 9.11s`, `time` total 10.20s |
+| lfm2.5-350m-q4_k_m (warm rerun) | 46 | 0.21s | ~467 tok/s out (~55 tok/s in) | 2026-09-28, same machine, `rewrote in 0.21s (46 in, 392 out)`, `loaded in 0.09s`, `/usr/bin/time -p real 0.54s` |
 
 > tok/s here is approximate (chars → tokens varies); report the raw
 > wall time alongside any derived rate so repeats stay comparable.

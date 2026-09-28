@@ -383,6 +383,7 @@ pub fn run() {
                 training.clone(),
                 config.clone(),
                 backend_config.clone(),
+                app.handle().clone(),
             );
 
             #[cfg(all(target_os = "macos", feature = "overlay"))]
@@ -413,6 +414,7 @@ pub fn run() {
             commands::train_personal_start,
             commands::train_personal_status,
             commands::train_personal_install,
+            commands::reload_personal_adapter,
             commands::train_personal_reset,
             commands::config_get,
             commands::config_set_auto_retrain,
