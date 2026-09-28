@@ -10,10 +10,54 @@ use tauri::{AppHandle, WebviewUrl, WebviewWindowBuilder};
 /// Frontend at `src/overlay.html` listens for `focus-update` events and
 /// positions a `<div>` border at the reported bounds.
 pub fn create(app: &AppHandle) -> tauri::Result<()> {
-    let win = WebviewWindowBuilder::new(app, "overlay", WebviewUrl::App("overlay.html".into()))
+    // Per-display overlays: one click-through window per monitor so
+    // secondary displays get underlines. The primary keeps the "overlay"
+    // label for JS/IPC compat; secondaries are overlay-1, overlay-2, ...
+    match app.available_monitors() {
+        Ok(monitors) if !monitors.is_empty() => {
+            // Ensure the primary monitor owns the "overlay" label.
+            let mut ordered = monitors;
+            if let Ok(Some(primary)) = app.primary_monitor() {
+                ordered.sort_by_key(|m| {
+                    if m.position() == primary.position() && m.size() == primary.size() {
+                        0
+                    } else {
+                        1
+                    }
+                });
+            }
+            for (i, m) in ordered.iter().enumerate() {
+                let label = if i == 0 {
+                    "overlay".to_string()
+                } else {
+                    format!("overlay-{i}")
+                };
+                let w = m.size().width as f64;
+                let h = m.size().height as f64;
+                let x = m.position().x as f64;
+                let y = m.position().y as f64;
+                create_single(app, &label, w, h, x, y)?;
+            }
+            Ok(())
+        }
+        // Enumeration failed (or no monitors reported) — fall back to the
+        // legacy single window covering the primary display area.
+        _ => create_single(app, "overlay", 4096.0, 3072.0, 0.0, 0.0),
+    }
+}
+
+fn create_single(
+    app: &AppHandle,
+    label: &str,
+    width: f64,
+    height: f64,
+    x: f64,
+    y: f64,
+) -> tauri::Result<()> {
+    let win = WebviewWindowBuilder::new(app, label, WebviewUrl::App("overlay.html".into()))
         .title("Nib Overlay")
-        .inner_size(4096.0, 3072.0)
-        .position(0.0, 0.0)
+        .inner_size(width, height)
+        .position(x, y)
         .decorations(false)
         .transparent(true)
         .always_on_top(true)

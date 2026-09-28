@@ -34,6 +34,11 @@ bold "== rust =="
   | tail -5
 ok "shell/src-tauri tests"
 
+bold "== bench (compile-only) =="
+( cd "$REPO/shell/src-tauri" && cargo bench --no-run --features llm 2>&1 ) \
+  | tail -5
+ok "harper_bench compiles"
+
 if [[ "$WITH_MODEL" -eq 1 ]]; then
   bold "== rust (ignored / requires NIB_TEST_MODEL) =="
   if [[ -n "${NIB_TEST_MODEL:-}" ]]; then

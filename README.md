@@ -234,7 +234,7 @@ model+adapter load and run only when `NIB_TEST_MODEL` points at a `.gguf`.
 
 ## License
 
-Personal project. No license declared — ask before using.
+MIT — see [LICENSE-MIT](LICENSE-MIT). Previously unlicensed (ask before using).
 
 ## Acknowledgements
 

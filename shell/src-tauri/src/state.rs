@@ -180,8 +180,14 @@ pub fn resolve_model_path(app: &tauri::App) -> Option<std::path::PathBuf> {
 /// for standalone models.
 pub fn resolve_model_paths(app: &tauri::App) -> Option<crate::models::ModelPaths> {
     if let Ok(env) = std::env::var("NIB_MODEL") {
-        // Dev override: take env path as a raw base, no adapter wiring.
-        return Some(crate::models::ModelPaths { base: env.into(), adapter: None });
+        let p = std::path::PathBuf::from(&env);
+        if p.exists() {
+            // Dev override: take env path as a raw base, no adapter wiring.
+            return Some(crate::models::ModelPaths { base: p, adapter: None });
+        }
+        eprintln!(
+            "[nib] NIB_MODEL={env} does not exist — falling through to config/bundled model"
+        );
     }
 
     let selected_id = read_selected_model_id().unwrap_or_else(|| "lfm2.5-350m".to_string());

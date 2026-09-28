@@ -22,9 +22,10 @@ use std::os::raw::c_void;
 
 use accessibility_sys::{
     AXUIElementCopyAttributeValue, AXUIElementCreateSystemWide, AXUIElementGetPid,
-    AXUIElementRef, AXUIElementSetAttributeValue, AXValueCreate, kAXErrorSuccess,
-    kAXFocusedApplicationAttribute, kAXFocusedUIElementAttribute, kAXSelectedTextAttribute,
-    kAXSelectedTextRangeAttribute, kAXValueAttribute, kAXValueTypeCFRange,
+    AXUIElementRef, AXUIElementSetAttributeValue, AXValueCreate, AXValueGetValue, AXValueRef,
+    kAXErrorSuccess, kAXFocusedApplicationAttribute, kAXFocusedUIElementAttribute,
+    kAXSelectedTextAttribute, kAXSelectedTextRangeAttribute, kAXValueAttribute,
+    kAXValueTypeCFRange,
 };
 use core_foundation::base::{CFIndex, CFRange, CFRelease, CFType, CFTypeRef, TCFType};
 use core_foundation::string::CFString;
@@ -76,6 +77,14 @@ pub fn apply_with_strategy(
     end: u32,
     replacement: &str,
 ) -> Result<ApplyStrategy, ApplyError> {
+    // Atomicity: hold the pasteboard lock across range-select +
+    // text-set + clipboard fallback. Two concurrent applies (bulk
+    // Accept-all fires them back-to-back on async-command threads) must
+    // not interleave — otherwise A's range-set, B's range-set, A's paste
+    // lands A's text over B's span. The clipboard fallback below uses the
+    // `_locked` variant since we already hold the guard (Mutex is not
+    // reentrant).
+    let _apply_guard = clipboard::lock_for_apply();
     // Prefer the cached engaged element from focus_tracker. Clicking our
     // overlay popover activates Nib's app and shifts live AXUI focus
     // away from the user's writing app — re-querying here would write to
@@ -113,9 +122,18 @@ pub fn apply_with_strategy(
     // AX CFRanges are UTF-16 code units. Convert against the field's
     // current text; with any non-BMP char (emoji) before the span, raw
     // char offsets would select — and replace — the wrong characters.
+    // When the field text is unreadable (web inputs often reject
+    // kAXValueAttribute), never guess raw char offsets as UTF-16: reuse
+    // the live AX selection (already UTF-16 units) so the clipboard
+    // fallback below pastes over the right span. Only when the live query
+    // also fails do we fall back to clamped raw offsets (saturating, never
+    // panicking) with the range already set for the clipboard path.
     let (ax_start, ax_length) = match copy_elem_text(elem) {
         Some(text) => char_range_to_utf16(&text, start as usize, end as usize),
-        None => (start as CFIndex, end.saturating_sub(start) as CFIndex),
+        None => match copy_selected_range(elem) {
+            Some((loc, len)) => (loc, len),
+            None => (start as CFIndex, end.saturating_sub(start) as CFIndex),
+        },
     };
 
     // Step 1 — move the selection. We try this even before deciding which
@@ -162,7 +180,8 @@ pub fn apply_with_strategy(
     }
 
     // Step 3 — clipboard fallback, posted to the target app's pid.
-    let posted = clipboard::paste_via_clipboard_to(replacement, target_pid);
+    // Lock already held above — use the non-locking variant.
+    let posted = clipboard::paste_via_clipboard_to_locked(replacement, target_pid);
     if posted {
         Ok(ApplyStrategy::Clipboard)
     } else {
@@ -180,8 +199,30 @@ fn copy_elem_text(elem: AXUIElementRef) -> Option<String> {
     cf_any.downcast::<CFString>().map(|s| s.to_string())
 }
 
+/// Read the element's live selected-text range (already UTF-16 code
+/// units). Used when the field text is unreadable so we don't mis-apply
+/// raw char offsets as UTF-16. Returns None when AXUI rejects the
+/// attribute. Never panics; clamps negatives to zero.
+fn copy_selected_range(elem: AXUIElementRef) -> Option<(CFIndex, CFIndex)> {
+    let raw = copy_attr_ref(elem, kAXSelectedTextRangeAttribute)?;
+    let mut range = CFRange { location: 0, length: 0 };
+    let ok = unsafe {
+        AXValueGetValue(
+            raw as AXValueRef,
+            kAXValueTypeCFRange,
+            &mut range as *mut _ as *mut c_void,
+        )
+    };
+    unsafe { CFRelease(raw) };
+    if !ok {
+        return None;
+    }
+    Some((range.location.max(0), range.length.max(0)))
+}
+
 /// Convert a [start, end) *char* range into a UTF-16 (location, length)
-/// pair for AX CFRanges. Clamps to the text's length.
+/// pair for AX CFRanges. Clamps to the text's length; out-of-bounds
+/// inputs saturate instead of panicking (char iteration, no indexing).
 fn char_range_to_utf16(text: &str, start: usize, end: usize) -> (CFIndex, CFIndex) {
     let mut u16_start: usize = 0;
     let mut u16_len: usize = 0;

@@ -23,7 +23,7 @@
 
 #![cfg(all(target_os = "macos", feature = "overlay"))]
 
-use std::sync::Mutex;
+use std::sync::{Mutex, MutexGuard};
 use std::thread;
 use std::time::Duration;
 
@@ -47,6 +47,18 @@ const CONCEALED_TYPE: &str = "org.nspasteboard.ConcealedType";
 /// Serializes every save→mutate→paste→restore sequence. Two concurrent
 /// sequences interleaving is exactly the "pasted the wrong content" bug.
 static PASTEBOARD_LOCK: Mutex<()> = Mutex::new(());
+
+/// Acquire the pasteboard lock for a full apply sequence (range-select +
+/// text-set + clipboard fallback). `apply::apply_with_strategy` holds this
+/// guard across all three steps so two concurrent applies cannot interleave
+/// (range-set of A, range-set of B, paste of A → wrong span). Callers that
+/// go through [`paste_via_clipboard_to`] don't need this — it locks
+/// internally. Callers that already hold the guard must use
+/// [`paste_via_clipboard_to_locked`] to avoid deadlocking on the non-
+/// reentrant mutex.
+pub fn lock_for_apply() -> MutexGuard<'static, ()> {
+    PASTEBOARD_LOCK.lock().unwrap_or_else(|p| p.into_inner())
+}
 
 /// Full-fidelity snapshot of the general pasteboard: every declared type
 /// and its data. (First pasteboard item only — multi-item boards are
@@ -182,7 +194,15 @@ pub fn simulate_paste() -> bool {
 /// pasteboard lock so concurrent applies serialize. Blocks ~150 ms —
 /// callers run on background/async-command threads, never the UI loop.
 pub fn paste_via_clipboard_to(replacement: &str, target_pid: Option<i32>) -> bool {
-    let _guard = PASTEBOARD_LOCK.lock().unwrap_or_else(|p| p.into_inner());
+    let _guard = lock_for_apply();
+    paste_via_clipboard_to_locked(replacement, target_pid)
+}
+
+/// Same as [`paste_via_clipboard_to`] but assumes the caller already holds
+/// the [`lock_for_apply`] guard (i.e. `apply_with_strategy`, which keeps the
+/// lock across range-select + text-set + paste so the whole apply is
+/// atomic). Must not lock again — `Mutex` is non-reentrant.
+pub fn paste_via_clipboard_to_locked(replacement: &str, target_pid: Option<i32>) -> bool {
     let saved = snapshot_all();
     set_string(replacement);
     let posted = simulate_paste_to(target_pid);

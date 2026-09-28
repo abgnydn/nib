@@ -1,5 +1,5 @@
-//! Polls the macOS Accessibility API at 10 Hz for the focused UI element's
-//! screen bounds and emits Tauri `focus-update` events to the overlay window.
+//! Polls the macOS Accessibility API every 150ms (~6.6 Hz) for the focused
+//! UI element's screen bounds and emits Tauri `focus-update` events to the overlay window.
 //!
 //! Requires Accessibility permission. First launch will prompt; user must grant
 //! in System Settings → Privacy & Security → Accessibility.
@@ -28,6 +28,9 @@ use core_foundation::string::{CFString, CFStringRef};
 use core_graphics::geometry::{CGPoint, CGSize};
 use serde::Serialize;
 use tauri::{AppHandle, Emitter};
+/// Primary overlay label (kept for JS compat; secondaries are overlay-1...).
+/// Emits use broadcast so every overlay window receives them.
+#[allow(dead_code)]
 const OVERLAY_LABEL: &str = "overlay";
 
 #[derive(Serialize, Clone, Debug, PartialEq)]
@@ -46,6 +49,9 @@ mod tests {
     fn real_text_field_bounds_pass() {
         assert!(is_plausible_text_field(&FocusBounds { x: 418.0, y: 239.0, w: 521.0, h: 497.0 }));
         assert!(is_plausible_text_field(&FocusBounds { x: 0.0, y: 0.0, w: 200.0, h: 24.0 }));
+        // Secondary display: negative x (left-of-primary) is legitimate.
+        assert!(is_plausible_text_field(&FocusBounds { x: -2500.0, y: 500.0, w: 800.0, h: 40.0 }));
+        assert!(is_plausible_text_field(&FocusBounds { x: -7000.0, y: 300.0, w: 500.0, h: 30.0 }));
     }
 
     #[test]
@@ -54,8 +60,39 @@ mod tests {
         assert!(!is_plausible_text_field(&FocusBounds { x: -1.0, y: -17899.0, w: 1711.0, h: 19017.0 }));
         // Tiny zero-sized element (e.g., empty label)
         assert!(!is_plausible_text_field(&FocusBounds { x: 0.0, y: 0.0, w: 4.0, h: 4.0 }));
-        // Absurdly tall column
+        // Absurdly tall column (over the 8000px multi-display cap)
         assert!(!is_plausible_text_field(&FocusBounds { x: 0.0, y: 0.0, w: 200.0, h: 10_000.0 }));
+        // Just over the widened caps still rejected.
+        assert!(!is_plausible_text_field(&FocusBounds { x: 0.0, y: 0.0, w: 8100.0, h: 24.0 }));
+        assert!(!is_plausible_text_field(&FocusBounds { x: -9000.0, y: 500.0, w: 800.0, h: 40.0 }));
+    }
+
+    #[test]
+    fn char_range_to_utf16_after_emoji_prefix() {
+        // "🎉 hello" — chars: [🎉,' ','h','e','l','l','o'], utf16: [2,1,1,1,1,1,1].
+        // A lint over "hello" is chars [2..7) but UTF-16 [3..8).
+        assert_eq!(char_range_to_utf16("🎉 hello", 2, 7), (3, 5));
+        // Pure ASCII: identity.
+        assert_eq!(char_range_to_utf16("hello", 1, 3), (1, 2));
+        // BMP CJK: 1 utf16 unit per char — identity too.
+        assert_eq!(char_range_to_utf16("你好 hi", 3, 5), (3, 2));
+        // Clamped when the range runs past the text.
+        assert_eq!(char_range_to_utf16("ab", 1, 9), (1, 1));
+    }
+
+    #[test]
+    fn utf16_range_to_char_after_emoji_prefix() {
+        // Inverse of the above: AXUI reports UTF-16 [3..8) for "hello".
+        assert_eq!(utf16_range_to_char("🎉 hello", 3, 5), (2, 7));
+        // Pure ASCII: identity.
+        assert_eq!(utf16_range_to_char("hello", 1, 2), (1, 3));
+        // BMP CJK: identity too.
+        assert_eq!(utf16_range_to_char("你好 hi", 3, 2), (3, 5));
+        // Mid-surrogate offset rounds to the containing char, never panics.
+        assert_eq!(utf16_offset_to_char("🎉 hello", 1), 0);
+        // Out-of-bounds clamps to the char length, never panics.
+        assert_eq!(utf16_range_to_char("ab", 99, 5), (2, 2));
+        assert_eq!(utf16_range_to_char("🎉 hello", 0, 99), (0, 7));
     }
 }
 
@@ -136,6 +173,7 @@ fn run(app: AppHandle, config: std::sync::Arc<crate::config::ConfigStore>) {
     let mut last_bounds: Option<FocusBounds> = None;
     let mut last_text_hash: u64 = 0;
     let mut last_skip: Option<SkipContext> = None;
+    let mut last_bundle_id: Option<String> = None;
     let mut tick = 0u32;
 
     let mut last_paused_state: Option<bool> = None;
@@ -154,10 +192,12 @@ fn run(app: AppHandle, config: std::sync::Arc<crate::config::ConfigStore>) {
                 last_bounds = None;
                 last_text_hash = 0;
                 last_skip = None;
+                last_bundle_id = None;
                 // Clear saved element so a stale handle doesn't outlive pause.
                 crate::overlay::engaged_elem::clear();
-                // Tell the overlay to hide.
-                let _ = app.emit_to(OVERLAY_LABEL, "focus-update", &FocusEvent {
+                // Tell the overlays to hide (broadcast reaches
+                // overlay + overlay-1...).
+                let _ = app.emit("focus-update", &FocusEvent {
                     bounds: None, text: None, lints: vec![],
                 });
             }
@@ -192,6 +232,25 @@ fn run(app: AppHandle, config: std::sync::Arc<crate::config::ConfigStore>) {
             }
         } else {
             last_skip = None;
+        }
+
+        // Stale-handle guard: the engaged-elem cache must not outlive the
+        // focus that produced it. Clear on bundle change and on any
+        // non-engageable (Skip) or lost-focus (Empty) snapshot — otherwise
+        // apply keeps writing to the previous app's dead element. The
+        // app.nib self-focus case above `continue`s early on purpose: the
+        // cache must survive our own popover click.
+        let cur_bundle: Option<String> = match &snapshot {
+            SnapshotResult::Engage(s) => s.bundle_id.clone(),
+            SnapshotResult::Skip(ctx) => ctx.bundle_id.clone(),
+            SnapshotResult::Empty => None,
+        };
+        if cur_bundle != last_bundle_id {
+            crate::overlay::engaged_elem::clear();
+            last_bundle_id = cur_bundle.clone();
+        }
+        if matches!(&snapshot, SnapshotResult::Skip(_) | SnapshotResult::Empty) {
+            crate::overlay::engaged_elem::clear();
         }
 
         let snap_opt = match snapshot {
@@ -241,7 +300,8 @@ fn run(app: AppHandle, config: std::sync::Arc<crate::config::ConfigStore>) {
             },
         };
         if last_selection.as_ref() != Some(&sel_event) {
-            let _ = app.emit_to(OVERLAY_LABEL, "selection-update", &sel_event);
+            // Broadcast so every overlay window (overlay, overlay-1...) stays in sync.
+            let _ = app.emit("selection-update", &sel_event);
             last_selection = Some(sel_event.clone());
         }
 
@@ -275,7 +335,14 @@ fn run(app: AppHandle, config: std::sync::Arc<crate::config::ConfigStore>) {
             .into_iter()
             .map(|lint| {
                 let rect = if !elem_ref.is_null() {
-                    bounds_for_range(elem_ref, lint.start, lint.end - lint.start)
+                    match &text {
+                        Some(t) => {
+                            let (u16_start, u16_len) =
+                                char_range_to_utf16(t, lint.start, lint.end);
+                            bounds_for_range(elem_ref, u16_start, u16_len)
+                        }
+                        None => None,
+                    }
                 } else {
                     None
                 };
@@ -309,11 +376,10 @@ fn run(app: AppHandle, config: std::sync::Arc<crate::config::ConfigStore>) {
             text: text.clone(),
             lints,
         };
-        // Single targeted emit — only the overlay listens. (A broadcast on
-        // top of this made the overlay re-render every underline and
-        // double-count diagnostics on each update.)
-        if let Err(e) = app.emit_to(OVERLAY_LABEL, "focus-update", &payload) {
-            eprintln!("[nib] emit_to overlay failed: {e}");
+        // Broadcast to all overlay windows (overlay, overlay-1...).
+        // Each window's JS filters by its own viewport.
+        if let Err(e) = app.emit("focus-update", &payload) {
+            eprintln!("[nib] emit focus-update failed: {e}");
         }
 
         last_bounds = bounds;
@@ -348,30 +414,45 @@ fn read_selection(elem: AXUIElementRef, full_text: Option<&str>) -> Option<Selec
     if !ok || range.length < 1 {
         return None;
     }
-    let start = range.location as usize;
-    let length = range.length as usize;
+    // AXUI ranges are UTF-16 code units — keep them as-is for the
+    // bounds_for_range call below, convert to char offsets for slicing
+    // and the wire format.
+    let u16_start = range.location.max(0) as usize;
+    let u16_len = range.length.max(0) as usize;
 
     // Bounds: same parameterized AXUI call we use for lint rendering.
-    let rect = bounds_for_range(elem, start, length);
+    // Takes UTF-16 offsets, so pass the raw AXUI range through.
+    let rect = bounds_for_range(elem, u16_start, u16_len);
+
+    // Convert UTF-16 -> char offsets before slicing `chars()` and before
+    // building the wire start/end (apply round-trips in char offsets).
+    // Without the field text we can't convert — fall back to the raw
+    // offsets (best effort) so the trigger still appears.
+    let (char_start, char_end) = match full_text {
+        Some(t) => utf16_range_to_char(t, u16_start, u16_len),
+        None => (u16_start, u16_start.saturating_add(u16_len)),
+    };
+    let char_len = char_end.saturating_sub(char_start);
 
     // Selected text: slice the full field text by character (Unicode-safe).
     // Cap at 4000 chars to avoid IPC bloat for accidental "Cmd+A" cases —
     // and FLAG the cap, because rewriting a prefix while replacing the
     // full range would silently delete the selection's tail.
-    let truncated = length > 4000;
+    let truncated = char_len > 4000;
     let selected_text = full_text.and_then(|t| {
         let chars: Vec<char> = t.chars().collect();
-        let end = start.saturating_add(length);
-        if start >= chars.len() || end > chars.len() {
+        let s = char_start.min(chars.len());
+        let e = char_end.min(chars.len()).max(s);
+        if s >= chars.len() && char_len > 0 {
             return None;
         }
-        let len = (end - start).min(4000);
-        Some(chars[start..start + len].iter().collect::<String>())
+        let len = (e - s).min(4000);
+        Some(chars[s..s + len].iter().collect::<String>())
     });
 
     Some(SelectionSnapshot {
-        start: start as u32,
-        length: length as u32,
+        start: char_start as u32,
+        length: char_len as u32,
         rect,
         text: selected_text,
         truncated,
@@ -392,6 +473,9 @@ struct FocusSnapshot {
     text: Option<String>,
     /// Borrowed AXUIElementRef — caller must CFRelease when done with it.
     elem: AXUIElementRef,
+    /// Owning app's bundle id — used to drop the cached engaged-elem on
+    /// app switch so apply can't write to a stale handle.
+    bundle_id: Option<String>,
 }
 
 /// Identifies a focus context the engagement policy rejected. The run loop
@@ -485,7 +569,56 @@ fn focused_snapshot(
         bounds: b,
         text,
         elem: elem_ref,
+        bundle_id,
     })
+}
+
+/// Convert a [start, end) *char* range into UTF-16 (location, length) for
+/// AX CFRanges. Harper lints speak char offsets but AXUI speaks UTF-16 code
+/// units — with any non-BMP char (emoji) before the span, raw char offsets
+/// point at the wrong characters. Clamps to the text length. Mirrors
+/// `overlay::apply::char_range_to_utf16`.
+fn char_range_to_utf16(text: &str, start: usize, end: usize) -> (usize, usize) {
+    let mut u16_start: usize = 0;
+    let mut u16_len: usize = 0;
+    for (i, c) in text.chars().enumerate() {
+        if i < start {
+            u16_start += c.len_utf16();
+        } else if i < end {
+            u16_len += c.len_utf16();
+        } else {
+            break;
+        }
+    }
+    (u16_start, u16_len)
+}
+
+/// Map a single UTF-16 code-unit offset to a char offset, clamping to
+/// `chars().count()`. A mid-surrogate offset (invalid from AXUI, but cheap
+/// to guard) rounds down to the containing char. Never panics.
+fn utf16_offset_to_char(text: &str, u16_off: usize) -> usize {
+    let mut cum: usize = 0;
+    for (i, c) in text.chars().enumerate() {
+        if u16_off == cum {
+            return i;
+        }
+        let w = c.len_utf16();
+        if u16_off < cum + w {
+            return i;
+        }
+        cum += w;
+    }
+    text.chars().count()
+}
+
+/// Convert an AXUI UTF-16 (location, length) range into a char
+/// [start, end) range for slicing `chars()` and for the SelectionEvent wire
+/// format. Clamps safely, never panics.
+fn utf16_range_to_char(text: &str, u16_start: usize, u16_len: usize) -> (usize, usize) {
+    let u16_end = u16_start.saturating_add(u16_len);
+    let start = utf16_offset_to_char(text, u16_start);
+    let end = utf16_offset_to_char(text, u16_end);
+    (start, end.max(start))
 }
 
 /// Ask AXUI: where on the screen does character range [start..start+length)
@@ -589,13 +722,16 @@ fn simple_hash(s: &str) -> u64 {
 /// Reject AXUI bounds that obviously aren't a real text input — outer
 /// scrollviews and window background elements like to report
 /// `x=-1 y=-17899 w=1711 h=19017` (giant rectangle stretching off-screen).
+/// Bounds are global desktop coords, so secondary displays legitimately sit
+/// at negative x (left-of-primary) with widths/heights up to a full 8K
+/// display. Still rejects absurd areas (e.g. 1711x19017).
 fn is_plausible_text_field(b: &FocusBounds) -> bool {
-    // Reasonable on-screen text field is somewhere between 16 and 4000 px in
-    // both dimensions, and its top-left isn't ridiculously off-screen.
-    let on_screen_y = b.y > -1000.0 && b.y < 8000.0;
-    let on_screen_x = b.x > -1000.0 && b.x < 8000.0;
-    let sane_w = b.w >= 16.0 && b.w <= 4000.0;
-    let sane_h = b.h >= 8.0 && b.h <= 4000.0;
+    // Multi-display aware: x may sit a full display left of primary,
+    // y spans stacked displays, and w/h cover up to 8K panels.
+    let on_screen_y = b.y > -8000.0 && b.y < 8000.0;
+    let on_screen_x = b.x > -8000.0 && b.x < 8000.0;
+    let sane_w = b.w >= 16.0 && b.w <= 8000.0;
+    let sane_h = b.h >= 8.0 && b.h <= 8000.0;
     on_screen_x && on_screen_y && sane_w && sane_h
 }
 

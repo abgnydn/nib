@@ -35,12 +35,149 @@ const PROMPT_TEMPLATE: &str =
 const STOP_MARKER: &str = "<|im_end|>";
 
 /// Default system message when no explicit instruction is supplied.
-/// Kept short on purpose — measured empirically: adding "preserve
-/// numerals / acronyms / product names verbatim" REGRESSED eval
-/// pass-rate 34% → 26% on the 1.2B model. Small models follow short
-/// focused prompts better than long checklists.
-const DEFAULT_INSTRUCTION: &str = "You are a copy editor. Fix the grammar and improve clarity. \
+/// Kept short on purpose — small models degrade with long checklists
+/// (max 3 sentences).
+const DEFAULT_INSTRUCTION: &str = "You are a copy editor. Fix grammar and improve clarity while \
+preserving facts, numbers and names verbatim and adding no new ideas, keeping word count within ±20%. \
 Output only the corrected text, nothing else.";
+
+/// Heuristic token estimate: ~4 chars per token (English average).
+/// Used only for pre-splitting long inputs, never for the exact
+/// context-size check (that uses real tokenization in `generate`).
+pub fn estimate_tokens(text: &str) -> usize {
+    (text.chars().count() + 3) / 4
+}
+
+/// Split a paragraph into sentences on `.`/`!`/`?` boundaries.
+/// The terminator stays with the preceding sentence; splits only when
+/// the terminator is followed by whitespace or end-of-input so
+/// abbreviations don't shatter mid-paragraph.
+fn split_sentences(paragraph: &str) -> Vec<String> {
+    let mut out = Vec::new();
+    let mut start = 0;
+    let chars: Vec<(usize, char)> = paragraph.char_indices().collect();
+    for (idx, (byte_i, ch)) in chars.iter().enumerate() {
+        if *ch == '.' || *ch == '!' || *ch == '?' {
+            let next_is_boundary = match chars.get(idx + 1) {
+                None => true,
+                Some((_, nc)) => nc.is_whitespace(),
+            };
+            if next_is_boundary {
+                let end = byte_i + ch.len_utf8();
+                let s = paragraph[start..end].trim().to_string();
+                if !s.is_empty() {
+                    out.push(s);
+                }
+                start = end;
+            }
+        }
+    }
+    let tail = paragraph[start..].trim().to_string();
+    if !tail.is_empty() {
+        out.push(tail);
+    }
+    if out.is_empty() {
+        let t = paragraph.trim().to_string();
+        if !t.is_empty() {
+            out.push(t);
+        }
+    }
+    out
+}
+
+/// Pack whitespace-separated words into sub-chunks that each fit
+/// `max_source_tokens`. Never splits inside a word; a single word
+/// larger than the budget becomes its own (over-budget) chunk rather
+/// than being cut.
+fn split_long_sentence(sentence: &str, max_source_tokens: usize) -> Vec<String> {
+    let mut out = Vec::new();
+    let mut cur = String::new();
+    for w in sentence.split_whitespace() {
+        if cur.is_empty() {
+            if estimate_tokens(w) > max_source_tokens {
+                out.push(w.to_string());
+                continue;
+            }
+            cur.push_str(w);
+        } else {
+            let joined = format!("{cur} {w}");
+            if estimate_tokens(&joined) <= max_source_tokens {
+                cur = joined;
+            } else {
+                out.push(std::mem::take(&mut cur));
+                if estimate_tokens(w) > max_source_tokens {
+                    out.push(w.to_string());
+                } else {
+                    cur.push_str(w);
+                }
+            }
+        }
+    }
+    if !cur.is_empty() {
+        out.push(cur);
+    }
+    out
+}
+
+/// Split `text` into chunks that each fit `max_source_tokens`
+/// (by [`estimate_tokens`]). Splits on paragraph (`\n\n`) boundaries
+/// first, then sentence (`.!?`) boundaries, then word boundaries —
+/// never inside a word.
+pub fn split_for_context(text: &str, max_source_tokens: usize) -> Vec<String> {
+    if max_source_tokens == 0 {
+        return vec![text.to_string()];
+    }
+    if estimate_tokens(text) <= max_source_tokens {
+        return vec![text.to_string()];
+    }
+    let joiner = if text.contains("\n\n") {
+        "\n\n"
+    } else {
+        " "
+    };
+    // 1. Break into fitting pieces (paragraph → sentence → words).
+    let mut pieces: Vec<String> = Vec::new();
+    for para in text.split("\n\n") {
+        let para = para.trim();
+        if para.is_empty() {
+            continue;
+        }
+        if estimate_tokens(para) <= max_source_tokens {
+            pieces.push(para.to_string());
+            continue;
+        }
+        for sent in split_sentences(para) {
+            if estimate_tokens(&sent) <= max_source_tokens {
+                pieces.push(sent);
+            } else {
+                pieces.extend(split_long_sentence(&sent, max_source_tokens));
+            }
+        }
+    }
+    if pieces.is_empty() {
+        return vec![text.to_string()];
+    }
+    // 2. Greedily pack pieces into chunks.
+    let mut chunks: Vec<String> = Vec::new();
+    let mut cur = String::new();
+    for p in pieces {
+        if cur.is_empty() {
+            cur = p;
+            continue;
+        }
+        let joined = format!("{cur}{joiner}{p}");
+        if estimate_tokens(&joined) <= max_source_tokens {
+            cur = joined;
+        } else {
+            chunks.push(std::mem::take(&mut cur));
+            cur = p;
+        }
+    }
+    if !cur.is_empty() {
+        chunks.push(cur);
+    }
+    chunks
+}
 
 /// Send/Sync wrapper around the raw LoRA adapter handle.
 ///
@@ -149,7 +286,8 @@ impl RewriteEngine {
         self.generate(text, instruction, LlamaSampler::greedy(), on_token)
     }
 
-    /// Generate up to `n` rewrite variants using independent samplers and
+    /// Generate up to `n` rewrite variants (capped at 3 to bound latency;
+    /// cost is N × single-rewrite latency) using independent samplers and
     /// fresh contexts per variant. Variant 0 is always the deterministic
     /// greedy baseline (same as `rewrite`); subsequent variants use
     /// temp=0.7 / top_p=0.9 with distinct RNG seeds so the user gets real
@@ -167,10 +305,13 @@ impl RewriteEngine {
         instruction: Option<&str>,
         n: usize,
     ) -> Result<Vec<String>> {
+        if text.trim().is_empty() {
+            return Ok(Vec::new());
+        }
         if n == 0 {
             return Ok(Vec::new());
         }
-        let n = n.min(5);
+        let n = n.min(3);
         let mut outs: Vec<String> = Vec::with_capacity(n);
         for i in 0..n {
             let sampler = match i {
@@ -180,16 +321,10 @@ impl RewriteEngine {
                     LlamaSampler::top_p(0.9, 1),
                     LlamaSampler::dist(1337),
                 ]),
-                2 => LlamaSampler::chain_simple([
+                _ => LlamaSampler::chain_simple([
                     LlamaSampler::temp(0.7),
                     LlamaSampler::top_p(0.9, 1),
                     LlamaSampler::dist(2718),
-                ]),
-                // Fallback for n=4..=5; pick distinct seeds so variants stay distinct.
-                k => LlamaSampler::chain_simple([
-                    LlamaSampler::temp(0.7),
-                    LlamaSampler::top_p(0.9, 1),
-                    LlamaSampler::dist(4096 + k as u32),
                 ]),
             };
             let out = self.rewrite_one(text, instruction, sampler)?;
@@ -218,9 +353,58 @@ impl RewriteEngine {
         self.generate(text, instruction, sampler, |_| {})
     }
 
-    /// The one decode loop everything routes through. Each call builds a
-    /// fresh context, so concurrent / sequential calls don't share KV
-    /// cache state.
+    /// Source-token budget for one prompt: what is left for `{source}`
+    /// after the instruction + template overhead and the reserved
+    /// `max_new_tokens` are subtracted from `ctx_size`.
+    fn max_source_tokens(&self, instruction: Option<&str>) -> usize {
+        let instr = instruction.unwrap_or(DEFAULT_INSTRUCTION);
+        let overhead_prompt = PROMPT_TEMPLATE
+            .replace("{instruction}", instr)
+            .replace("{source}", "");
+        let overhead = estimate_tokens(&overhead_prompt);
+        (self.ctx_size as usize)
+            .saturating_sub(self.max_new_tokens as usize)
+            .saturating_sub(overhead)
+    }
+
+    /// Chunked rewrite for long documents. Splits `text` via
+    /// [`split_for_context`] using this engine's context budget
+    /// (`ctx_size - max_new_tokens - instruction overhead`), rewrites
+    /// each chunk with a fresh greedy sampler (same as `rewrite`), and
+    /// joins the results (`\n\n` when the source had paragraphs, else a
+    /// space). `truncated` is false only if every chunk stopped
+    /// naturally; if any chunk hit the token cap the whole result is
+    /// marked truncated.
+    pub fn rewrite_chunked(&self, text: &str, instruction: Option<&str>) -> Result<Generation> {
+        let max_src = self.max_source_tokens(instruction);
+        let chunks = split_for_context(text, max_src);
+        if chunks.len() <= 1 {
+            return self.rewrite(text, instruction);
+        }
+        let joiner = if text.contains("\n\n") {
+            "\n\n"
+        } else {
+            " "
+        };
+        let mut outs = Vec::with_capacity(chunks.len());
+        let mut any_truncated = false;
+        for c in &chunks {
+            let g = self.rewrite(c, instruction)?;
+            any_truncated |= g.truncated;
+            outs.push(g.text);
+        }
+        Ok(Generation {
+            text: outs.join(joiner),
+            truncated: any_truncated,
+        })
+    }
+
+    /// The one decode loop everything routes through. Short inputs take
+    /// the single-shot path unchanged; inputs whose prompt would exceed
+    /// the context are split via [`split_for_context`] and each chunk is
+    /// decoded with the same sampler (reused `&mut`, since
+    /// `LlamaSampler` is not `Clone`) through the single-shot helper
+    /// below that takes an already-built prompt.
     fn generate<F>(
         &self,
         text: &str,
@@ -231,10 +415,51 @@ impl RewriteEngine {
     where
         F: FnMut(&str),
     {
+        let max_src = self.max_source_tokens(instruction);
+        if estimate_tokens(text) > max_src {
+            let chunks = split_for_context(text, max_src);
+            if chunks.len() > 1 {
+                let joiner = if text.contains("\n\n") {
+                    "\n\n"
+                } else {
+                    " "
+                };
+                let instr = instruction.unwrap_or(DEFAULT_INSTRUCTION);
+                let mut outs = Vec::with_capacity(chunks.len());
+                let mut any_truncated = false;
+                for c in &chunks {
+                    let prompt = PROMPT_TEMPLATE
+                        .replace("{instruction}", instr)
+                        .replace("{source}", c);
+                    let g = self.generate_prompt(&prompt, &mut sampler, &mut on_token)?;
+                    any_truncated |= g.truncated;
+                    outs.push(g.text);
+                }
+                return Ok(Generation {
+                    text: outs.join(joiner),
+                    truncated: any_truncated,
+                });
+            }
+        }
+
         let prompt = PROMPT_TEMPLATE
             .replace("{instruction}", instruction.unwrap_or(DEFAULT_INSTRUCTION))
             .replace("{source}", text);
+        self.generate_prompt(&prompt, &mut sampler, &mut on_token)
+    }
 
+    /// Single-shot decode for an already-built prompt. Each call builds
+    /// a fresh context, so concurrent / sequential calls don't share KV
+    /// cache state.
+    fn generate_prompt<F>(
+        &self,
+        prompt: &str,
+        sampler: &mut LlamaSampler,
+        on_token: &mut F,
+    ) -> Result<Generation>
+    where
+        F: FnMut(&str),
+    {
         let ctx_params = LlamaContextParams::default().with_n_ctx(NonZeroU32::new(self.ctx_size));
         let mut ctx = self
             .model
@@ -251,7 +476,7 @@ impl RewriteEngine {
 
         let tokens = self
             .model
-            .str_to_token(&prompt, AddBos::Always)
+            .str_to_token(prompt, AddBos::Always)
             .context("tokenizing prompt")?;
         let prompt_len = tokens.len() as i32;
         let n_len = prompt_len + self.max_new_tokens;
@@ -305,5 +530,84 @@ impl RewriteEngine {
             text: out.replace(STOP_MARKER, "").trim().to_string(),
             truncated,
         })
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{DEFAULT_INSTRUCTION, estimate_tokens, split_for_context};
+
+    #[test]
+    fn estimate_tokens_is_chars_over_four() {
+        assert_eq!(estimate_tokens(""), 0);
+        assert_eq!(estimate_tokens("a".repeat(400).as_str()), 100);
+        assert_eq!(estimate_tokens("abcd"), 1);
+    }
+
+    #[test]
+    fn long_doc_splits_into_bounded_chunks() {
+        // ~5000+ char doc: repeated sentences with paragraph breaks.
+        let para = "The quick brown fox jumps over the lazy dog. It barks! Does it run? Yes. ";
+        let doc = format!("{}\n\n{}\n\n{}", para.repeat(25), para.repeat(25), para.repeat(25));
+        assert!(
+            doc.chars().count() >= 5000,
+            "fixture should be a long doc, got {} chars",
+            doc.chars().count()
+        );
+        let max = 300; // tokens ≈ 1200 chars
+        let chunks = split_for_context(&doc, max);
+        assert!(chunks.len() >= 2, "expected 2+ chunks, got {}", chunks.len());
+        for c in &chunks {
+            assert!(
+                estimate_tokens(c) <= max,
+                "chunk exceeds budget: {} tokens > {max}",
+                estimate_tokens(c)
+            );
+        }
+        // Join preserves words (whitespace-normalized comparison).
+        let orig_words: Vec<&str> = doc.split_whitespace().collect();
+        let joined = chunks.join("\n\n");
+        let joined_words: Vec<&str> = joined.split_whitespace().collect();
+        assert_eq!(orig_words, joined_words);
+    }
+
+    #[test]
+    fn splitter_never_splits_inside_word() {
+        // No sentence terminators: forces the word-boundary fallback path.
+        let doc = "word ".repeat(1500); // 7500 chars
+        let max = 300;
+        let chunks = split_for_context(&doc, max);
+        assert!(chunks.len() >= 2);
+        for c in &chunks {
+            assert!(estimate_tokens(c) <= max);
+        }
+        // Compare as owned strings to avoid lifetime juggling.
+        let orig: Vec<String> = doc.split_whitespace().map(|s| s.to_string()).collect();
+        let joined: Vec<String> = chunks
+            .join(" ")
+            .split_whitespace()
+            .map(|s| s.to_string())
+            .collect();
+        assert_eq!(orig, joined);
+    }
+
+    #[test]
+    fn short_input_stays_single_chunk() {
+        let text = "Fix this short sentence, please.";
+        let chunks = split_for_context(text, 1700);
+        assert_eq!(chunks, vec![text.to_string()]);
+    }
+
+    #[test]
+    fn default_instruction_guards_faithfulness() {
+        let lower = DEFAULT_INSTRUCTION.to_lowercase();
+        assert!(
+            lower.contains("verbatim") || lower.contains("preserve"),
+            "instruction should preserve facts verbatim: {DEFAULT_INSTRUCTION}"
+        );
+        assert!(
+            lower.contains("word count") && lower.contains("20%"),
+            "instruction should guard word count ±20%: {DEFAULT_INSTRUCTION}"
+        );
     }
 }
