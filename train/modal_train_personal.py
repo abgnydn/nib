@@ -37,6 +37,17 @@ ARGUMENTS (tweakable):
 import os
 import pathlib
 import subprocess
+import sys
+
+# Retired Modal-Gemma legacy guard — prevent accidental Gemma training.
+# This script trains a Gemma-3-270M adapter that won't load on LFM2.5/Qwen;
+# the supported path is the local QVAC backend. Require explicit opt-in.
+if os.environ.get("NIB_ALLOW_LEGACY_MODAL") != "1":
+    print("LEGACY WARNING: modal_train_personal.py trains a Gemma-3-270M adapter")
+    print("that won't load on the shipped LFM2.5-350M / Qwen 2.5-1.5B bases.")
+    print("The supported personal-training path is the local QVAC backend.")
+    print("To override, set NIB_ALLOW_LEGACY_MODAL=1 (and allow_cloud_training).")
+    sys.exit(2)
 
 import modal
 

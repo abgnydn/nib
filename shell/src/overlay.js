@@ -300,13 +300,11 @@
 
     // Position bottom-right of the word (Grammarly-style).
     //
-    // CRITICAL: the overlay window is 4096×3072 (covers every display),
-    // so window.innerWidth/Height return those huge numbers — useless for
-    // clamping to the user's actual screen. screen.availWidth/Height give
-    // the real visible bounds (screen size minus menubar/dock).
+    // Multi-display: one overlay window per monitor, so window.innerWidth/
+    // Height equal this monitor's viewport — clamp to them.
     const r = lint.rect;
-    const W = screen.availWidth;
-    const H = screen.availHeight;
+    const W = window.innerWidth;
+    const H = window.innerHeight;
     const pw = 320 + 24;
     const gap = 6;
 
@@ -512,24 +510,129 @@
     pushHotRegions();
   };
 
+  // ---- browser fallback panel -----------------------------------------
+  // When AXUI `bounds_for_range` returns None for every lint (browsers /
+  // Electron web inputs), inline underlines can't render. The fallback
+  // panel beside the field lists every suggestion instead.
+  let fbActiveIdx = 0;
+  const FB_CTX_MAX = 120;
+  // Focusable + listbox semantics so ArrowDown/Up + Enter work when the
+  // panel has focus; the document-level keydown below covers the rest.
+  fallbackEl.tabIndex = 0;
+  fallbackEl.setAttribute("role", "listbox");
+  fallbackEl.setAttribute("aria-label", "Nib suggestions");
+  fallbackEl.style.overflowY = "auto";
+
+  const truncateStr = (s, max) => {
+    const chars = [...String(s || "")];
+    if (chars.length <= max) return String(s || "");
+    return chars.slice(0, Math.max(0, max - 1)).join("") + "…";
+  };
+
+  // Source sentence around [start, end): scan out to sentence boundaries
+  // (. ! ? newline), fall back to ±60 chars, then cap at FB_CTX_MAX.
+  // `clipped` is the truncated guard — the row renders "…" at cut edges.
+  const sentenceContext = (text, start, end) => {
+    const chars = [...String(text || "")];
+    const n = chars.length;
+    const s = Math.max(0, Math.min(start | 0, n));
+    const e = Math.max(s, Math.min(end | 0, n));
+    const isBoundary = (c) => c === "." || c === "!" || c === "?" || c === "\n";
+    let a = s;
+    const backStop = Math.max(0, s - 80);
+    while (a > backStop && !isBoundary(chars[a - 1])) a--;
+    if (a === 0 || isBoundary(chars[a - 1])) {
+      while (a < s && (chars[a] === " " || chars[a] === "\n")) a++;
+    } else {
+      a = Math.max(0, s - 60);
+    }
+    let b = e;
+    const fwdStop = Math.min(n, e + 80);
+    while (b < fwdStop && !isBoundary(chars[b])) b++;
+    if (b < n && isBoundary(chars[b])) b += 1;
+    else if (b === fwdStop) b = Math.min(n, e + 60);
+    const clippedLeft = a > 0;
+    const clippedRight = b < n;
+    const hit = chars.slice(s, e).join("");
+    let bArr = chars.slice(a, s);
+    let aArr = chars.slice(e, b);
+    const hLen = [...hit].length;
+    let over = bArr.length + hLen + aArr.length - FB_CTX_MAX;
+    let cutLeft = false, cutRight = false;
+    if (over > 0) {
+      const takeBefore = Math.min(bArr.length, Math.ceil(over / 2));
+      if (takeBefore > 0) { bArr = bArr.slice(takeBefore); over -= takeBefore; cutLeft = true; }
+      if (over > 0 && aArr.length > 0) { aArr = aArr.slice(0, Math.max(0, aArr.length - over)); cutRight = true; }
+    }
+    const before = ((clippedLeft || cutLeft) ? "…" : "") + bArr.join("");
+    const after = aArr.join("") + ((clippedRight || cutRight) ? "…" : "");
+    return { before, hit, after, clipped: clippedLeft || clippedRight || cutLeft || cutRight };
+  };
+
+  // Highlight the active row without a full re-render (no flicker).
+  const setFbActive = (idx, scroll = true) => {
+    if (!currentLints.length) return;
+    const clamped = Math.max(0, Math.min(idx, currentLints.length - 1));
+    fbActiveIdx = clamped;
+    fbList.querySelectorAll(".fb-row").forEach((row) => {
+      const active = parseInt(row.dataset.fbIdx, 10) === clamped;
+      row.classList.toggle("active", active);
+      row.setAttribute("aria-selected", active ? "true" : "false");
+    });
+    if (scroll) {
+      const el = fbList.querySelector(`.fb-row[data-fb-idx="${clamped}"]`);
+      if (el && el.scrollIntoView) {
+        try { el.scrollIntoView({ block: "nearest" }); } catch (ignored) {}
+      }
+    }
+  };
+
+  // Lint overlapping [selStart, selEnd), else the nearest lint at/after
+  // the caret. -1 when there is nothing to follow.
+  const fbLintForSelection = (selStart, selEnd) => {
+    for (let i = 0; i < currentLints.length; i++) {
+      const l = currentLints[i];
+      if (l.start < selEnd && l.end > selStart) return i;
+    }
+    let best = -1;
+    for (let i = 0; i < currentLints.length; i++) {
+      if (currentLints[i].start >= selEnd &&
+          (best < 0 || currentLints[i].start < currentLints[best].start)) best = i;
+    }
+    return best;
+  };
+
   const renderFallback = (renderedInlineCount) => {
-    if (!currentLints.length || renderedInlineCount > 0 || !currentFieldBounds) {
+    const shouldHide = !currentLints.length || renderedInlineCount > 0 || !currentFieldBounds;
+    if (shouldHide) {
+      // No flicker on empty: leave an already-hidden panel untouched
+      // (don't clear innerHTML — avoids layout thrash on empty polls).
+      if (!fallbackEl.classList.contains("visible")) return;
       fallbackEl.classList.remove("visible");
+      fbActiveIdx = 0;
       return;
     }
-    fbHeader.textContent = `Nib — ${currentLints.length}`;
+    fbActiveIdx = Math.max(0, Math.min(fbActiveIdx, currentLints.length - 1));
+    fbHeader.textContent =
+      `Nib — ${currentLints.length} issue${currentLints.length === 1 ? "" : "s"} · ↑↓ + Enter`;
     fbList.innerHTML = currentLints.map((l, i) => {
       const slice = [...currentText].slice(l.start, l.end).join("");
       const suggs = (l.suggestions || []).map((s, j) => renderChip(s, i, j)).join("");
-      return `<div class="fb-row ${kindClass(l.kind)}">
-        <div class="fb-msg"><b>${escapeHtml(slice)}</b> — ${escapeHtml(l.message)}</div>
+      const ctx = sentenceContext(currentText, l.start, l.end);
+      const ctxHtml =
+        `${escapeHtml(ctx.before)}<b>${escapeHtml(ctx.hit || slice)}</b>${escapeHtml(ctx.after)}`;
+      const active = i === fbActiveIdx ? " active" : "";
+      const sel = i === fbActiveIdx ? "true" : "false";
+      return `<div class="fb-row ${kindClass(l.kind)}${active}" data-fb-idx="${i}" tabindex="0" role="option" aria-selected="${sel}">
+        <div class="fb-msg"><b>${escapeHtml(truncateStr(slice, 60))}</b> — ${escapeHtml(l.message)}</div>
+        <div class="fb-ctx">${ctxHtml}</div>
         ${suggs ? `<div class="fb-suggs">${suggs}</div>` : ""}
       </div>`;
     }).join("");
     const b = currentFieldBounds;
-    // The overlay window is 4096×3072 — window.innerWidth/Height are
-    // useless for clamping (see showPopover). Use the real screen bounds.
-    const W = screen.availWidth, H = screen.availHeight;
+    // Per-monitor overlay window: clamp to this window's viewport.
+    // The fallback panel stays for fields where bounds_for_range returns None.
+    const W = window.innerWidth, H = window.innerHeight;
     const fw = 300 + 24;
     let x = b.x + b.w + 12;
     let y = b.y;
@@ -537,8 +640,46 @@
     if (y + 300 > H) y = Math.max(8, H - 320);
     fallbackEl.style.left = Math.max(8, x) + "px";
     fallbackEl.style.top  = Math.max(8, y) + "px";
+    fallbackEl.style.maxHeight = Math.max(180, H - Math.max(8, y) - 8) + "px";
     fallbackEl.classList.add("visible");
+    const activeEl = fbList.querySelector(`.fb-row[data-fb-idx="${fbActiveIdx}"]`);
+    if (activeEl && activeEl.scrollIntoView) {
+      try { activeEl.scrollIntoView({ block: "nearest" }); } catch (ignored) {}
+    }
   };
+
+  // Keyboard: ArrowDown/Up moves the active fallback row, Enter applies
+  // its first suggestion. Skipped while the rewrite panel is open so the
+  // two surfaces never fight over keys.
+  document.addEventListener("keydown", (e) => {
+    if (!fallbackEl.classList.contains("visible")) return;
+    if (!rewritePanel.hidden) return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key !== "ArrowDown" && e.key !== "ArrowUp" && e.key !== "Enter") return;
+    if (!currentLints.length) return;
+    e.preventDefault();
+    if (e.key === "ArrowDown") {
+      setFbActive(fbActiveIdx + 1 >= currentLints.length ? 0 : fbActiveIdx + 1);
+    } else if (e.key === "ArrowUp") {
+      setFbActive(fbActiveIdx - 1 < 0 ? currentLints.length - 1 : fbActiveIdx - 1);
+    } else {
+      const lint = currentLints[fbActiveIdx];
+      if (!lint || !lint.suggestions || !lint.suggestions.length) return;
+      const btn = fbList.querySelector(`.fb-row[data-fb-idx="${fbActiveIdx}"] .sugg`);
+      applySuggestion(fbActiveIdx, 0, btn);
+    }
+  });
+
+  // Clicking a row (outside its chips) moves keyboard focus there without
+  // applying — the suggestion-chip path above still handles applies.
+  fbList.addEventListener("click", (e) => {
+    const t = e.target;
+    if (!t || !t.closest) return;
+    if (t.classList && t.classList.contains("sugg")) return;
+    const row = t.closest(".fb-row");
+    if (!row) return;
+    setFbActive(parseInt(row.dataset.fbIdx, 10), false);
+  });
 
   // ---- listeners ------------------------------------------------------
   listen("cursor-enter-hot", (evt) => {
@@ -625,7 +766,7 @@
   const positionTrigger = (rect) => {
     // Anchor ~6px to the LEFT of the selection's left edge, vertically
     // centered. Falls back to clamping inside the visible viewport.
-    const W = screen.availWidth, H = screen.availHeight;
+    const W = window.innerWidth, H = window.innerHeight;
     const size = 28;
     let x = rect.x - size - 6;
     let y = rect.y + (rect.h / 2) - (size / 2);
@@ -638,8 +779,8 @@
 
   const positionRewritePanel = (rect) => {
     // Position below-right of the selection's bottom-right corner, with
-    // the same screen-bounds clamping logic as the hover popover.
-    const W = screen.availWidth, H = screen.availHeight;
+    // the same viewport clamping logic as the hover popover.
+    const W = window.innerWidth, H = window.innerHeight;
     const pw = 380 + 24;
     let x = rect.x + rect.w + 12;
     let y = rect.y + rect.h + 8;
@@ -675,6 +816,15 @@
     positionTrigger(currentSelection.rect);
     selTrigger.hidden = false;
     requestAnimationFrame(pushHotRegions);
+    // Fallback auto-follow: move the active row to the lint under the
+    // caret/selection so keyboard Enter applies the relevant fix.
+    // Truncated guard: a truncated selection carries only a prefix —
+    // its offsets don't map to visible text, so never follow it.
+    if (!p.truncated && typeof p.start === "number" && typeof p.end === "number" &&
+        fallbackEl.classList.contains("visible") && currentLints.length) {
+      const idx = fbLintForSelection(p.start, p.end);
+      if (idx >= 0) setFbActive(idx);
+    }
   }).catch((err) => ping("sel-listen-err", 0, String(err)));
 
   selTrigger.addEventListener("click", () => {

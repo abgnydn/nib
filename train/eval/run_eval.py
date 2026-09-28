@@ -93,6 +93,13 @@ def run_model(
     """Single-shot generation via Nib's own nib-rewrite binary.
     Same engine as the running app — eval matches user experience.
     """
+    if not os.path.exists(binary):
+        raise FileNotFoundError(
+            f"nib-rewrite not found: tried {_REPO_BINARY} and {_LEGACY_BINARY}"
+            + (f" (requested: {binary})" if binary not in (_REPO_BINARY, _LEGACY_BINARY) else "")
+            + ". Build it with: cd shell/src-tauri && "
+            "cargo build --profile release-dev --features llm --bin nib-rewrite"
+        )
     cmd = [binary, "-m", model_path, "-t", source]
     if instruction:
         cmd += ["-i", instruction]

@@ -24,6 +24,8 @@ use std::sync::Mutex;
 
 use core_foundation::base::{CFRetain, CFRelease, CFTypeRef};
 
+use accessibility_sys::{AXUIElementGetPid, AXUIElementRef, kAXErrorSuccess};
+
 /// Owned AXUIElementRef — releases its retain count on drop.
 struct RetainedElem(*mut c_void);
 
@@ -52,6 +54,43 @@ pub fn store(elem: *mut c_void) {
         Err(p) => p.into_inner(), // poisoned — recover anyway
     };
     *g = new;
+}
+
+/// Validated store: only caches `elem` when its owning pid matches
+/// `expected_pid` (when given). Takes ownership on success exactly like
+/// [`store`]; on validation failure it releases the caller's ref, clears
+/// any stale cached handle, and returns false so the caller never caches
+/// an element from the wrong app (e.g. a focus change raced the snapshot).
+///
+/// `null` always clears and returns false.
+pub fn store_validated(elem: *mut c_void, expected_pid: Option<i32>) -> bool {
+    if elem.is_null() {
+        clear();
+        return false;
+    }
+    if let Some(expected) = expected_pid {
+        let mut actual: i32 = 0;
+        let err = unsafe { AXUIElementGetPid(elem as AXUIElementRef, &mut actual) };
+        if err != kAXErrorSuccess || actual <= 0 || actual != expected {
+            // Reject: release the transferred retain, drop the stale cache.
+            unsafe { CFRelease(elem as CFTypeRef) };
+            clear();
+            return false;
+        }
+    }
+    store(elem);
+    true
+}
+
+/// Pid of the currently-cached element, if any. Lets callers detect a
+/// stale handle (cached pid no longer matches the focused app) without
+/// bumping the retain count.
+pub fn current_pid() -> Option<i32> {
+    let g = LAST_ENGAGED.lock().ok()?;
+    let owned = g.as_ref()?;
+    let mut pid: i32 = 0;
+    let err = unsafe { AXUIElementGetPid(owned.0 as AXUIElementRef, &mut pid) };
+    (err == kAXErrorSuccess && pid > 0).then_some(pid)
 }
 
 /// Borrow the cached handle, bumping its retain count so the caller owns
@@ -92,6 +131,26 @@ mod tests {
         // (CFRelease on a non-CF pointer crashes the process). So we only
         // exercise the null path here — round-trip the empty state.
         store(std::ptr::null_mut());
+        assert!(current_handle().is_none());
+        clear();
+        assert!(current_handle().is_none());
+    }
+
+    #[test]
+    fn store_clear_current_is_none() {
+        // Regression guard for stale engaged-elem: once cleared, no
+        // handle (and no pid) may survive — apply must fall back to the
+        // live AXUI query instead of writing to a dead element.
+        store(std::ptr::null_mut());
+        clear();
+        assert!(current_handle().is_none());
+        assert!(current_pid().is_none());
+    }
+
+    #[test]
+    fn store_validated_null_clears() {
+        store(std::ptr::null_mut());
+        assert!(!store_validated(std::ptr::null_mut(), None));
         assert!(current_handle().is_none());
         clear();
         assert!(current_handle().is_none());

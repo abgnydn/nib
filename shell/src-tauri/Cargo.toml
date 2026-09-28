@@ -14,10 +14,14 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 tauri-build = { version = "2", features = [] }
 
 [features]
-default = []
-# Pulls in llama-cpp-2 + builds llama.cpp from source. Adds ~2-5 min to the
+default = ["llm"]
+# Default is the real app: Harper rules + local LLM rewrite. Pulls in
+# llama-cpp-2 + builds llama.cpp from source. Adds ~2-5 min to the
 # first build and requires cmake + a C++ toolchain on the host.
-# Enable with: `cargo tauri dev --features llm` or `cargo build --features llm`.
+# `--no-default-features` is Harper-only intentionally (fast minimal build).
+# The macOS AXUI overlay stays opt-in (`--features overlay`) because it
+# needs macOS system frameworks; linux CI just uses the default
+# (`--features llm` also works explicitly).
 llm = ["dep:llama-cpp-2", "dep:anyhow", "dep:encoding_rs"]
 # macOS-only — system-wide focus tracker + click-through overlay window that
 # follows the focused text field across apps (Grammarly-style UX). Requires
@@ -58,6 +62,13 @@ path = "src/main.rs"
 name = "nib-rewrite"
 path = "src/bin/nib_rewrite.rs"
 required-features = ["llm"]
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "harper_bench"
+harness = false
 
 [profile.release]
 codegen-units = 1

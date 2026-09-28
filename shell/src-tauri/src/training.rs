@@ -88,6 +88,10 @@ struct Job {
 #[derive(Serialize, Clone, Copy, Debug, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 pub enum Backend {
+    /// Deprecated legacy Gemma Modal backend — trains an adapter that
+    /// won't load on LFM2.5/Qwen bases. Retained only behind
+    /// `NIB_ALLOW_LEGACY_MODAL=1` + `allow_cloud_training`; prefer Local (QVAC).
+    #[deprecated(note = "Modal Gemma legacy won't load on LFM2.5/Qwen — use local QVAC path instead")]
     Modal,
     Local,
     /// No job has run yet — distinguish from a default that lies.
@@ -126,6 +130,10 @@ pub enum StartError {
     ModalNotFound(String),
     TrainDirMissing(PathBuf),
     Spawn(String),
+    /// Retired Modal-Gemma legacy path — Gemma adapter won't load on
+    /// LFM2.5/Qwen. Set NIB_ALLOW_LEGACY_MODAL=1 + allow_cloud_training
+    /// to override; prefer the local QVAC path.
+    LegacyModalDeprecated,
 }
 
 impl std::fmt::Display for StartError {
@@ -136,28 +144,41 @@ impl std::fmt::Display for StartError {
                 f,
                 "HF_TOKEN env var not set — launch Nib from a terminal with `export HF_TOKEN=hf_...`"
             ),
-            Self::ModalNotFound(p) => write!(f, "modal CLI not found at {p}"),
-            Self::TrainDirMissing(p) => write!(f, "train dir missing: {}", p.display()),
-            Self::Spawn(e) => write!(f, "failed to spawn modal: {e}"),
+            Self::ModalNotFound(p) => write!(
+                f,
+                "modal CLI not found at {p} (legacy Gemma path — Gemma adapter won't load on LFM2.5/Qwen; use local QVAC)"
+            ),
+            Self::TrainDirMissing(p) => write!(
+                f,
+                "train dir missing: {} (checked NIB_TRAIN_DIR, ~/dev/nib/train, ~/quill/train legacy) — set NIB_TRAIN_DIR to your train checkout",
+                p.display()
+            ),
+            Self::Spawn(e) => write!(
+                f,
+                "failed to spawn modal: {e} (legacy Gemma path won't load on LFM2.5/Qwen)"
+            ),
+            Self::LegacyModalDeprecated => write!(
+                f,
+                "Modal Gemma legacy is deprecated and won't load on LFM2.5/Qwen bases — use the local QVAC path instead; to override set NIB_ALLOW_LEGACY_MODAL=1 and enable allow_cloud_training"
+            ),
         }
     }
 }
 
-/// Resolve the train directory for the legacy Modal backend. Checks
-/// `NIB_TRAIN_DIR`, then the author's historical `~/quill/train` clone,
-/// then the current `~/dev/nib/train` layout. Single-user assumption —
+/// Resolve the train directory for the retired legacy Modal backend (Gemma
+/// adapter won't load on LFM2.5/Qwen — requires NIB_ALLOW_LEGACY_MODAL=1).
+/// Checks `NIB_TRAIN_DIR`, then the current `~/dev/nib/train` checkout layout,
+/// then the author's historical `~/quill/train` clone as a legacy fallback
+/// (only if it exists). Returns None when nothing exists — callers must
+/// surface the checked paths. Single-user assumption —
 /// this whole path is opt-in legacy (see `allow_cloud_training`).
 pub fn default_train_dir() -> Option<PathBuf> {
     if let Some(dir) = std::env::var_os("NIB_TRAIN_DIR") {
         return Some(PathBuf::from(dir));
     }
     let home = PathBuf::from(std::env::var_os("HOME")?);
-    let candidates = [home.join("quill/train"), home.join("dev/nib/train")];
-    candidates
-        .iter()
-        .find(|p| p.exists())
-        .cloned()
-        .or_else(|| Some(candidates[0].clone()))
+    let candidates = [home.join("dev/nib/train"), home.join("quill/train")];
+    candidates.into_iter().find(|p| p.exists())
 }
 
 /// Try the venv binary first, fall back to PATH lookup.
@@ -267,15 +288,31 @@ impl TrainingState {
         }
     }
 
-    /// Spawn the Modal training subprocess.
+    /// Spawn the Modal training subprocess (retired legacy Gemma path).
+    ///
+    /// Requires `NIB_ALLOW_LEGACY_MODAL=1` in the environment — callers
+    /// additionally gate on the `allow_cloud_training` config flag, so both
+    /// are needed to even attempt a cloud spawn. Otherwise returns an
+    /// actionable error pointing at the local QVAC path (Gemma legacy
+    /// won't load on LFM2.5/Qwen).
+    #[allow(deprecated)]
     pub fn start(&self, journal_path: PathBuf) -> Result<(), StartError> {
         let mut g = self.inner.lock().map_err(|_| StartError::Spawn("mutex".into()))?;
         if g.state == JobState::Running {
             return Err(StartError::AlreadyRunning);
         }
         let hf_token = std::env::var("HF_TOKEN").map_err(|_| StartError::NoHfToken)?;
+        // Retire Modal-Gemma legacy: Gemma adapter won't load on LFM2.5/Qwen.
+        // Require explicit opt-in to even attempt a cloud spawn; otherwise
+        // point at the local QVAC path.
+        if std::env::var("NIB_ALLOW_LEGACY_MODAL").as_deref() != Ok("1") {
+            return Err(StartError::LegacyModalDeprecated);
+        }
         let train_dir = default_train_dir().ok_or_else(|| {
-            StartError::TrainDirMissing(PathBuf::from("HOME not set"))
+            let home = std::env::var("HOME").unwrap_or_else(|_| "<HOME unset>".into());
+            StartError::TrainDirMissing(PathBuf::from(format!(
+                "{home}/dev/nib/train or {home}/quill/train"
+            )))
         })?;
         if !train_dir.exists() {
             return Err(StartError::TrainDirMissing(train_dir));
@@ -478,6 +515,8 @@ fn spawn_drainers(child: &mut Child, stage: Arc<Mutex<Option<String>>>) {
 mod tests {
     use super::*;
 
+    static ENV_LOCK: std::sync::Mutex<()> = std::sync::Mutex::new(());
+
     #[test]
     fn idle_status_after_new() {
         let s = TrainingState::default();
@@ -489,6 +528,7 @@ mod tests {
 
     #[test]
     fn start_errors_with_no_hf_token() {
+        let _guard = ENV_LOCK.lock().unwrap();
         // Save & restore HF_TOKEN — tests share env.
         let saved = std::env::var("HF_TOKEN").ok();
         unsafe { std::env::remove_var("HF_TOKEN"); }
@@ -506,15 +546,69 @@ mod tests {
     }
 
     #[test]
-    fn default_train_dir_resolves_against_home() {
-        let saved = std::env::var("HOME").ok();
-        unsafe { std::env::set_var("HOME", "/tmp/qhome"); }
-        let d = default_train_dir().unwrap();
-        assert_eq!(d, PathBuf::from("/tmp/qhome/quill/train"));
+    fn start_without_legacy_env_returns_deprecated_not_traindir() {
+        let _guard = ENV_LOCK.lock().unwrap();
+        let saved_legacy = std::env::var("NIB_ALLOW_LEGACY_MODAL").ok();
+        let saved_hf = std::env::var("HF_TOKEN").ok();
         unsafe {
-            match saved {
+            std::env::remove_var("NIB_ALLOW_LEGACY_MODAL");
+            std::env::set_var("HF_TOKEN", "hf_test_dummy");
+        }
+        let s = TrainingState::default();
+        let r = s.start(PathBuf::from("/tmp/nib-journal.jsonl"));
+        match r {
+            Err(StartError::LegacyModalDeprecated) => {}
+            other => panic!("expected LegacyModalDeprecated, got {other:?}"),
+        }
+        // Message must point at the local QVAC path + Gemma legacy note.
+        let msg = format!("{}", StartError::LegacyModalDeprecated);
+        assert!(msg.contains("LFM2.5") && msg.contains("Qwen"), "missing Gemma legacy note: {msg}");
+        assert!(msg.contains("NIB_ALLOW_LEGACY_MODAL"), "missing env pointer: {msg}");
+        assert!(
+            msg.contains("QVAC") || msg.contains("local"),
+            "missing local path pointer: {msg}"
+        );
+        unsafe {
+            match saved_legacy {
+                Some(v) => std::env::set_var("NIB_ALLOW_LEGACY_MODAL", v),
+                None => std::env::remove_var("NIB_ALLOW_LEGACY_MODAL"),
+            }
+            match saved_hf {
+                Some(v) => std::env::set_var("HF_TOKEN", v),
+                None => std::env::remove_var("HF_TOKEN"),
+            }
+        }
+    }
+
+    #[test]
+    fn default_train_dir_resolves_against_home() {
+        let saved_home = std::env::var("HOME").ok();
+        let saved_train = std::env::var_os("NIB_TRAIN_DIR");
+        unsafe { std::env::remove_var("NIB_TRAIN_DIR"); }
+        // Isolated HOME with no train dirs → None (never a phantom
+        // ~/quill/train).
+        let base = std::env::temp_dir().join(format!("nib-train-test-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&base);
+        unsafe { std::env::set_var("HOME", &base); }
+        assert_eq!(default_train_dir(), None);
+        // Current layout wins when present.
+        let cur = base.join("dev/nib/train");
+        std::fs::create_dir_all(&cur).unwrap();
+        assert_eq!(default_train_dir(), Some(cur.clone()));
+        // Legacy fallback only when current layout absent but legacy exists.
+        std::fs::remove_dir_all(base.join("dev/nib")).unwrap();
+        let legacy = base.join("quill/train");
+        std::fs::create_dir_all(&legacy).unwrap();
+        assert_eq!(default_train_dir(), Some(legacy.clone()));
+        let _ = std::fs::remove_dir_all(&base);
+        unsafe {
+            match saved_home {
                 Some(v) => std::env::set_var("HOME", v),
                 None => std::env::remove_var("HOME"),
+            }
+            match saved_train {
+                Some(v) => std::env::set_var("NIB_TRAIN_DIR", v),
+                None => std::env::remove_var("NIB_TRAIN_DIR"),
             }
         }
     }
@@ -546,11 +640,16 @@ mod tests {
             format!("{}", StartError::AlreadyRunning),
             format!("{}", StartError::ModalNotFound("/x".into())),
             format!("{}", StartError::TrainDirMissing(PathBuf::from("/y"))),
+            format!("{}", StartError::LegacyModalDeprecated),
         ];
         // Each error mentions what to do or where to look.
         assert!(strs[0].contains("HF_TOKEN"));
         assert!(strs[1].contains("already"));
         assert!(strs[2].contains("modal"));
         assert!(strs[3].contains("/y"));
+        // Gemma legacy path must say it won't load on LFM2.5/Qwen.
+        assert!(strs[2].contains("LFM2.5") && strs[2].contains("Qwen"));
+        assert!(strs[4].contains("LFM2.5") && strs[4].contains("Qwen"));
+        assert!(strs[4].contains("NIB_ALLOW_LEGACY_MODAL"));
     }
 }

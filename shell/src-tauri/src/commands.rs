@@ -195,8 +195,9 @@ use crate::training::{SharedTraining, TrainingStatus};
 ///
 /// Local backend (QVAC + bundled base model) is preferred — free, ~5 min
 /// on Metal. The Modal fallback uploads the journal export to a cloud GPU
-/// and trains a legacy Gemma adapter, so it requires the explicit
-/// `allow_cloud_training` config opt-in.
+/// and trains a legacy Gemma adapter that won't load on LFM2.5/Qwen, so it
+/// requires the explicit `allow_cloud_training` config opt-in AND
+/// `NIB_ALLOW_LEGACY_MODAL=1` (enforced in `TrainingState::start`).
 pub fn start_personal_training(
     journal: &Journal,
     training: &crate::training::TrainingState,
@@ -228,10 +229,11 @@ pub fn start_personal_training(
     } else {
         return Err(
             "local training backend isn't available, and cloud training is \
-             disabled. Enable allow_cloud_training in config.json to allow \
-             uploading your journal to Modal (it trains a legacy Gemma \
-             adapter — not recommended), or install the QVAC toolchain via \
-             scripts/install-dev.sh."
+             disabled. Enable allow_cloud_training in config.json AND \
+             NIB_ALLOW_LEGACY_MODAL=1 to allow uploading your journal to \
+             Modal (it trains a legacy Gemma adapter that won't load on \
+             LFM2.5/Qwen — not recommended), or install the QVAC toolchain \
+             via scripts/install-dev.sh for the local QVAC path."
                 .into(),
         );
     }
