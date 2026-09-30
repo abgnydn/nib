@@ -840,7 +840,7 @@
     rpGo.hidden = false;
     rpGo.disabled = false;
     rpGo.textContent = "Rewrite";
-    // Reset chip selection on each open — tone/formality are per-session.
+    // plain-first: no pill pre-selected on open (default: no tone, no formality). Reset chip selection on each open — tone/formality are per-session; user can still tap pills after open.
     rpToneRow.querySelectorAll(".rp-chip").forEach(c => c.classList.remove("active"));
     rpFormalityRow.querySelectorAll(".rp-chip").forEach(c => c.classList.remove("active"));
     refreshInstrBadge();

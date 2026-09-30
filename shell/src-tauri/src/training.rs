@@ -515,8 +515,6 @@ fn spawn_drainers(child: &mut Child, stage: Arc<Mutex<Option<String>>>) {
 mod tests {
     use super::*;
 
-    static ENV_LOCK: std::sync::Mutex<()> = std::sync::Mutex::new(());
-
     #[test]
     fn idle_status_after_new() {
         let s = TrainingState::default();
@@ -528,7 +526,7 @@ mod tests {
 
     #[test]
     fn start_errors_with_no_hf_token() {
-        let _guard = ENV_LOCK.lock().unwrap();
+        let _guard = crate::state::TEST_ENV_LOCK.lock().unwrap();
         // Save & restore HF_TOKEN — tests share env.
         let saved = std::env::var("HF_TOKEN").ok();
         unsafe { std::env::remove_var("HF_TOKEN"); }
@@ -547,7 +545,7 @@ mod tests {
 
     #[test]
     fn start_without_legacy_env_returns_deprecated_not_traindir() {
-        let _guard = ENV_LOCK.lock().unwrap();
+        let _guard = crate::state::TEST_ENV_LOCK.lock().unwrap();
         let saved_legacy = std::env::var("NIB_ALLOW_LEGACY_MODAL").ok();
         let saved_hf = std::env::var("HF_TOKEN").ok();
         unsafe {
@@ -582,7 +580,7 @@ mod tests {
 
     #[test]
     fn default_train_dir_resolves_against_home() {
-        let _guard = ENV_LOCK.lock().unwrap();
+        let _guard = crate::state::TEST_ENV_LOCK.lock().unwrap();
         let saved_home = std::env::var("HOME").ok();
         let saved_train = std::env::var_os("NIB_TRAIN_DIR");
         unsafe { std::env::remove_var("NIB_TRAIN_DIR"); }

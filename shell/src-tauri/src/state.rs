@@ -9,6 +9,9 @@ use harper_core::spell::FstDictionary;
 #[cfg(feature = "llm")]
 use crate::inference;
 
+#[cfg(test)]
+pub(crate) static TEST_ENV_LOCK: std::sync::Mutex<()> = std::sync::Mutex::new(());
+
 /// Style / clarity rules that Harper 2.0 ships disabled by default but that we
 /// want on in Nib. Single source of truth — both `CheckerState::new` and the
 /// overlay's `fresh_linter()` route through `build_linter` so they stay in sync.
@@ -347,6 +350,7 @@ mod tests {
 
     #[test]
     fn personal_adapter_path_uses_home() {
+        let _guard = super::TEST_ENV_LOCK.lock().unwrap();
         // Save & restore the real HOME so this test doesn't leak.
         let saved = std::env::var("HOME").ok();
         // SAFETY: tests are single-threaded by default for env mutation here.
@@ -421,6 +425,7 @@ mod tests {
     #[cfg(feature = "llm")]
     #[test]
     fn reload_with_missing_paths_keeps_old_engine() {
+        let _guard = super::TEST_ENV_LOCK.lock().unwrap();
         // Point NIB_MODEL at a nonexistent file so resolve finds nothing
         // loadable; reload must return Err or false, never panic, and must
         // leave the previous engine state untouched.
