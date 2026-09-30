@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Nib — agentic loop oracle for Phase 1 (Grammarly-parity plan).
+# Nib — agentic loop oracle for Phase 1 + Phase 2 (Grammarly-parity plan).
 #
 # This script does NOT do work. It answers ONE question:
-#   "is Phase 1 done?"  →  exit 0 = ALL DONE (stop the loop)
+#   "is the loop done?"  →  exit 0 = ALL DONE (stop the loop)
 #                          exit 1 = NOT DONE (keep working, see FAIL lines)
 #
 # Loop contract (for the agent running the loop):
@@ -24,6 +24,14 @@
 #   G4  plain-first UI: overlay fallback/rewrite panel defaults to NO
 #       tone + NO formality selected (tones are opt-in risk)
 #   G5  whole suite green: ./scripts/test.sh exits 0
+#
+# Phase 2 gates (faithfulness push; P3 needs a local GGUF + ~1 min):
+#   P1  tone-safe leash: the faithfulness sentence lives in BOTH the
+#       panel template (overlay.js) and the eval template (run_eval.py)
+#   P2  negative pairs: train/data/phase2-negatives.jsonl, 20 rows with
+#       {id, source, chosen, rejected, label, note}, provenance marked
+#   P3  measured baseline: train/reports/baseline-lfm250-round2-90.json
+#       exists with 90 scored cases (the "before" number for Phase 2)
 #
 # Usage:
 #     ./scripts/agent-loop.sh
@@ -119,9 +127,62 @@ else
   fail "test.sh failed — see /tmp/nib-loop-test.log"
 fi
 
+# ── P1: tone-safe leash in both templates ─────────────────────────
+gate "P1" "faithfulness leash in panel + eval templates"
+LEASH="Keep all facts, numbers and names exactly as written"
+if grep -q "$LEASH" "$REPO/shell/src/overlay.js" 2>/dev/null \
+  && grep -q "$LEASH" "$REPO/train/eval/run_eval.py" 2>/dev/null; then
+  pass "leash present in overlay.js + run_eval.py"
+else
+  fail "leash missing in overlay.js and/or run_eval.py (keep templates identical)"
+fi
+
+# ── P2: negative pairs dataset ────────────────────────────────────
+gate "P2" "phase2-negatives.jsonl 20 labeled pairs"
+NEG="$REPO/train/data/phase2-negatives.jsonl"
+if [[ -f "$NEG" ]]; then
+  if python3 - "$NEG" <<'EOF' 2>/dev/null; then
+import json, sys
+rows = [json.loads(l) for l in open(sys.argv[1]) if l.strip()]
+assert len(rows) >= 20, f"only {len(rows)} rows, need >=20"
+need = {"id", "source", "chosen", "rejected", "label", "note"}
+for r in rows:
+    assert need <= set(r), f"row {r.get('id')} missing {need - set(r)}"
+    assert r["chosen"] != r["rejected"], f"row {r.get('id')}: chosen==rejected"
+    assert "OBSERVED-REAL" in r["note"] or "SYNTHETIC-REPRESENTATIVE" in r["note"], \
+        f"row {r.get('id')}: provenance unmarked"
+print(f"{len(rows)} pairs ok")
+EOF
+    pass "$(python3 -c "import json; print(len([l for l in open('$NEG') if l.strip()]))") pairs"
+  else
+    fail "$NEG schema/count check failed (need >=20 pairs with id/source/chosen/rejected/label/note)"
+  fi
+else
+  fail "missing $NEG"
+fi
+
+# ── P3: measured baseline report ──────────────────────────────────
+gate "P3" "baseline-lfm250-round2-90.json with 90 scored cases"
+REP="$REPO/train/reports/baseline-lfm250-round2-90.json"
+if [[ -f "$REP" ]]; then
+  if python3 - "$REP" <<'EOF' 2>/dev/null; then
+import json, sys
+r = json.load(open(sys.argv[1]))
+assert r.get("n_cases") == 90, f"n_cases={r.get('n_cases')}, need 90"
+assert "n_pass" in r and "pass_rate" in r, "missing n_pass/pass_rate"
+print(f"{r['n_pass']}/{r['n_cases']} = {r['pass_rate']}")
+EOF
+    pass "$(python3 -c "import json; r=json.load(open('$REP')); print(f\"{r['n_pass']}/{r['n_cases']}\")")"
+  else
+    fail "$REP invalid (need n_cases=90 with n_pass/pass_rate)"
+  fi
+else
+  fail "missing $REP (run run_eval.py on cases-round2-90 with the bundled model)"
+fi
+
 # ── verdict ───────────────────────────────────────────────────────
 if [[ "$FAIL" -eq 0 ]]; then
-  printf "\n== LOOP DONE — all Phase-1 gates green, stop working ==\n"
+  printf "\n== LOOP DONE — all Phase-1 + Phase-2 gates green, stop working ==\n"
   exit 0
 else
   printf "\n== NOT DONE — fix the first FAIL gate above, then re-run ./scripts/agent-loop.sh ==\n"

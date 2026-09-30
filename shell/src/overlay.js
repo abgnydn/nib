@@ -896,6 +896,7 @@
            `Keep the same number of words (±20%). ` +
            `Do not introduce first or second person (I/you/we) unless the source uses them. ` +
            `Do not add commitments, relationships, opinions, or context not in the source. ` +
+           `Keep all facts, numbers and names exactly as written; add no new ideas. ` +
            `Do not pad with filler. Output only the rewritten text, nothing else.`;
   };
 
