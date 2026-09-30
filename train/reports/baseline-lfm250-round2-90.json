@@ -1,0 +1,1399 @@
+{
+  "label": "baseline-lfm250-round2-90",
+  "model": "shell/src-tauri/resources/lfm2.5-350m-q4_k_m.gguf",
+  "adapter": null,
+  "n_cases": 90,
+  "n_pass": 26,
+  "pass_rate": 28.9,
+  "duration_s": 51.0,
+  "avg_words": 24.3,
+  "scores": [
+    {
+      "id": "r2_drift_01",
+      "ok": true,
+      "word_count": 22,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Take metformin 500mg twice a day with meals. Check your HbA1c every 12 weeks. Target below 7.0%. Keep it steady, folks!",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_02",
+      "ok": true,
+      "word_count": 18,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Must file motion to dismiss in EDNY by 5:00pm ET on August 14. Service via ECF only.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_03",
+      "ok": false,
+      "word_count": 35,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "4 quarterly"
+      ],
+      "output": "Plaintiff's got a $1.85M deal, payable in 4 quarters, Q3 2026. That's a total of $8.05M. Plaintiff's gonna hit it off with a nice 20% discount on the $1.85M.",
+      "failure_reasons": [
+        "words: 35 not in [10,26]",
+        "missing_keep: ['4 quarterly']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_04",
+      "ok": false,
+      "word_count": 53,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [
+        "you"
+      ],
+      "missing_keeps": [
+        "n=342",
+        "n=338",
+        "p<0.01"
+      ],
+      "output": "So, random trial stats: 61% response rate vs 44% control rate at 12 weeks. That's a 7% difference, but only if you check the p-value. It's less than 0.01, so you got that high p-value. That means you're pretty sure the results aren't just a fluke.",
+      "failure_reasons": [
+        "words: 53 not in [11,26]",
+        "forbidden: ['you']",
+        "missing_keep: ['n=342', 'n=338', 'p<0.01']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_05",
+      "ok": true,
+      "word_count": 21,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Patient stable post-op, vitals: BP 118/76, HR 82, SpO2 98% on room air. Pain 3/10, PCA 3/10.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_06",
+      "ok": false,
+      "word_count": 22,
+      "word_count_ok": true,
+      "sentence_type_ok": false,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "HTS 8471.30.0100"
+      ],
+      "output": "HTS code 8471.30.0100 for laptops, duty 0%, MPF capped at $538.40. That's a pretty chill price tag, right?",
+      "failure_reasons": [
+        "sentence-type: source_has_question=False output_has_question=True",
+        "missing_keep: ['HTS 8471.30.0100']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_07",
+      "ok": false,
+      "word_count": 27,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "ARR $8.4M"
+      ],
+      "output": "Q3 SaaS: ARR hit $8.4M, up 32% YoY, NRR 118%, churn 2.1%, and runway is 22 months. That's a real bang for the buck!",
+      "failure_reasons": [
+        "words: 27 not in [10,26]",
+        "missing_keep: ['ARR $8.4M']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_08",
+      "ok": false,
+      "word_count": 26,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "12:05 PT"
+      ],
+      "output": "Flight UA 857 SFO-NRT got a 45-minute delay. Now it's 12:05 PM PT, now it's gate G92. Hope that's clear!",
+      "failure_reasons": [
+        "words: 26 not in [9,24]",
+        "missing_keep: ['12:05 PT']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_09",
+      "ok": true,
+      "word_count": 18,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Refund for order #A8842, denied 30-day policy. Order date: Apr 2. Let's get this sorted quick!",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_10",
+      "ok": false,
+      "word_count": 55,
+      "word_count_ok": false,
+      "sentence_type_ok": false,
+      "forbidden_hits": [
+        "you"
+      ],
+      "missing_keeps": [],
+      "output": "So, Warfarin plus amoxicillin? That's a tricky one. It's like trying to balance a seesaw. Warfarin's got to keep its INR steady, so adding amoxicillin might throw it off balance. Check it in 5 days, okay? If it goes up, you might need to tweak your dose or switch to another med.",
+      "failure_reasons": [
+        "words: 55 not in [9,24]",
+        "sentence-type: source_has_question=False output_has_question=True",
+        "forbidden: ['you']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_11",
+      "ok": false,
+      "word_count": 56,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [
+        "you"
+      ],
+      "missing_keeps": [],
+      "output": "Hey, let's tackle that auto-renewal section. You want to add a 30-day opt-out window after each renewal. Here's the chatty tweak:\n**Strike Section 14.2:** \"Auto-renewal period: 30 days. Opt-out 30 days after each renewal.\"\nNo need to add any filler words or numbers. Just stick to the facts!",
+      "failure_reasons": [
+        "words: 56 not in [9,24]",
+        "forbidden: ['you']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_12",
+      "ok": false,
+      "word_count": 42,
+      "word_count_ok": false,
+      "sentence_type_ok": false,
+      "forbidden_hits": [
+        "you"
+      ],
+      "missing_keeps": [
+        "p<0.01"
+      ],
+      "output": "So, you did a RCT with 128 CBT vs 121 waitlist for Post-Experience Trauma (PHQ-9) and dropped 4.2 points on the PHQ-9, with a p-value less than 0.01 at 8 weeks. That's pretty chill, huh?",
+      "failure_reasons": [
+        "words: 42 not in [9,24]",
+        "sentence-type: source_has_question=False output_has_question=True",
+        "forbidden: ['you']",
+        "missing_keep: ['p<0.01']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_13",
+      "ok": false,
+      "word_count": 26,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "p50 68ms",
+        "p95 412ms"
+      ],
+      "output": "So, mobile API p50 hit 68ms slow, p95 hit 412ms fast. Crash-free 99.4% uptime, DAU 84,200 users. That's a solid, reliable performance!",
+      "failure_reasons": [
+        "missing_keep: ['p50 68ms', 'p95 412ms']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_14",
+      "ok": false,
+      "word_count": 24,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [
+        "we"
+      ],
+      "missing_keeps": [],
+      "output": "Ticket #44102 upgraded to Tier 2. Customer reports 5th sync error. That's ain't no joke. We're keepin' an eye on it.",
+      "failure_reasons": [
+        "forbidden: ['we']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_15",
+      "ok": false,
+      "word_count": 28,
+      "word_count_ok": false,
+      "sentence_type_ok": false,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "p<5e-8"
+      ],
+      "output": "So, top SNP rs7349 hit the p-value 5e-8 with OR 1.42 in that big SNP study of 12,480 cases. That's pretty chill, right?",
+      "failure_reasons": [
+        "words: 28 not in [9,24]",
+        "sentence-type: source_has_question=False output_has_question=True",
+        "missing_keep: ['p<5e-8']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_16",
+      "ok": true,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Marathon's snatched the win in 2:48:36, split 1:22:10. Average pace: 182 spm.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_17",
+      "ok": false,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": false,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Webinar with Stripe on June 18, aiming for 8k devs across both lists. That's a pretty big crowd, right?",
+      "failure_reasons": [
+        "sentence-type: source_has_question=False output_has_question=True"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_18",
+      "ok": false,
+      "word_count": 24,
+      "word_count_ok": true,
+      "sentence_type_ok": false,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "WBC 13.1"
+      ],
+      "output": "So, fever 38.9\u00b0C, white blood cells 13.1, and lactate 3.1. Blood cultures up, fluids started. What's the next step?",
+      "failure_reasons": [
+        "sentence-type: source_has_question=False output_has_question=True",
+        "missing_keep: ['WBC 13.1']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_19",
+      "ok": false,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "Hernandez"
+      ],
+      "output": "Hey, Acme Corp vs Beta LLC, Case No. 2026-CV-04472, hearing on Sept 9. Just got the facts straight.",
+      "failure_reasons": [
+        "missing_keep: ['Hernandez']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_drift_20",
+      "ok": false,
+      "word_count": 19,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "28 days"
+      ],
+      "output": "So, antibody titer levels jumped 3.2-fold to GMT 842 after the n=96 boost! That's wild!",
+      "failure_reasons": [
+        "missing_keep: ['28 days']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_01",
+      "ok": true,
+      "word_count": 14,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Sarah holds the migration. Deadline set for May 30. Two engineers have been assigned.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_02",
+      "ok": false,
+      "word_count": 26,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "48 hours prior to contrast CT, adhere to a regimen of metformin. This dosage should be maintained until the estimated renal function (eGFR) is re-evaluated.",
+      "failure_reasons": [
+        "words: 26 not in [9,24]"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_03",
+      "ok": true,
+      "word_count": 18,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "The motion is contingent upon the EDNY transit being processed on August 14th, necessitating a subsequent ECF transit.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_04",
+      "ok": true,
+      "word_count": 19,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Q3 ARR surpassed $8.4M, marking a 32% increase from the previous year, with a runway of 22 months.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_05",
+      "ok": false,
+      "word_count": 16,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "p<0.01"
+      ],
+      "output": "Treatment group enrolled n=342, control group n=338. The observed difference reached p < 0.01.",
+      "failure_reasons": [
+        "missing_keep: ['p<0.01']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_06",
+      "ok": true,
+      "word_count": 13,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Flight UA 857 departs at 12:05 PT, with boarding at gate G92.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_07",
+      "ok": true,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Order #A8842 is subject to the 30-day return period. The order was placed on April 2.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_08",
+      "ok": false,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "PCA"
+      ],
+      "output": "Vital signs recorded as BP 118/76 and HR 82. Pain is reported as 3/10 with the palpable criterion.",
+      "failure_reasons": [
+        "missing_keep: ['PCA']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_09",
+      "ok": true,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Section 14.2 is rendered complete. A 30-day opt-out period is established following each renewal.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_10",
+      "ok": false,
+      "word_count": 35,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "p50 68ms",
+        "p95 412ms"
+      ],
+      "output": "API latency was reported as 68 milliseconds (p50) and 412 milliseconds (p95) for today's download activity. This indicates a slight delay in API response times. The total DAU for the period was 84,200.",
+      "failure_reasons": [
+        "words: 35 not in [9,24]",
+        "missing_keep: ['p50 68ms', 'p95 412ms']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_11",
+      "ok": false,
+      "word_count": 14,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "8k devs"
+      ],
+      "output": "The Stripe webinar scheduled for June 18 anticipates a reach of 8,000 developers.",
+      "failure_reasons": [
+        "missing_keep: ['8k devs']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_12",
+      "ok": false,
+      "word_count": 30,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Warfarin levels may increase with antibiotic use, necessitating a re-evaluation of INR within 5 days of administration. This adjustment is critical to ensure therapeutic efficacy and minimize bleeding risks.",
+      "failure_reasons": [
+        "words: 30 not in [9,24]"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_13",
+      "ok": true,
+      "word_count": 13,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Case 2026-CV-04472 scheduled for September 9, presided over by Judge Hernandez.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_14",
+      "ok": false,
+      "word_count": 16,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "sync error"
+      ],
+      "output": "Ticket #44102 was assigned to Tier 2. The synchronization error has now been reported five times.",
+      "failure_reasons": [
+        "missing_keep: ['sync error']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_15",
+      "ok": false,
+      "word_count": 28,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "p<5e-8",
+        "OR 1.42"
+      ],
+      "output": "SNP rs7349 exhibits a p-value of less than 5e-8, indicating a statistically significant association. The observed odds ratio of 1.42 suggests a substantial effect size.",
+      "failure_reasons": [
+        "words: 28 not in [9,24]",
+        "missing_keep: ['p<5e-8', 'OR 1.42']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_16",
+      "ok": false,
+      "word_count": 25,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "2:48:36",
+        "1:22:10"
+      ],
+      "output": "The marathon duration was 2 hours, 48 minutes, and 36 seconds. The half split comprised 1 hour, 22 minutes, and 10 seconds at 182 Spm.",
+      "failure_reasons": [
+        "words: 25 not in [8,24]",
+        "missing_keep: ['2:48:36', '1:22:10']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_17",
+      "ok": false,
+      "word_count": 31,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "8 weeks"
+      ],
+      "output": "The PHQ-9 score exhibited a 4.2-point decrease on average, reflecting a 8-week follow-up period. This indicates a significant reduction in depressive symptoms during the intervention period.",
+      "failure_reasons": [
+        "words: 31 not in [9,24]",
+        "missing_keep: ['8 weeks']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_18",
+      "ok": false,
+      "word_count": 22,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "GMT 842"
+      ],
+      "output": "The headline increased by 3.2-fold to the current level of 8,420. The period preceding the draw was 28 days.",
+      "failure_reasons": [
+        "missing_keep: ['GMT 842']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_19",
+      "ok": true,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Laptop specifications are as follows: Class 8471.30.0100, with duty cycle set to 0%, MPF capped at $538.40.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_stmtq_20",
+      "ok": true,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Variant B increased click-through rate (CTR) from 2.1% to 3.6%. Rollout completed on Friday.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_code_01",
+      "ok": false,
+      "word_count": 16,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "getUserData",
+        "401"
+      ],
+      "output": "fetchUser from auth.ts\nThis revision maintains the original meaning while adhering to the specified constraints.",
+      "failure_reasons": [
+        "missing_keep: ['getUserData', '401']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_code_02",
+      "ok": true,
+      "word_count": 19,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "POST /v3/messages now necessitates the x-api-version 2026-04-01 header. Past endpoint sunsets on June 1st.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_code_03",
+      "ok": false,
+      "word_count": 28,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "maxAttempts"
+      ],
+      "output": "The retry loop within handleRequest() should incorporate a maximumAttempts guard, configured to a constant value of 3. This adjustment ensures the retry mechanism does not indefinitely continue indefinitely.",
+      "failure_reasons": [
+        "words: 28 not in [10,26]",
+        "missing_keep: ['maxAttempts']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_code_04",
+      "ok": false,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "api-gateway"
+      ],
+      "output": "If alert PAGER-403 is triggered, initiate pod restart and review the ratelimit dashboard for any potential rate limiting issues.",
+      "failure_reasons": [
+        "missing_keep: ['api-gateway']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_code_05",
+      "ok": true,
+      "word_count": 22,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Token sk-live-9f27 was identified in the logs. The vault should be rotated, and the previously exposed value should be revoked.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_code_06",
+      "ok": false,
+      "word_count": 31,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "render"
+      ],
+      "output": "The filter should be wrapped in useMemo with the following deps array: `[useMemo: true, props: () => ({})]`. This ensures that the filter only re-renders when its dependencies change, preventing unnecessary re-renders.",
+      "failure_reasons": [
+        "words: 31 not in [10,26]",
+        "missing_keep: ['render']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_code_07",
+      "ok": false,
+      "word_count": 46,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "GET /api/auth/refresh"
+      ],
+      "output": "The request to retrieve /api/auth/refresh with a status code of 429 (Too Many Requests) is being processed under load. To mitigate this, implement exponential backoff with jitter. This involves progressively increasing the wait time between retries, while introducing random jitter to avoid synchronized retries.",
+      "failure_reasons": [
+        "words: 46 not in [10,26]",
+        "missing_keep: ['GET /api/auth/refresh']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_code_08",
+      "ok": false,
+      "word_count": 13,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "migrate_2026_05"
+      ],
+      "output": "Migration failed on the down path. Implement rollback procedure prior to Friday deployment.",
+      "failure_reasons": [
+        "missing_keep: ['migrate_2026_05']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_code_09",
+      "ok": false,
+      "word_count": 106,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "/v2/search"
+      ],
+      "output": "The error code 401, indicating a 401 Unauthorized response, typically arises when a Bearer token is missing from the HTTP request. This token is essential for authenticating requests to protected endpoints. Upon receiving a 401 response, the server responds with a 403 Forbidden status. To resolve this, the following steps should be taken: first, verify that the Bearer token is present in the request headers; if not, generate a new token using the appropriate method (e.g., API key, session ID, etc.). Then, refresh the token using the newly generated one before attempting the subsequent request. This process ensures secure access to the application's resources.",
+      "failure_reasons": [
+        "words: 106 not in [10,28]",
+        "missing_keep: ['/v2/search']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_code_10",
+      "ok": false,
+      "word_count": 76,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "To mitigate NullPointerException at line 214 when config is null, the following steps should be taken:\n1. **Initialize the Loader**: Before attempting to parse, initialize the loader to null.\n2. **Check for Null**: Before calling `config.parse()`, verify if `config` is null.\n3. **Safe Parsing**: If `config` is null, return a default value or handle the exception gracefully.\nThis approach ensures that the parsing operation does not proceed with a null configuration, thus preventing the NullPointerException.",
+      "failure_reasons": [
+        "words: 76 not in [10,26]"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_code_11",
+      "ok": false,
+      "word_count": 23,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "OOM"
+      ],
+      "output": "The Docker job qvac-train exits with an OutOfMemoryError at batch 64. To mitigate this, halve the batch number and retry the job.",
+      "failure_reasons": [
+        "missing_keep: ['OOM']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_code_12",
+      "ok": false,
+      "word_count": 62,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "The login failure on Safari 17 with a CORS error at /api/audit when 2FA is active appears to be a cross-origin request issue. This suggests the server may be misconfigured to allow such requests, potentially due to incorrect CORS settings or misinterpretation of the request headers. Verification of CORS policies and ensuring proper handling of cross-origin requests are recommended.",
+      "failure_reasons": [
+        "words: 62 not in [10,26]"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_code_13",
+      "ok": false,
+      "word_count": 48,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "3 failed"
+      ],
+      "output": "The test_rewrite function, as indicated by the pytest configuration, has three failures (41 passed) and three successes (41 passed). To address this, a tokenizer fixture must be explicitly defined and initialized prior to the test execution. This ensures the correct tokenizer is available for processing the input data.",
+      "failure_reasons": [
+        "words: 48 not in [10,26]",
+        "missing_keep: ['3 failed']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_code_14",
+      "ok": true,
+      "word_count": 16,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "The legacy export API will be terminated on August 31. The migration guide has been published.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_code_15",
+      "ok": false,
+      "word_count": 18,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "checksum"
+      ],
+      "output": "The SHA256 hash value shall be appended to each release artifact. Block installations shall be flagged as mismatched.",
+      "failure_reasons": [
+        "missing_keep: ['checksum']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_emoji_01",
+      "ok": false,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "16:00 PT",
+        "45min"
+      ],
+      "output": "Ship v2.4.1 at 4 PM PT, freeze main at 2 PM. Rollover window: 45 mins, on-call Priya.",
+      "failure_reasons": [
+        "missing_keep: ['16:00 PT', '45min']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_emoji_02",
+      "ok": false,
+      "word_count": 25,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "us-west-2",
+        "42s",
+        "20min"
+      ],
+      "output": "\ufe0f Database failover initiated in USWest2 at 03:12 PT, with a 42-second latency. Estimated completion time: 20 minutes. Updates are being disseminated through #incidents.",
+      "failure_reasons": [
+        "missing_keep: ['us-west-2', '42s', '20min']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_emoji_03",
+      "ok": true,
+      "word_count": 21,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Lunch Friday at Dishoom, 12:30, table for 8, budget \u00a325 each. RSVP by Wednesday. Looking forward to a great time!",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_emoji_04",
+      "ok": true,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "UA 857 SFO-NRT Board 11:35 PT Gate G92 Delay 30min, New Departure 12:05 PT.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_emoji_05",
+      "ok": false,
+      "word_count": 22,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "$59/mo"
+      ],
+      "output": "\ufe0f Flash Sale Alert: 30% off sitewide with code FLASH30. This deal ended at $59/month, now reduced to $41/month until Sunday.",
+      "failure_reasons": [
+        "missing_keep: ['$59/mo']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_emoji_06",
+      "ok": false,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "25 min"
+      ],
+      "output": "Prod Incident #8841: Error Rate 4.2%, P99 Latency 1.2s. Mitigation Estimated Time Frame: 25 minutes per hourly update.",
+      "failure_reasons": [
+        "missing_keep: ['25 min']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_emoji_07",
+      "ok": false,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "48h"
+      ],
+      "output": "PCR result Ct 24.6 N gene. Repeat in 48 hours if symptomatic; isolate as per protocol until symptomatic resolution.",
+      "failure_reasons": [
+        "missing_keep: ['48h']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_emoji_08",
+      "ok": false,
+      "word_count": 13,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "Friday 17:00"
+      ],
+      "output": "Thesis draft due Friday at 17:00. Committee: Prof. Anand, Liu, and Park.",
+      "failure_reasons": [
+        "missing_keep: ['Friday 17:00']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_cjk_01",
+      "ok": false,
+      "word_count": 11,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "JAL 516",
+        "HND",
+        "ITM",
+        "15\u65e510:00"
+      ],
+      "output": "6\u670814\u65e5 JAL 516\u4fbf, \u6771\u4eac\u51fa\u5f35: 6\u670815\u65e5 10:00 AM JAL\u505c\u7559\u5730\u304b\u3089\u3001\u30db\u30c6\u30eb3\u6cca\u3002\u4f1a\u8b70\u306f15\u65e5\u5348\u524d10\u6642\u304b\u3089\u4e88\u5b9a\u3055\u308c\u3066\u3044\u307e\u3059\u3002",
+      "failure_reasons": [
+        "missing_keep: ['JAL 516', 'HND', 'ITM', '15\u65e510:00']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_cjk_02",
+      "ok": false,
+      "word_count": 8,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "PO-90210",
+        "5,000\u4ef6",
+        "0.8%"
+      ],
+      "output": "\u5de5\u5382\u5ba1\u6838\u65e5\u671f\u4e3a2023\u5e746\u670820\u65e5\uff0c\u8ba2\u5355PO-90210\u5305\u542b5,000\u4ef6\u7684\u6279\u6b21\uff0c\u9700\u4f4e\u4e8e0.8%\u7684\u4e0d\u826f\u7387\u3002\u6b64\u4e8b\u9700\u7531\u738b\u8054\u7cfb\u3002",
+      "failure_reasons": [
+        "missing_keep: ['PO-90210', '5,000\u4ef6', '0.8%']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_cjk_03",
+      "ok": false,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "SIN"
+      ],
+      "output": "6\uc6d4 25\uc77c 14:00, KE 038 ICN \ucd9c\uc7a5: 3\ubc15 \ud638\ud154 \ubbf8\ud305\uc740 26\uc77c 14:00 \ud310\uad50 \uc624\ud53c\uc2a4\uc5d0\uc11c \uc9c4\ud589\ub429\ub2c8\ub2e4.",
+      "failure_reasons": [
+        "missing_keep: ['SIN']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_cjk_04",
+      "ok": false,
+      "word_count": 40,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "7\u67081\u65e5",
+        "\u963b\u585e2\u9879"
+      ],
+      "output": "Treadboard Update: Status Update\n- 12 tasks marked as \"To Do,\" currently in progress.\n- 2 tasks have been completed.\n- 6 days have passed since the block was initiated.\n- The target publication, v2.4.1, is scheduled for release on July 1st.",
+      "failure_reasons": [
+        "words: 40 not in [4,28]",
+        "missing_keep: ['7\u67081\u65e5', '\u963b\u585e2\u9879']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_cjk_05",
+      "ok": false,
+      "word_count": 25,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "4\u65e513:00"
+      ],
+      "output": "Osaka onsen visit: July 3rd flight NH 885 from KIX to NRT, accommodation for 2 nights. The conference commenced at 13:00 on that date.",
+      "failure_reasons": [
+        "missing_keep: ['4\u65e513:00']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_cjk_06",
+      "ok": false,
+      "word_count": 18,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "8,000\u4ef6"
+      ],
+      "output": "Shenzhen \u9a8c\u8d27 7\u6708 15 \u65e5\uff0c\u8ba2\u5355 PO-77120 \u5171 800 \u4ef6\uff0c\u7ecf\u8fc7\u62bd\u68c0\uff0c5% \u7684\u6bd4\u4f8b\uff0c\u826f\u54c1\u9650\u5236\u4e3a 1.2%\u3002 \u8054\u7cfb\u4eba\u9648\u9759\u3002",
+      "failure_reasons": [
+        "missing_keep: ['8,000\u4ef6']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_cjk_07",
+      "ok": false,
+      "word_count": 23,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "8\u67086\u65e510:00",
+        "12\u4eba"
+      ],
+      "output": "The Kyoto Conference: 12 attendees, please reserve one seat. Date: August 6, 2024, Time: 10:00 AM, Venue: Umarang. Budget: NT$62,400.",
+      "failure_reasons": [
+        "missing_keep: ['8\u67086\u65e510:00', '12\u4eba']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_01",
+      "ok": true,
+      "word_count": 15,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "The receipt for order #A8842, dated April 2, still mandates a 30-day return period.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_02",
+      "ok": false,
+      "word_count": 16,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "separate",
+        "5th"
+      ],
+      "output": "The synchronization error occurred five times. It is recommended to store logs in a distinct folder.",
+      "failure_reasons": [
+        "missing_keep: ['separate', '5th']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_03",
+      "ok": false,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "definitely"
+      ],
+      "output": "The server is expected to experience maintenance for two hours on Friday, resulting in a downtime period of 2 hours.",
+      "failure_reasons": [
+        "missing_keep: ['definitely']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_04",
+      "ok": true,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "The venue can accommodate 8 guests for lunch, but please confirm the dietary restrictions for each guest.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_05",
+      "ok": false,
+      "word_count": 12,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "necessary",
+        "embargo"
+      ],
+      "output": "It is imperative to submit the complaint to ECF on August 14th.",
+      "failure_reasons": [
+        "missing_keep: ['necessary', 'embargo']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_06",
+      "ok": false,
+      "word_count": 12,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "calendar"
+      ],
+      "output": "The hearing is scheduled for September 9. Judge Hernandez will be presiding.",
+      "failure_reasons": [
+        "missing_keep: ['calendar']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_07",
+      "ok": true,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "The statutory threshold for eGFR established by the government is 45. Clinics are mandated to report eGFR below this limit.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_08",
+      "ok": true,
+      "word_count": 14,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "All three transfers were successful overnight. Balances are expected to settle by Friday morning.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_09",
+      "ok": false,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "weird",
+        "receive"
+      ],
+      "output": "It appears the package was not delivered twice. Proceed with the confirmation of delivery to the carrier.",
+      "failure_reasons": [
+        "missing_keep: ['weird', 'receive']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_10",
+      "ok": false,
+      "word_count": 22,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [
+        "I"
+      ],
+      "missing_keeps": [
+        "believe"
+      ],
+      "output": "I respectfully infer that the two invoices should be processed through separate approvals. The total amounts are $1,240 and $860, respectively.",
+      "failure_reasons": [
+        "forbidden: ['I']",
+        "missing_keep: ['believe']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_11",
+      "ok": true,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "The colleague has requested a delayed review of the argument. The draft is scheduled for submission on Friday, 17:00.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_12",
+      "ok": false,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "convenient",
+        "remember"
+      ],
+      "output": "It is conveniently recommended to meet at 12:30 for the scheduled discussion. Please ensure to bring the lab results.",
+      "failure_reasons": [
+        "missing_keep: ['convenient', 'remember']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_13",
+      "ok": false,
+      "word_count": 15,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "consensus"
+      ],
+      "output": "The questionnaire's response is unequivocal. The publication date is set for Friday at noon.",
+      "failure_reasons": [
+        "missing_keep: ['consensus']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_14",
+      "ok": true,
+      "word_count": 19,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "The temperature of the environment reached 38.9 degrees Celsius. Consequently, the samples must be moved to cold storage.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_15",
+      "ok": true,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "The library will close February 28 for renovation. The transfer will be held at the north branch.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_16",
+      "ok": false,
+      "word_count": 18,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "performing",
+        "surgery",
+        "surgeon"
+      ],
+      "output": "The sergon is currently engaging in surgical procedures at noon. The patient consented to this service yesterday morning.",
+      "failure_reasons": [
+        "missing_keep: ['performing', 'surgery', 'surgeon']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_17",
+      "ok": false,
+      "word_count": 46,
+      "word_count_ok": false,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "grammar"
+      ],
+      "output": "To address grammatical corrections, paragraphs should be distinctly separated. Each should adhere to a minimum of 100 words. Below is a rewritten version:\nHer writing requires grammatical refinement. Separate paragraphs as instructed. Each should contain no more than 100 words.\nThis format enhances clarity and readability.",
+      "failure_reasons": [
+        "words: 46 not in [9,24]",
+        "missing_keep: ['grammar']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_18",
+      "ok": false,
+      "word_count": 13,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "coming",
+        "occasion"
+      ],
+      "output": "The event is scheduled for tomorrow's date. The capacity is 120 attendees.",
+      "failure_reasons": [
+        "missing_keep: ['coming', 'occasion']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_19",
+      "ok": false,
+      "word_count": 15,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [
+        "I"
+      ],
+      "missing_keeps": [
+        "restaurant",
+        "recommend"
+      ],
+      "output": "I have recommended Dishoom for your reservation. Please arrange a table for 8 on Friday.",
+      "failure_reasons": [
+        "forbidden: ['I']",
+        "missing_keep: ['restaurant', 'recommend']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "r2_fix_20",
+      "ok": false,
+      "word_count": 9,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "happened"
+      ],
+      "output": "The previous sync was delayed until the specified time.",
+      "failure_reasons": [
+        "missing_keep: ['happened']"
+      ],
+      "judge": null
+    }
+  ]
+}

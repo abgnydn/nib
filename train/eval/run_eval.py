@@ -55,6 +55,7 @@ def compose_instruction(tone: str | None, formality: str | None) -> str | None:
         f"Keep the same number of words (±20%). "
         f"Do not introduce first or second person (I/you/we) unless the source uses them. "
         f"Do not add commitments, relationships, opinions, or context not in the source. "
+        f"Keep all facts, numbers and names exactly as written; add no new ideas. "
         f"Do not pad with filler. Output only the rewritten text, nothing else."
     )
 
