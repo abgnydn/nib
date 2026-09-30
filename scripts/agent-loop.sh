@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Nib — agentic loop oracle for Phase 1 + Phase 2 (Grammarly-parity plan).
+# Nib — agentic loop oracle for Phase 1 + Phase 2 + Phase 3 (Grammarly-parity plan).
 #
 # This script does NOT do work. It answers ONE question:
 #   "is the loop done?"  →  exit 0 = ALL DONE (stop the loop)
@@ -32,6 +32,16 @@
 #       {id, source, chosen, rejected, label, note}, provenance marked
 #   P3  measured baseline: train/reports/baseline-lfm250-round2-90.json
 #       exists with 90 scored cases (the "before" number for Phase 2)
+#
+# Phase 3 gates (brain surgery; training needs Colab — gates record the
+# honest measured outcome, including a blocked-train verdict):
+#   R1  SFT dataset: train/data/phase3-sft.jsonl, >=800 rows with
+#       {src, tgt}, none empty (negatives first-wins on dedup)
+#   R2  training probe: train/reports/phase3-training-probe.json exists
+#       with arch_verdict + next_action (documents what ran and why local
+#       training did or did not finish)
+#   R3  both baselines: baseline-lfm250-round2-90.json AND
+#       baseline-qwen25-round2-90.json, 90 scored cases each
 #
 # Usage:
 #     ./scripts/agent-loop.sh
@@ -180,9 +190,69 @@ else
   fail "missing $REP (run run_eval.py on cases-round2-90 with the bundled model)"
 fi
 
+# ── R1: SFT dataset ─────────────────────────────────────────────
+gate "R1" "phase3-sft.jsonl >=800 {src,tgt} rows"
+SFT="$REPO/train/data/phase3-sft.jsonl"
+if [[ -f "$SFT" ]]; then
+  if python3 - "$SFT" <<'EOF' 2>/dev/null; then
+import json, sys
+rows = [json.loads(l) for l in open(sys.argv[1]) if l.strip()]
+assert len(rows) >= 800, f"only {len(rows)} rows, need >=800"
+for r in rows:
+    assert {"src", "tgt"} <= set(r), f"row missing src/tgt"
+    assert r["src"].strip() and r["tgt"].strip(), "empty src/tgt"
+print(f"{len(rows)} rows ok")
+EOF
+    pass "$(python3 -c "import json; print(len([l for l in open('$SFT') if l.strip()]))") rows"
+  else
+    fail "$SFT schema/count check failed (need >=800 rows with src/tgt)"
+  fi
+else
+  fail "missing $SFT"
+fi
+
+# ── R2: training probe verdict ────────────────────────────────────
+gate "R2" "phase3-training-probe.json with verdict"
+PROBE="$REPO/train/reports/phase3-training-probe.json"
+if [[ -f "$PROBE" ]]; then
+  if python3 - "$PROBE" <<'EOF' 2>/dev/null; then
+import json, sys
+r = json.load(open(sys.argv[1]))
+assert "arch_verdict" in r and r["arch_verdict"].strip(), "missing arch_verdict"
+assert "next_action" in r and r["next_action"].strip(), "missing next_action"
+assert isinstance(r.get("experiments"), list) and r["experiments"], "missing experiments"
+print("verdict ok")
+EOF
+    pass "verdict recorded"
+  else
+    fail "$PROBE invalid (need arch_verdict + next_action + experiments)"
+  fi
+else
+  fail "missing $PROBE (run the training probe, record the measured outcome)"
+fi
+
+# ── R3: both baselines ────────────────────────────────────────────
+gate "R3" "lfm250 + qwen25 baselines, 90 cases each"
+R3OUT=$(python3 - "$REPO/train/reports" <<'EOF' 2>/dev/null
+import json, sys
+got = []
+for name in ("baseline-lfm250-round2-90", "baseline-qwen25-round2-90"):
+    r = json.load(open(f"{sys.argv[1]}/{name}.json"))
+    assert r.get("n_cases") == 90, f"{name}: n_cases={r.get('n_cases')}"
+    assert "n_pass" in r and "pass_rate" in r, f"{name}: missing n_pass/pass_rate"
+    got.append(f"{name.split('-')[1]} {r['n_pass']}/{r['n_cases']}")
+print(", ".join(got))
+EOF
+)
+if [[ -n "$R3OUT" ]]; then
+  pass "$R3OUT"
+else
+  fail "missing/invalid baseline report(s) (need both, 90 cases each)"
+fi
+
 # ── verdict ───────────────────────────────────────────────────────
 if [[ "$FAIL" -eq 0 ]]; then
-  printf "\n== LOOP DONE — all Phase-1 + Phase-2 gates green, stop working ==\n"
+  printf "\n== LOOP DONE — all Phase-1 + Phase-2 + Phase-3 gates green, stop working ==\n"
   exit 0
 else
   printf "\n== NOT DONE — fix the first FAIL gate above, then re-run ./scripts/agent-loop.sh ==\n"

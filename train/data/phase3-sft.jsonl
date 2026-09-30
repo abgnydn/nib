@@ -1,0 +1,832 @@
+{"src": "Hi I never seee you before are you coming from abroad or you living here", "tgt": "Hi, I haven't seen you before. Are you visiting from abroad, or do you live here?"}
+{"src": "Phase 2 trial n=214 drug vs n=209 placebo. Remission 38% vs 21% (p<0.001) at week 12.", "tgt": "Phase 2 trial n=214 drug vs n=209 placebo. Remission 38% vs 21% (p<0.001) at week 12."}
+{"src": "Outbound UA 918 IAD-MUC, depart 17:20 ET Mar 4, arrive 07:55 CET Mar 5. Seat 22C, group 3.", "tgt": "Outbound UA 918 IAD-MUC, depart 17:20 ET Mar 4, arrive 07:55 CET Mar 5. Seat 22C, group 3."}
+{"src": "The api returned a eror.", "tgt": "The API returned an error."}
+{"src": "BitNet is fast.", "tgt": "BitNet is fast."}
+{"src": "Jon met Sara at the conference.", "tgt": "Jon met Sara at the conference."}
+{"src": "I has a apple and you has a orange.", "tgt": "I have an apple and you have an orange."}
+{"src": "Send the report.", "tgt": "Send the report."}
+{"src": "Primary endpoint met with p=0.042 (n=96). Effect size Cohen's d = 0.31.", "tgt": "Primary endpoint met with p=0.042 (n=96). Effect size Cohen's d = 0.31."}
+{"src": "🎉 Build passed.", "tgt": "🎉 Build passed."}
+{"src": "The function returns -1 on error.", "tgt": "The function returns -1 on error."}
+{"src": "Revenue up 8% QoQ to $4.2M.", "tgt": "Revenue up 8% QoQ to $4.2M."}
+{"src": "Take metformin 500mg twice daily with meals. HbA1c recheck in 12 weeks, target below 7.0%.", "tgt": "Take metformin 500mg twice daily with meals. HbA1c recheck in 12 weeks, target below 7.0%."}
+{"src": "Randomized trial n=342 treatment vs n=338 control. Response 61% vs 44% (p<0.01) at 12 weeks.", "tgt": "Randomized trial n=342 treatment vs n=338 control. Response 61% vs 44% (p<0.01) at 12 weeks."}
+{"src": "Flight UA 857 SFO-NRT delayed 45 min. New depart 12:05 PT, gate G92.", "tgt": "Flight UA 857 SFO-NRT delayed 45 min. New depart 12:05 PT, gate G92."}
+{"src": "RCT n=128 CBT vs n=121 waitlist. PHQ-9 drop 4.2 points, p<0.01 at 8 weeks.", "tgt": "RCT n=128 CBT vs n=121 waitlist. PHQ-9 drop 4.2 points, p<0.01 at 8 weeks."}
+{"src": "Sarah owns the migration. The deadline is May 30. Two engineers are assigned.", "tgt": "Sarah owns the migration. The deadline is May 30. Two engineers are assigned."}
+{"src": "Treatment enrolled n=342 and control n=338. The difference reached p<0.01.", "tgt": "Treatment enrolled n=342 and control n=338. The difference reached p<0.01."}
+{"src": "Flight UA 857 now departs at 12:05 PT. Boarding is at gate G92.", "tgt": "Flight UA 857 now departs at 12:05 PT. Boarding is at gate G92."}
+{"src": "Case 2026-CV-04472 is set for Sept 9. Judge Hernandez will preside.", "tgt": "Case 2026-CV-04472 is set for Sept 9. Judge Hernandez will preside."}
+{"src": "manage users: 1 Day", "tgt": "manage users: 1 day"}
+{"src": "Backend setup: 3 days. Frontend: 2 days. QA: 1 day. Total: 6 days estimated, 7 with buffer.", "tgt": "Backend setup: 3 days. Frontend: 2 days. QA: 1 day. Total: 6 days estimated, with a 7-day buffer."}
+{"src": "Backend setup: 3 days. Frontend: 2 days. QA: 1 day. Total: 6 days estimated, 7 with buffer.", "tgt": "Backend setup: 3 days. Frontend: 2 days. QA: 1 day. Total estimated: 6 days. With buffer: 7 days."}
+{"src": "Sarah will own the migration. Deadline is May 30. Two engineers assigned.", "tgt": "Sarah will be responsible for the migration. The deadline is May 30. Two engineers have been assigned."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Hey, can you update the latest changes? I'll review it in about 20 minutes."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Can you update the latest changes? I'll check it in about 20 minutes."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Hey, can you push the latest changes? I'll check it in about 20 minutes."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Can you push the latest changes? I'll check it in about 20 minutes."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Can you please push the latest changes? I'll review it in about 20 minutes."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Hey, can you push the latest changes? I'll review it in about 20 minutes."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Can you push the latest changes? I'll review it in about 20 minutes."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Hey, can you update the latest changes? I'll check it in about 20 minutes."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 has been processed on March 14 and should be delivered within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your $47.30 refund was processed on March 14 and is expected to be delivered within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your $47.30 refund was successfully processed on March 14, and it should be arriving within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was processed on March 14 and should be delivered within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was processed on March 14, and it should be delivered within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was processed on March 14 and should be arriving within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your $47.30 refund was successfully processed on March 14, and it should arrive within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 has been processed on March 14, and should arrive within 5-7 business days."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login fails in Safari 17 when 2FA is enabled. The console displays a CORS error at /api/auth/token."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login fails on Safari 17 when two-factor authentication (2FA) is enabled. The console displays a CORS error at /api/auth/token."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "The login fails in Safari 17 when 2FA is enabled. The console displays a CORS error at /api/auth/token."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login fails in Safari 17 when two-factor authentication (2FA) is enabled. The console displays a CORS error at the path /api/auth/token."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "The login process in Safari 17 encounters failure when 2FA is enabled. The console displays a CORS error at the path /api/auth/token."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login to Safari 17 with two-factor authentication (2FA) fails due to a CORS error at the /api/auth/token endpoint in the console."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login fails on Safari 17 when 2FA is enabled. Console displays a CORS error at /api/auth/token."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "The login process fails in Safari 17 when 2FA is enabled. The console displays a CORS error at the path /api/auth/token."}
+{"src": "New analytics dashboard launches Tuesday. Includes 14 metrics, exportable to CSV.", "tgt": "New analytics dashboard launches on Tuesday, featuring 14 metrics and exportable to CSV."}
+{"src": "New analytics dashboard launches Tuesday. Includes 14 metrics, exportable to CSV.", "tgt": "New analytics dashboard launches on Tuesday, featuring 14 metrics and CSV export capability."}
+{"src": "Revenue grew 12% QoQ. Churn dropped to 2.1%. ARPU steady at $48.", "tgt": "Revenue saw a 12% QoQ growth. Churn rate decreased to 2.1%. ARPU remains at $48."}
+{"src": "Revenue grew 12% QoQ. Churn dropped to 2.1%. ARPU steady at $48.", "tgt": "Revenue saw a 12% QoQ increase. Churn rate fell to 2.1%. ARPU remains at $48."}
+{"src": "Revenue grew 12% QoQ. Churn dropped to 2.1%. ARPU steady at $48.", "tgt": "Revenue saw a 12% QoQ increase. Churn rates fell to 2.1%. ARPU remains at $48."}
+{"src": "Revenue grew 12% QoQ. Churn dropped to 2.1%. ARPU steady at $48.", "tgt": "Revenue saw a 12% QoQ growth. Churn rates decreased to 2.1%. ARPU remains at $48."}
+{"src": "Revenue grew 12% QoQ. Churn dropped to 2.1%. ARPU steady at $48.", "tgt": "Revenue saw a 12% QoQ growth. Churn rate reduced to 2.1%. ARPU remains at $48."}
+{"src": "Revenue grew 12% QoQ. Churn dropped to 2.1%. ARPU steady at $48.", "tgt": "Revenue saw a 12% QoQ growth. Churn rates fell to 2.1%. ARPU remains at $48."}
+{"src": "Revenue grew 12% QoQ. Churn dropped to 2.1%. ARPU steady at $48.", "tgt": "Revenue saw a 12% QoQ growth. Churn rates have fallen to 2.1%. ARPU remains at $48."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "Can't make Thursday's standup. Dentist appointment out."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "Can't make Thursday's standup. Dentist appointment keeps me out."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "Can't make Thursday's standup. Dentist appointment this Thursday."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "Can't catch Thursday's standup. Dentist appointment keeps me out."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a maxAttempts guard to handleRequest() to cap the loop at 5."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a maxAttempts guard to the retry loop in handleRequest() with a constant of 5."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a maxAttempts guard to the retry loop in handleRequest() with a constant value of 5."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a maxAttempts constant of 5 to the retry loop in handleRequest()."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a constant maxAttempts of 5 to the retry loop in handleRequest()."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a maxAttempts guard to the retry loop in handleRequest(). Set it to 5."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Acme Corp requests a refund and credit; account manager is not available until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation: Acme Corp requests a refund and credit; account manager is unavailable until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation: Acme Corp requests a refund and credit. Account manager is unavailable until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation: Acme Corp requests a refund and credit. Account manager is not available until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Acme Corp requests a refund and credit. The account manager is not available until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation: Acme Corp requests a refund and credit, but the account manager is not available until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Acme Corp requests a refund and credit. Account manager is unavailable until Wednesday."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose Postgres over Mongo due to its strongly relational data model."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose Postgres over MongoDB due to its strongly relational data model."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose Postgres over Mongo due to its highly relational data model."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose PostgreSQL over MongoDB due to its highly relational data model."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose PostgreSQL over MongoDB because its data model is highly relational."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose PostgreSQL over MongoDB due to its strongly relational data model."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose Postgres over MongoDB due to its highly relational data model."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose Postgres over MongoDB because the data model is strongly relational."}
+{"src": "could you send me the deck before tomorrow's call", "tgt": "Could you send me the deck before tomorrow's call?"}
+{"src": "could you send me the deck before tomorrow's call", "tgt": "Could you send me the deck by tomorrow's call?"}
+{"src": "could you send me the deck before tomorrow's call", "tgt": "Could you please send me the deck before tomorrow's call?"}
+{"src": "could you send me the deck before tomorrow's call", "tgt": "Could you please send me the deck by tomorrow's call?"}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load speed decreased from 3.2 seconds to 0.8 seconds after bundle split."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load speed decreased from 3.2 seconds to 0.8 seconds after bundle splitting."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load time reduced from 3.2 seconds to 0.8 seconds after bundle split."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load speed reduced from 3.2 seconds to 0.8 seconds after bundle split."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load speed improved from 3.2 seconds to 0.8 seconds after bundle split."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay includes 4 months' base salary plus benefits through year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay will be 4 months' base pay plus benefits through year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff have been affected. Severance pay includes 4 months' base salary plus benefits through the year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff have been affected. Severance pay consists of 4 months' base pay plus benefits through the year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of staff are affected. Severance pay is 4 months' base salary plus benefits through year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff have been affected. Severance pay includes 4 months' base pay plus benefits up to year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay is 4 months' base salary plus benefits through year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff have been affected. Severance pay is 4 months' base pay plus benefits through the year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of staff have been affected. Severance pay includes 4 months' base pay plus benefits through the year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. The severance package includes 4 months of base pay plus benefits up to the year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff have been affected. The severance package includes 4 months' base salary plus benefits through the year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. The severance package includes 4 months' base pay plus benefits through the year-end."}
+{"src": "Status: degraded. Affected endpoint: /v2/search. Error rate 8%. Investigating.", "tgt": "Status: degraded. Affected endpoint: /v2/search. Error rate: 8%. Investigating."}
+{"src": "Status: degraded. Affected endpoint: /v2/search. Error rate 8%. Investigating.", "tgt": "Status: degraded. Endpoint: /v2/search. Error rate: 8%. Investigating."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "Launching from June 3 to June 10. Three blockers remain open."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "Pushing the launch from June 3 to June 10. Three blockers remain open."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "The launch is scheduled from June 3 to June 10. Three blockers remain open."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "Launching on June 3 to June 10. Three blockers remain open."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "The launch is set from June 3 to June 10. Three blockers remain open."}
+{"src": "Bake at 180°C for 25 minutes. Let cool 10 min before serving.", "tgt": "Bake at 180°C for 25 minutes. Let cool 10 minutes before serving."}
+{"src": "Bake at 180°C for 25 minutes. Let cool 10 min before serving.", "tgt": "Bake at 180°C for 25 minutes. Cool 10 minutes before serving."}
+{"src": "Our pricing starts at $99/month for 5 seats. Annual contracts get 20% off.", "tgt": "Our pricing begins at $99 per month for 5 seats. Annual contracts offer a 20% discount."}
+{"src": "Our pricing starts at $99/month for 5 seats. Annual contracts get 20% off.", "tgt": "Our pricing begins at $99 per month for up to 5 seats. Annual contracts offer a 20% discount."}
+{"src": "Our pricing starts at $99/month for 5 seats. Annual contracts get 20% off.", "tgt": "Our pricing starts at $99 per month for 5 seats. Annual contracts offer a 20% discount."}
+{"src": "Our pricing starts at $99/month for 5 seats. Annual contracts get 20% off.", "tgt": "Pricing begins at $99 per month for up to 5 seats. Annual contracts offer a 20% discount."}
+{"src": "Our pricing starts at $99/month for 5 seats. Annual contracts get 20% off.", "tgt": "Our pricing begins at $99 per month for up to 5 seats. Annual agreements offer a 20% discount."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thank you for our conversation yesterday. The technical document you requested will be sent by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thanks for our conversation yesterday. I'm sending the technical document by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thank you for our conversation yesterday. I will send the technical document you requested by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thanks for talking yesterday. Sending the technical document you requested by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thank you for our conversation yesterday. The technical document will be sent to you by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thanks for our conversation yesterday. I'm sending the technical document you requested by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thanks for our conversation yesterday. Sending the technical document by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thanks for our conversation yesterday. We'll send the technical document by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thanks for our conversation yesterday. We're sending the technical document by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thanks for our conversation yesterday. I'll send the technical document you requested by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thank you for our conversation yesterday. We're sending the technical document by Friday."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination involves providing 30 days' written notice. It automatically renews annually unless canceled."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination necessitates 30 days' written notice. It automatically renews annually unless canceled."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination involves providing 30 days' written notice. It automatically renews annually unless cancellation is made."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination must provide 30 days' written notice. It automatically renews annually unless canceled."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination involves providing 30 days' written notice. Auto-renewal occurs annually unless cancellation occurs."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination must provide 30 days' written notice. It auto-renews annually unless canceled."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination necessitates 30 days' written notice. It automatically renews annually unless cancelled."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination must provide 30 days' written notice. Auto-renewal occurs annually unless canceled."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hello, I'm Lin joining the platform team from infrastructure. I have experience in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi, I'm Lin joining the platform team from infrastructure. I have a background in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi, I'm Lin joining the platform team from infrastructure. I have experience in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi, I'm Lin joining the platform team from infrastructure with experience in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hello, I'm Lin joining the platform team from infrastructure. My background is in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi, I'm Lin joining the platform team from infrastructure. My background is in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi, I'm Lin joining the platform team from infrastructure with a background in distributed systems."}
+{"src": "NPS dropped from 42 to 31 quarter-over-quarter. 68% cite slow response times.", "tgt": "NPS decreased from 42 to 31 quarter-over-quarter. 68% cite slow response times."}
+{"src": "NPS dropped from 42 to 31 quarter-over-quarter. 68% cite slow response times.", "tgt": "NPS decreased from 42 to 31 in quarter-over-quarter. 68% cite slow response times."}
+{"src": "NPS dropped from 42 to 31 quarter-over-quarter. 68% cite slow response times.", "tgt": "NPS decreased from 42 to 31 quarter-over-quarter, with 68% citing slow response times."}
+{"src": "Quarterly review moved to Thursday 3pm PT. Updated calendar invite sent.", "tgt": "The quarterly review has been scheduled for Thursday at 3pm PT. The calendar invite has been updated."}
+{"src": "Quarterly review moved to Thursday 3pm PT. Updated calendar invite sent.", "tgt": "Quarterly review scheduled for Thursday at 3pm PT. Calendar invite updated."}
+{"src": "Quarterly review moved to Thursday 3pm PT. Updated calendar invite sent.", "tgt": "Quarterly review moved to Thursday at 3pm PT. Updated calendar invite sent."}
+{"src": "Quarterly review moved to Thursday 3pm PT. Updated calendar invite sent.", "tgt": "Quarterly review moved to Thursday at 3pm PT. Calendar invite updated."}
+{"src": "Quarterly review moved to Thursday 3pm PT. Updated calendar invite sent.", "tgt": "Updated calendar invite: Quarterly review moved to Thursday at 3pm PT."}
+{"src": "Made an offer to the senior backend candidate. Start date: April 15.", "tgt": "Sent an offer to the senior backend candidate, with an expected start date of April 15."}
+{"src": "Made an offer to the senior backend candidate. Start date: April 15.", "tgt": "Sent an offer to the senior backend candidate, with a start date of April 15."}
+{"src": "Made an offer to the senior backend candidate. Start date: April 15.", "tgt": "Sent an offer to the senior backend candidate with a start date of April 15."}
+{"src": "Made an offer to the senior backend candidate. Start date: April 15.", "tgt": "Made an offer to the senior backend candidate, starting on April 15."}
+{"src": "Made an offer to the senior backend candidate. Start date: April 15.", "tgt": "Made an offer to the senior backend candidate, with a start date of April 15."}
+{"src": "Rolling out lazy-load to 5% of traffic today. Full ramp by Wednesday.", "tgt": "Launching lazy-load for 5% of traffic today. Expected full implementation by Wednesday."}
+{"src": "Rolling out lazy-load to 5% of traffic today. Full ramp by Wednesday.", "tgt": "Launching lazy-load to 5% of traffic today. Full implementation by Wednesday."}
+{"src": "Rolling out lazy-load to 5% of traffic today. Full ramp by Wednesday.", "tgt": "Launching lazy-load for 5% of traffic today. Full rollout by Wednesday."}
+{"src": "Rolling out lazy-load to 5% of traffic today. Full ramp by Wednesday.", "tgt": "Launching lazy-load for 5% of traffic today. Expected full rollout by Wednesday."}
+{"src": "Rolling out lazy-load to 5% of traffic today. Full ramp by Wednesday.", "tgt": "Implementing lazy-load for 5% of traffic today. Full implementation by Wednesday."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month. Earlier two remain unresolved."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month, with two still unresolved."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month, with the earlier two still unresolved."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month, with two unresolved earlier."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month, and the earlier two remain unresolved."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month, with two unresolved."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month, with two remaining unresolved."}
+{"src": "`useEffect` cleanup not firing on route change in React 19.0.2. Repro in attached gist.", "tgt": "The `useEffect` cleanup function is not being triggered on route changes in React 19.0.2, as shown in the attached gist."}
+{"src": "`useEffect` cleanup not firing on route change in React 19.0.2. Repro in attached gist.", "tgt": "The `useEffect` cleanup function is not being triggered on route change in React 19.0.2, as demonstrated in the attached gist."}
+{"src": "`useEffect` cleanup not firing on route change in React 19.0.2. Repro in attached gist.", "tgt": "The `useEffect` cleanup function is not being triggered on route changes in React 19.0.2, as demonstrated in the attached gist."}
+{"src": "`useEffect` cleanup not firing on route change in React 19.0.2. Repro in attached gist.", "tgt": "The `useEffect` cleanup function is not being invoked on route changes in React 19.0.2, as demonstrated in the attached gist."}
+{"src": "`useEffect` cleanup not firing on route change in React 19.0.2. Repro in attached gist.", "tgt": "`useEffect` cleanup function is not being invoked on route change in React 19.0.2. Reproduction available in the attached gist."}
+{"src": "`useEffect` cleanup not firing on route change in React 19.0.2. Repro in attached gist.", "tgt": "The `useEffect` cleanup function is not being invoked on route change in React 19.0.2, as demonstrated in the attached gist."}
+{"src": "Pro tier increases from $19 to $24/month on July 1. Existing subs grandfathered for 12 months.", "tgt": "Pro tier fees increase from $19 to $24 per month on July 1, with existing subscribers grandfathered for an additional 12 months."}
+{"src": "Pro tier increases from $19 to $24/month on July 1. Existing subs grandfathered for 12 months.", "tgt": "Pro tier rates increase from $19 to $24 per month on July 1, with existing subscribers grandfathered for an additional 12 months."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If PAGER-403 alerts, restart the api-gateway pod and verify ratelimit dashboard."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If alert PAGER-403 occurs, restart the api-gateway pod and check the ratelimit dashboard."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If PAGER-403 alert triggers, restart the api-gateway pod and verify ratelimit dashboard."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If PAGER-403 alerts occur, restart the api-gateway pod and verify the ratelimit dashboard."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If alert PAGER-403 occurs, restart the api-gateway pod and verify the ratelimit dashboard."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If PAGER-403 alert triggers, restart the api-gateway pod and verify the ratelimit dashboard."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "May 28 to June 4: Cover: Maya for production issues, Tom for design reviews."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "May 28 to June 4. Cover: Maya for production, Tom for design reviews."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "May 28th to June 4th. Cover: Maya for production issues, Tom for design reviews."}
+{"src": "5 rounds: phone screen, take-home, system design, behavioral, founder. Total ~6 hours over 2 weeks.", "tgt": "5 rounds: phone screen, take-home coding, system design, behavioral interview, founder interview. Total ~6 hours over 2 weeks."}
+{"src": "Migrating 2.4M rows from MySQL to Postgres. ETA 4 hours, downtime ~10 minutes.", "tgt": "Migrating 2.4M rows from MySQL to PostgreSQL. Estimated time: 4 hours, with downtime of ~10 minutes."}
+{"src": "Migrating 2.4M rows from MySQL to Postgres. ETA 4 hours, downtime ~10 minutes.", "tgt": "Migrating 2.4M rows from MySQL to Postgres. Expected total time: 4 hours, with downtime of ~10 minutes."}
+{"src": "Migrating 2.4M rows from MySQL to Postgres. ETA 4 hours, downtime ~10 minutes.", "tgt": "Migrating 2.4M rows from MySQL to Postgres. Estimated time: 4 hours, with downtime of ~10 minutes."}
+{"src": "Migrating 2.4M rows from MySQL to Postgres. ETA 4 hours, downtime ~10 minutes.", "tgt": "Migrating 2.4M rows from MySQL to Postgres. Estimated time: 4 hours, with downtime of approximately 10 minutes."}
+{"src": "Migrating 2.4M rows from MySQL to Postgres. ETA 4 hours, downtime ~10 minutes.", "tgt": "Migrating 2.4M rows from MySQL to PostgreSQL. Estimated time: 4 hours, with ~10 minutes of downtime."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "Sorry, I missed your Slack yesterday. I'm here now."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "I missed your Slack yesterday, sorry about that."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "Sorry, I missed your Slack yesterday. I'm answering now."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "I missed your Slack yesterday, sorry."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "I missed your Slack yesterday, sorry for the delay."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "Sorry, I missed your Slack yesterday. Here's the answer now."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "I apologize for missing your Slack yesterday. I'm here now."}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Is $15K/year over our budget and should be reduced to $9K?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "We are over our budget at $15K/year. Could you adjust the cap to $9K?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Our budget exceeds $15K/year. The cap is set at $9K. Can we adjust this?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "We're over our budget at $15K/year. Can you adjust the cap to $9K?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Our budget exceeds $15K/year. The cap is $9K. Can you adjust?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Is $15K/year over our budget with a cap of $9K?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Our budget exceeds $15K/year. The cap is set at $9K. Can this be adjusted?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Is $15K/year over our budget, and can it be reduced to $9K?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "We are over our budget at $15K. Can you adjust the cap to $9K?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Our budget exceeds $15K/year. The cap is set at $9K. Is there another option?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "We're over our budget at $15K/year. Can we adjust the cap to $9K?"}
+{"src": "v2.4.1: fix crash on empty selection, add dark mode, bump deps. No breaking changes.", "tgt": "v2.4.1: Fix crash on empty selection, add dark mode, update dependencies. No changes to functionality."}
+{"src": "v2.4.1: fix crash on empty selection, add dark mode, bump deps. No breaking changes.", "tgt": "v2.4.1: fixes crash on empty selection, adds dark mode, updates dependencies. No changes to functionality."}
+{"src": "v2.4.1: fix crash on empty selection, add dark mode, bump deps. No breaking changes.", "tgt": "v2.4.1: fix crash on empty selection, add dark mode, update dependencies. No changes to functionality."}
+{"src": "v2.4.1: fix crash on empty selection, add dark mode, bump deps. No breaking changes.", "tgt": "v2.4.1: Fixes crash on empty selection, adds dark mode, updates dependencies. No changes to functionality."}
+{"src": "v2.4.1: fix crash on empty selection, add dark mode, bump deps. No breaking changes.", "tgt": "v2.4.1: fix crash on empty selection, add dark mode, update dependencies. No changes affecting existing functionality."}
+{"src": "Customer threatens lawsuit over data leak. Escalating to legal. Need response by EOD.", "tgt": "Customer files lawsuit over data leak. Situation escalating to legal action. Response required by EOD."}
+{"src": "Customer threatens lawsuit over data leak. Escalating to legal. Need response by EOD.", "tgt": "Customer files lawsuit over data breach. Situation escalating to legal action. Response required by EOD."}
+{"src": "Customer threatens lawsuit over data leak. Escalating to legal. Need response by EOD.", "tgt": "Customer files lawsuit over data leak. Situation escalating to legal action. Urgent: Response required by EOD."}
+{"src": "Q3 OKRs: 50K MAU, 99.9% uptime, launch 2 new integrations.", "tgt": "Q3 OKRs: Achieve 50K MAU, maintain 99.9% uptime, launch 2 new integrations."}
+{"src": "Q3 OKRs: 50K MAU, 99.9% uptime, launch 2 new integrations.", "tgt": "Q3 OKRs: Achieve 50K MAU, ensure 99.9% uptime, launch 2 new integrations."}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Reminder: Standup at 10, Design Crit at 2"}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Remember to standup at 10, and design crit at 2."}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Reminder: Standup at 10, design crit at 2."}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Reminder: Standup at 10, Design Crit at 2."}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Reminder: Standup at 10, design critique at 2."}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Remember: standup at 10, design critique at 2."}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Remember: Standup at 10, Design Crit at 2."}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Don't forget to standup at 10, and design crit at 2."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for handling the on-call last week. It means a lot to me."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for covering the on-call last week. I owe you one."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for covering the on-call last week. You're a lifesaver!"}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for covering the on-call last week. You're a lifesaver."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for handling the on-call last week. You're a lifesaver."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for covering the on-call last week. It's much appreciated."}
+{"src": "DB capacity at 78%. Auto-scale triggers at 85%. Manual scale recommended this week.", "tgt": "DB capacity at 78%, auto-scale triggers at 85%, manual scale recommended this week."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "Legacy export API sunset scheduled for August 31. Migration guide available."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "Legacy export API will be sunsetted on August 31. Migration guide is available."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "Legacy export API will be sunset on August 31. Migration guide is available."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "The legacy export API will be sunsetted on August 31. A migration guide is available."}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Would you like to set aside 30 minutes next week to align on the H1 roadmap?"}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Would you like to dedicate 30 minutes next week to align on the H1 roadmap?"}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Would you be able to dedicate 30 minutes next week to align on the H1 roadmap?"}
+{"src": "Acme Corp meets all 3 SQL criteria: budget confirmed, decision-maker engaged, 90-day timeline.", "tgt": "Acme Corp meets all 3 SQL criteria: budget confirmed, decision-maker engaged, and a 90-day timeline."}
+{"src": "Acme Corp meets all 3 SQL criteria: budget confirmed, decision-maker engaged, 90-day timeline.", "tgt": "Acme Corp meets all 3 SQL criteria: budget confirmed, decision-maker engaged, and 90-day timeline."}
+{"src": "GPU pool at 92% utilization. Two more training jobs queued. Cluster will be saturated in ~40 min.", "tgt": "GPU pool at 92% utilization. Two more training jobs queued. Cluster will be saturated in approximately 40 minutes."}
+{"src": "GPU pool at 92% utilization. Two more training jobs queued. Cluster will be saturated in ~40 min.", "tgt": "GPU pool at 92% utilization. Two more training jobs queued. Cluster will be saturated in about 40 minutes."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting talk to KubeCon EU 2026 titled \"Edge inference at scale,\" 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting talk titled \"Edge inference at scale\" to KubeCon EU 2026 for a 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting talk to KubeCon EU 2026 titled \"Edge inference at scale\" for a 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting talk to KubeCon EU 2026 titled \"Edge inference at scale\" for a 45-min slot."}
+{"src": "Customer feedback: 'Switching from competitor saved us 6 hours of manual reconciliation per week.'", "tgt": "Customer feedback: Switching from competitor saved us 6 hours of manual reconciliation per week."}
+{"src": "Customer feedback: 'Switching from competitor saved us 6 hours of manual reconciliation per week.'", "tgt": "Customer testimonial: Switching from competitor saved us 6 hours of manual reconciliation per week."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for keyboard shortcut to archive, 3 clicks deep now."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for keyboard shortcut to archive, currently 3 clicks deep in the menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for keyboard shortcut for archive. It's 3 clicks deep now."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut for archive. It's 3 clicks deep now."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "Let's add a keyboard shortcut for archive, currently taking 3 clicks."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "I suggest adding a keyboard shortcut for archive. It's currently 3 clicks deep in the menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut for archive, which is 3 clicks deep in the menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "Let's add keyboard shortcut for archive. It's currently 3 clicks deep."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut for archive, currently 3 clicks deep in the menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for keyboard shortcut to archive, currently 3 clicks deep."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, but weak on coding. Recommend passing for a senior IC role."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, but weak on coding. Recommend passing for senior IC role."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, but weaker in coding. Recommend passing for a senior IC role."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, but weak in coding. Recommend passing for a senior IC role."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, but weak in coding. Recommend passing for senior IC role."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, but weaker on coding. Recommend passing for the senior IC role."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, but weaker on coding. Recommend passing for a senior IC role."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, weak on coding. Recommend passing for a senior IC position."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, weak on coding. Recommend passing for a senior IC role."}
+{"src": "SLA renewal due in 14 days. Last review uncovered 3 unmet targets.", "tgt": "SLA renewal is scheduled in 14 days. The last review identified 3 unmet targets."}
+{"src": "SLA renewal due in 14 days. Last review uncovered 3 unmet targets.", "tgt": "SLA renewal is due in 14 days. Last review identified 3 unmet targets."}
+{"src": "SLA renewal due in 14 days. Last review uncovered 3 unmet targets.", "tgt": "SLA renewal is scheduled in 14 days. Review last week identified 3 unmet targets."}
+{"src": "SLA renewal due in 14 days. Last review uncovered 3 unmet targets.", "tgt": "SLA renewal is scheduled in 14 days. The last review revealed 3 unmet targets."}
+{"src": "SLA renewal due in 14 days. Last review uncovered 3 unmet targets.", "tgt": "SLA renewal is due in 14 days. Last review revealed 3 unmet targets."}
+{"src": "SLA renewal due in 14 days. Last review uncovered 3 unmet targets.", "tgt": "SLA renewal is scheduled in 14 days. Last review identified 3 unmet targets."}
+{"src": "Outage window: 90 min. Affected 2.8k users. Root cause: stale DNS.", "tgt": "Outage window: 90 minutes. Affected: 2.8k users. Root cause: stale DNS."}
+{"src": "Outage window: 90 min. Affected 2.8k users. Root cause: stale DNS.", "tgt": "Outage window: 90 minutes. Affected 2.8k users. Root cause: stale DNS."}
+{"src": "Annual contract: 24 months prepaid, 18% discount versus monthly.", "tgt": "Annual contract: 24 months prepaid, with a 18% discount compared to monthly rates."}
+{"src": "Annual contract: 24 months prepaid, 18% discount versus monthly.", "tgt": "Annual contract: 24 months prepaid, with a 18% discount compared to monthly payments."}
+{"src": "Annual contract: 24 months prepaid, 18% discount versus monthly.", "tgt": "Annual contract: 24 months prepaid at a 18% discount compared to monthly rates."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "P99's latency increased from 180ms to 740ms following the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "p99 experienced an increase from 180ms to 740ms after the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "p99 experienced a latency increase from 180ms to 740ms after the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "P99 experienced an increase from 180ms to 740ms after the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "p99 experienced a jump from 180ms to 740ms after the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "p99's latency increased from 180ms to 740ms following the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "p99's latency increased from 180ms to 740ms after the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "p99 experienced a latency increase from 180ms to 740ms following the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "p99 experienced a latency jump from 180ms to 740ms following the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "p99 experienced an increase in latency from 180ms to 740ms following the v3.2 deployment on March 4."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut slips dated May 12 to May 19 if not received by Friday's end."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one arrives by Friday's end."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut slips dated May 12 to May 19 unless one is received by Friday's end."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs are still unresolved. Cut slips from May 12 to May 19 unless one arrives by Friday's deadline."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs are still unresolved. Cut slips dated May 12 to May 19 if not completed by Friday's deadline."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs are still unresolved. Cut slips dated May 12 to May 19 unless one is completed by Friday's deadline."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs still need to be resolved. Cut slips dated May 12 to May 19 unless one is completed by the end of Friday."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut slips dated May 12 to May 19 unless one arrives by Friday's deadline."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut slips from May 12 to May 19 unless one arrives by Friday's deadline."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut slips from May 12 to May 19 if not received by Friday's end."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs still need to be resolved. Cut slips dated May 12 to May 19 unless one is delivered by the end of Friday."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut date slips from May 12 to May 19, unless one arrives by EOD Friday."}
+{"src": "MAU up 23% QoQ, ARR crossed $4.2M last week.", "tgt": "MAU up 23% QoQ, ARR exceeds $4.2M."}
+{"src": "MAU up 23% QoQ, ARR crossed $4.2M last week.", "tgt": "MAU up 23% QoQ, ARR crosses $4.2M last week."}
+{"src": "MAU up 23% QoQ, ARR crossed $4.2M last week.", "tgt": "MAU up 23% QoQ, ARR exceeds $4.2M last week."}
+{"src": "Quoted $12.4k/year for 50 seats on the Enterprise tier. Volume discount kicks in at 75.", "tgt": "Quoted $12.4k/year for 50 seats on the Enterprise tier. Volume discount applies at 75%."}
+{"src": "Coverage dropped to 78.4% after the auth refactor. Goal is 85% by Q3.", "tgt": "Coverage reduced to 78.4% following the auth refactor. Objective is 85% by Q3."}
+{"src": "Coverage dropped to 78.4% after the auth refactor. Goal is 85% by Q3.", "tgt": "Coverage reduced to 78.4% following the auth refactor. Aim is to reach 85% by Q3."}
+{"src": "Coverage dropped to 78.4% after the auth refactor. Goal is 85% by Q3.", "tgt": "Coverage reduced to 78.4% following the auth refactor. Aim is 85% by Q3."}
+{"src": "Coverage dropped to 78.4% after the auth refactor. Goal is 85% by Q3.", "tgt": "Coverage reduced to 78.4% following auth refactor. Objective is 85% by Q3."}
+{"src": "Audit flagged 11 GDPR violations. Remediation deadline: November 30, 2026.", "tgt": "Audit identified 11 GDPR violations. Remediation deadline: November 30, 2026."}
+{"src": "Audit flagged 11 GDPR violations. Remediation deadline: November 30, 2026.", "tgt": "Audit identified 11 GDPR non-compliances. Compliance deadline: November 30, 2026."}
+{"src": "Audit flagged 11 GDPR violations. Remediation deadline: November 30, 2026.", "tgt": "Audit identified 11 GDPR violations. Deadline for remediation: November 30, 2026."}
+{"src": "Audit flagged 11 GDPR violations. Remediation deadline: November 30, 2026.", "tgt": "Audit identified 11 GDPR non-compliances. Deadline for remediation: November 30, 2026."}
+{"src": "Audit flagged 11 GDPR violations. Remediation deadline: November 30, 2026.", "tgt": "Audit identified 11 GDPR non-compliances. Remediation deadline: November 30, 2026."}
+{"src": "Requesting 2 senior backend hires for Q4. Backfill replaces Mia (leaves Aug 22) and Theo (returns from leave Oct 14).", "tgt": "Requesting 2 senior backend hires for Q4. Backfill replaces Mia (leaving Aug 22) and Theo (returning from leave Oct 14)."}
+{"src": "Requesting 2 senior backend hires for Q4. Backfill replaces Mia (leaves Aug 22) and Theo (returns from leave Oct 14).", "tgt": "Requesting 2 senior backend hires for Q4. Backfill will replace Mia (leaving Aug 22) and Theo (returning from leave Oct 14)."}
+{"src": "Requesting 2 senior backend hires for Q4. Backfill replaces Mia (leaves Aug 22) and Theo (returns from leave Oct 14).", "tgt": "Requesting 2 senior backend hires for Q4. Backfill: replaces Mia (leaving Aug 22) and Theo (returning from leave Oct 14)."}
+{"src": "Free tier capped at 500 req/min. Pro tier stays at 10k req/min, Enterprise unchanged.", "tgt": "Free tier limited to 500 req/min. Pro tier remains at 10k req/min. Enterprise tier unchanged."}
+{"src": "Free tier capped at 500 req/min. Pro tier stays at 10k req/min, Enterprise unchanged.", "tgt": "Free tier limits to 500 req/min. Pro tier maintains 10k req/min. Enterprise tier remains unchanged."}
+{"src": "Free tier capped at 500 req/min. Pro tier stays at 10k req/min, Enterprise unchanged.", "tgt": "Free tier limits to 500 req/min. Pro tier remains at 10k req/min. Enterprise tier stays unchanged."}
+{"src": "Page oncall when 95th percentile latency exceeds 250ms for 3 consecutive minutes.", "tgt": "Call page when the 95th percentile latency exceeds 250ms for 3 consecutive minutes."}
+{"src": "Page oncall when 95th percentile latency exceeds 250ms for 3 consecutive minutes.", "tgt": "Notify page when 95th percentile latency exceeds 250ms for 3 consecutive minutes."}
+{"src": "Page oncall when 95th percentile latency exceeds 250ms for 3 consecutive minutes.", "tgt": "Call page when 95th percentile latency exceeds 250ms for 3 consecutive minutes."}
+{"src": "Model scored 0.87 BLEU on the test split, up from 0.81 in v2.3.", "tgt": "Model's BLEU score improved to 0.87 on the test split from 0.81 in v2.3."}
+{"src": "Model scored 0.87 BLEU on the test split, up from 0.81 in v2.3.", "tgt": "Model's BLEU score improved to 0.87 on the test split, surpassing 0.81 from v2.3."}
+{"src": "Model scored 0.87 BLEU on the test split, up from 0.81 in v2.3.", "tgt": "Model's BLEU score improved to 0.87 on the test split, up from 0.81 in v2.3."}
+{"src": "Model scored 0.87 BLEU on the test split, up from 0.81 in v2.3.", "tgt": "Model's BLEU score improved to 0.87 on the test split, surpassing 0.81 from version v2.3."}
+{"src": "Model scored 0.87 BLEU on the test split, up from 0.81 in v2.3.", "tgt": "The model's BLEU score improved to 0.87 on the test split from 0.81 in v2.3."}
+{"src": "Model scored 0.87 BLEU on the test split, up from 0.81 in v2.3.", "tgt": "The BLEU score improved to 0.87 on the test split from 0.81 in v2.3."}
+{"src": "Model scored 0.87 BLEU on the test split, up from 0.81 in v2.3.", "tgt": "The model's BLEU score improved to 0.87 on the test split, surpassing 0.81 from version v2.3."}
+{"src": "Outside counsel estimates 8-12 months to resolution. Settlement range: $400k-$700k. Trial unlikely.", "tgt": "Outside counsel estimates a resolution of 8-12 months. Settlement range: $400k-$700k. Trial is unlikely."}
+{"src": "Outside counsel estimates 8-12 months to resolution. Settlement range: $400k-$700k. Trial unlikely.", "tgt": "Outside counsel estimates a resolution taking 8-12 months. Settlement range: $400k-$700k. Trial is unlikely."}
+{"src": "Outside counsel estimates 8-12 months to resolution. Settlement range: $400k-$700k. Trial unlikely.", "tgt": "Outside counsel estimates a resolution of 8-12 months. Settlement range: $400k-$700k. Trial unlikely."}
+{"src": "Outside counsel estimates 8-12 months to resolution. Settlement range: $400k-$700k. Trial unlikely.", "tgt": "The estimate is 8-12 months for resolution. The settlement range is $400k-$700k. A trial is unlikely."}
+{"src": "Outside counsel estimates 8-12 months to resolution. Settlement range: $400k-$700k. Trial unlikely.", "tgt": "The resolution is estimated to take 8-12 months. The settlement range is $400k-$700k. A trial is unlikely."}
+{"src": "Outside counsel estimates 8-12 months to resolution. Settlement range: $400k-$700k. Trial unlikely.", "tgt": "Outside counsel estimates a resolution time of 8-12 months. Settlement range: $400k-$700k. Trial is unlikely."}
+{"src": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, ship to 100% by end of week.", "tgt": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, target reaches 100% by the end of the week."}
+{"src": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, ship to 100% by end of week.", "tgt": "Cohort A converted at 3.4%, Cohort B at 5.1%. B will reach 100% by the end of the week."}
+{"src": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, ship to 100% by end of week.", "tgt": "Cohort A converted at 3.4%, Cohort B at 5.1%. Cohort B will reach 100% by the end of the week."}
+{"src": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, ship to 100% by end of week.", "tgt": "Cohort A converted at 3.4%, while Cohort B converted at 5.1%. Cohort B will reach 100% by the end of the week."}
+{"src": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, ship to 100% by end of week.", "tgt": "Cohort A converted at 3.4%, Cohort B at 5.1%. B will reach 100% by week's end."}
+{"src": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, ship to 100% by end of week.", "tgt": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, reaching 100% conversion by the end of the week."}
+{"src": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, ship to 100% by end of week.", "tgt": "Cohort A converted at 3.4%, Cohort B at 5.1%. B will reach 100% conversion by the end of the week."}
+{"src": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, ship to 100% by end of week.", "tgt": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, reaches 100% by end of week."}
+{"src": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, ship to 100% by end of week.", "tgt": "Cohort A converted at 3.4%, Cohort B at 5.1%. Cohort B wins, reaching 100% conversion by the end of the week."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms. Late fees: 1.5% per month. Renewal auto-rolls unless 60-day notice is given."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice is provided."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms: 1.5% late fee per month. Renewal auto-rolls unless 60-day notice is provided."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms: 1.5% late fee per month. Auto-rolls unless 60-day notice is provided."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms with a 1.5% monthly late fee. Auto-rollover unless 60-day notice is given."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms with a 1.5% monthly late fee. Renewal occurs automatically unless 60-day notice is given."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms: 1.5% late fee per month. Renewal auto-rolls unless 60-day notice is given."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms with a 1.5% monthly late fee. Renewal auto-rolls unless 60-day notice is given."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms: 1.5% late fee per month. Auto-rolls unless 60-day notice is given."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms with a late fee of 1.5% per month. Renewal is auto-rolled unless 60-day notice is given."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "According to the SLA, customers receive a 5% credit for every hour of downtime beyond 99.95% monthly uptime."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "According to the SLA, customers receive a 5% credit for every hour of downtime exceeding 99.95% monthly uptime."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "According to the SLA, customers are entitled to a 5% credit for every hour of downtime exceeding 99.95% monthly uptime."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "According to the SLA, customers receive a 5% credit for each hour of downtime exceeding 99.95% monthly uptime."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "According to the SLA, customers receive a 5% credit for each hour of downtime beyond 99.95% monthly uptime."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "According to the SLA, customers receive a 5% credit per hour of downtime beyond 99.95% monthly uptime."}
+{"src": "EU + UK + US comprise 73% of revenue; APAC at 19%, RoW at 8%.", "tgt": "The revenue composition is as follows: EU + UK + US = 73%, APAC = 19%, RoW = 8%."}
+{"src": "EU + UK + US comprise 73% of revenue; APAC at 19%, RoW at 8%.", "tgt": "EU, UK, and US together contribute 73% of revenue; APAC accounts for 19%, and RoW represents 8%."}
+{"src": "EU + UK + US comprise 73% of revenue; APAC at 19%, RoW at 8%.", "tgt": "EU, UK, and US represent 73% of revenue; APAC at 19%, and RoW at 8%."}
+{"src": "EU + UK + US comprise 73% of revenue; APAC at 19%, RoW at 8%.", "tgt": "73% of revenue comes from EU, UK, and US; APAC at 19%, RoW at 8%."}
+{"src": "EU + UK + US comprise 73% of revenue; APAC at 19%, RoW at 8%.", "tgt": "EU, UK, and US together make up 73% of revenue; APAC accounts for 19%, and RoW represents 8%."}
+{"src": "EU + UK + US comprise 73% of revenue; APAC at 19%, RoW at 8%.", "tgt": "EU, UK, and US together represent 73% of revenue; APAC at 19%, and RoW at 8%."}
+{"src": "EU + UK + US comprise 73% of revenue; APAC at 19%, RoW at 8%.", "tgt": "EU, UK, and US together account for 73% of revenue; APAC makes up 19%, while RoW represents 8%."}
+{"src": "EU + UK + US comprise 73% of revenue; APAC at 19%, RoW at 8%.", "tgt": "EU, UK, and US together account for 73% of revenue; APAC at 19%, and RoW at 8%."}
+{"src": "EU + UK + US comprise 73% of revenue; APAC at 19%, RoW at 8%.", "tgt": "EU, UK, and US together account for 73% of revenue; APAC is at 19%, and RoW is at 8%."}
+{"src": "EU + UK + US comprise 73% of revenue; APAC at 19%, RoW at 8%.", "tgt": "EU, UK, and US together represent 73% of revenue; APAC accounts for 19%, while RoW contributes 8%."}
+{"src": "EU + UK + US comprise 73% of revenue; APAC at 19%, RoW at 8%.", "tgt": "EU, UK, and US account for 73% of revenue; APAC at 19%, and RoW at 8%."}
+{"src": "EU + UK + US comprise 73% of revenue; APAC at 19%, RoW at 8%.", "tgt": "The revenue composition is as follows: EU + UK + US 73%, APAC 19%, RoW 8%."}
+{"src": "AAPL closed +2.3%, MSFT +1.8%. Nasdaq ended +1.4% on the day.", "tgt": "AAPL closed +2.3%, MSFT +1.8%, Nasdaq +1.4%"}
+{"src": "AAPL closed +2.3%, MSFT +1.8%. Nasdaq ended +1.4% on the day.", "tgt": "AAPL closed +2.3%, MSFT +1.8%, Nasdaq +1.4% for the day."}
+{"src": "AAPL closed +2.3%, MSFT +1.8%. Nasdaq ended +1.4% on the day.", "tgt": "AAPL closed +2.3%, MSFT +1.8%, and Nasdaq ended +1.4% on the day."}
+{"src": "AAPL closed +2.3%, MSFT +1.8%. Nasdaq ended +1.4% on the day.", "tgt": "AAPL closed +2.3%, MSFT +1.8%. Nasdaq ended +1.4% for the day."}
+{"src": "AAPL closed +2.3%, MSFT +1.8%. Nasdaq ended +1.4% on the day.", "tgt": "AAPL closed +2.3%, MSFT +1.8%, Nasdaq ended +1.4% today."}
+{"src": "Q3 revenue $12.4M (+18% YoY). Operating margin 22.3%, up from 19.1%. EBITDA $2.8M, FCF $2.1M positive for the third consecutive quarter.", "tgt": "Q3 revenue: $12.4M (+18% YoY). Operating margin: 22.3%, up from 19.1%. EBITDA: $2.8M, FCF: $2.1M positive for the third consecutive quarter."}
+{"src": "Q3 revenue $12.4M (+18% YoY). Operating margin 22.3%, up from 19.1%. EBITDA $2.8M, FCF $2.1M positive for the third consecutive quarter.", "tgt": "Q3 revenue: $12.4M (+18% YoY). Operating margin: 22.3%, up from 19.1%. EBITDA: $2.8M, FCF: $2.1M, positive for the third consecutive quarter."}
+{"src": "Q3 revenue $12.4M (+18% YoY). Operating margin 22.3%, up from 19.1%. EBITDA $2.8M, FCF $2.1M positive for the third consecutive quarter.", "tgt": "Q3 revenue $12.4M (+18% YoY). Operating margin 22.3%, up from 19.1%. EBITDA $2.8M, FCF $2.1M for the third consecutive quarter."}
+{"src": "Q3 revenue $12.4M (+18% YoY). Operating margin 22.3%, up from 19.1%. EBITDA $2.8M, FCF $2.1M positive for the third consecutive quarter.", "tgt": "Q3 revenue $12.4M (+18% YoY). Operating margin 22.3%, up from 19.1%. EBITDA $2.8M, FCF $2.1M, positive for the third consecutive quarter."}
+{"src": "Q3 revenue $12.4M (+18% YoY). Operating margin 22.3%, up from 19.1%. EBITDA $2.8M, FCF $2.1M positive for the third consecutive quarter.", "tgt": "Q3 revenue of $12.4M (+18% YoY). Operating margin at 22.3%, up from 19.1%. EBITDA of $2.8M, with positive FCF of $2.1M for the third consecutive quarter."}
+{"src": "PagerDuty alert: 5xx rate on /api/checkout exceeded 1% threshold for 3 consecutive minutes.", "tgt": "PagerDuty alert: Rate of 5xx on /api/checkout exceeds 1% threshold for 3 consecutive minutes."}
+{"src": "PagerDuty alert: 5xx rate on /api/checkout exceeded 1% threshold for 3 consecutive minutes.", "tgt": "PagerDuty alert: 5xx rate on /api/checkout exceeded the 1% threshold for 3 consecutive minutes."}
+{"src": "PagerDuty alert: 5xx rate on /api/checkout exceeded 1% threshold for 3 consecutive minutes.", "tgt": "PagerDuty alert: Rate on /api/checkout at 5xx exceeded 1% threshold for 3 consecutive minutes."}
+{"src": "PagerDuty alert: 5xx rate on /api/checkout exceeded 1% threshold for 3 consecutive minutes.", "tgt": "PagerDuty alert: 5xx rate on /api/checkout exceeds 1% threshold for 3 consecutive minutes."}
+{"src": "Backend setup: 3 days. Frontend: 2 days. QA: 1 day. Total: 6 days estimated, 7 with buffer.", "tgt": "Backend setup: 3 days. Frontend: 2 days. QA: 1 day. Total estimated: 6 days. With buffer, total: 7 days."}
+{"src": "Sarah will own the migration. Deadline is May 30. Two engineers assigned.", "tgt": "Sarah will manage the migration. The deadline is May 30. Two engineers have been assigned."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Hey, can you push the latest changes? I'll take a look in about 20 minutes."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Hey, can you push the latest changes? I'll check them in about 20 minutes."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "can you please push the latest changes? i'll check them in about 20 minutes."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Hey, can you update the latest changes? I'll review them in about 20 minutes."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Hey, can you push the latest changes? I'll review them in about 20 minutes."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your $47.30 refund was processed on March 14, and it should be delivered within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was processed on March 14, and it should be arriving within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was processed on March 14 and is expected to arrive within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your $47.30 refund was processed on March 14, and it should arrive within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your $47.30 refund was successfully processed on March 14, and it should be delivered within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 has been processed on March 14 and should arrive within 5-7 business days."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login fails on Safari 17 when 2FA is enabled. The console displays a CORS error at /api/auth/token."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login fails with 2FA enabled on Safari 17. The console reports a CORS error at /api/auth/token."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login fails using Safari 17 when 2FA is enabled. The console displays a CORS error at /api/auth/token."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login fails using Safari 17 when two-factor authentication (2FA) is enabled. The console displays a CORS error at the path /api/auth/token."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "The login fails on Safari 17 when 2FA is enabled. The console displays a CORS error at the /api/auth/token endpoint."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "The login fails in Safari 17 when 2FA is enabled, and the console displays a CORS error at the /api/auth/token endpoint."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login fails in Safari 17 when 2FA is enabled. The console displays a CORS error at the /api/auth/token endpoint."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "The login process in Safari 17 encounters failure when 2FA is enabled. The console displays a CORS error at the URL /api/auth/token."}
+{"src": "New analytics dashboard launches Tuesday. Includes 14 metrics, exportable to CSV.", "tgt": "The new analytics dashboard launches on Tuesday and includes 14 metrics, allowing for easy export to CSV."}
+{"src": "New analytics dashboard launches Tuesday. Includes 14 metrics, exportable to CSV.", "tgt": "An analytics dashboard launches on Tuesday, featuring 14 metrics that are exportable to CSV."}
+{"src": "New analytics dashboard launches Tuesday. Includes 14 metrics, exportable to CSV.", "tgt": "An analytics dashboard launches on Tuesday, featuring 14 metrics and exportable to CSV."}
+{"src": "New analytics dashboard launches Tuesday. Includes 14 metrics, exportable to CSV.", "tgt": "New analytics dashboard launches on Tuesday, featuring 14 metrics and exportable in CSV format."}
+{"src": "New analytics dashboard launches Tuesday. Includes 14 metrics, exportable to CSV.", "tgt": "New analytics dashboard launches on Tuesday, featuring 14 metrics that can be exported to CSV."}
+{"src": "New analytics dashboard launches Tuesday. Includes 14 metrics, exportable to CSV.", "tgt": "Analytics dashboard launches on Tuesday, featuring 14 metrics and CSV export capability."}
+{"src": "New analytics dashboard launches Tuesday. Includes 14 metrics, exportable to CSV.", "tgt": "New analytics dashboard launches on Tuesday, featuring 14 metrics that are exportable to CSV."}
+{"src": "Revenue grew 12% QoQ. Churn dropped to 2.1%. ARPU steady at $48.", "tgt": "Revenue saw a 12% QoQ growth. Churn rates have decreased to 2.1%. ARPU remains at $48."}
+{"src": "Revenue grew 12% QoQ. Churn dropped to 2.1%. ARPU steady at $48.", "tgt": "Revenue saw a 12% increase QoQ. Churn rate fell to 2.1%. ARPU remains at $48."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "Can't do Thursday's standup. Out for a dentist appointment."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "Can't make Thursday's standup. Going to the dentist."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "Can't make Thursday's standup. Dentist appointment this time."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "Can't hit Thursday's standup. Got a dentist appointment instead."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "I can't do Thursday's standup. I have a dentist appointment."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "Can't catch Thursday's standup. Dentist appointment this Thursday."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "The retry loop in handleRequest() should have a maxAttempts guard. Add a constant cap of 5."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a maxAttempts guard to handleRequest() to ensure a maximum retry limit of 5."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a maxAttempts guard to the retry loop in handleRequest() and set the cap to 5."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a maxAttempts guard to the retry loop in handleRequest(), with a constant of 5."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a maxAttempts guard to the retry loop in handleRequest(), setting the cap to 5."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a maxAttempts guard to the retry loop in handleRequest() and set it to 5."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a maxAttempts guard to the retry loop in handleRequest(). Set the cap to 5."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation: Acme Corp requests a refund and credit; account manager is not available until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation: Acme Corp requests a refund and credit. The account manager is not available until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation: Acme Corp requests a refund and a credit. Account manager is unavailable until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Acme Corp requests a refund and credit. The account manager is unavailable until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation: Acme Corp requests a refund and a credit. Account manager is not available until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Acme Corp requests a refund and a credit. The account manager is not available until Wednesday."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose Postgres over MongoDB because the data model is more relational."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose PostgreSQL over MongoDB because the data model is strongly relational."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose Postgres over MongoDB because our data model is highly relational."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose Postgres over MongoDB because its data model is highly relational."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose Postgres over Mongo because our data model is heavily relational."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose PostgreSQL over MongoDB because its data model is more relational."}
+{"src": "We picked Postgres over Mongo because the data model is heavily relational.", "tgt": "We chose PostgreSQL over MongoDB because its data model is strongly relational."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load time reduced from 3.2 seconds to 0.8 seconds after bundle splitting."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load speed improved from 3.2 seconds to 0.8 seconds after bundle splitting."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load speed reduced from 3.2 seconds to 0.8 seconds after bundle splitting."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load speed decreased significantly from 3.2 seconds to 0.8 seconds after bundle splitting."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load improved from 3.2s to 0.8s after bundle split."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay is 4 months' base salary plus benefits through the year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff has been affected. The severance package includes 4 months' base pay plus benefits, through year-end."}
+{"src": "Status: degraded. Affected endpoint: /v2/search. Error rate 8%. Investigating.", "tgt": "Status: degraded. Endpoint: /v2/search. Error rate: 8%. Investigation underway."}
+{"src": "Status: degraded. Affected endpoint: /v2/search. Error rate 8%. Investigating.", "tgt": "Status: degraded. Endpoint affected: /v2/search. Error rate: 8%. Investigation underway."}
+{"src": "Status: degraded. Affected endpoint: /v2/search. Error rate 8%. Investigating.", "tgt": "Status: degraded. Endpoint affected: /v2/search. Error rate: 8%. Investigating."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "The launch will be pushed from June 3 to June 10. Three blockers are still open."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "The launch is scheduled for June 3 to June 10. Three blockers remain open."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "Pushing the launch to June 10 from June 3. Three blockers are still open."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "The launch is postponed from June 3 to June 10. Three blockers remain open."}
+{"src": "Bake at 180°C for 25 minutes. Let cool 10 min before serving.", "tgt": "Bake at 180°C for 25 minutes. Let it cool for 10 minutes before serving."}
+{"src": "Bake at 180°C for 25 minutes. Let cool 10 min before serving.", "tgt": "Bake at 180°C for 25 minutes. Let cool for 10 minutes before serving."}
+{"src": "Our pricing starts at $99/month for 5 seats. Annual contracts get 20% off.", "tgt": "Our pricing starts at $99 per month for up to 5 seats. Annual contracts offer a 20% discount."}
+{"src": "Our pricing starts at $99/month for 5 seats. Annual contracts get 20% off.", "tgt": "Pricing begins at $99 per month for up to 5 seats. Annual agreements receive a 20% discount."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thanks for talking yesterday. I'll send the technical document you requested by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thanks for our talk yesterday. I'll send the technical document you requested by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thank you for our conversation yesterday. We will send the technical document by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thank you for our conversation yesterday. The technical document you requested will be sent to you by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thank you for our conversation yesterday. We will deliver the technical document by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thanks for our conversation yesterday. The technical document will be sent by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thank you for our conversation yesterday. We're sending the technical document you requested by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thank you for our discussion yesterday. We will send the technical document you requested by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thanks for the conversation yesterday. Sending the technical document you requested by Friday."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination must be communicated with 30 days' written notice. It automatically renews annually unless canceled."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination must provide 30 days' written notice. It automatically renews annually unless cancelled."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination involves providing 30 days' written notice. It automatically renews annually unless cancelled."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination necessitates 30 days of written notice. Auto-renewal occurs annually unless cancellation is made."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi, my name is Lin and I joined the platform team from infrastructure with a background in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi, I'm Lin, joining the platform team from infrastructure. I have a background in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi, my name is Lin and I'm joining the platform team from infrastructure. I have a background in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi, my name is Lin. I'm joining the platform team from the infrastructure background. I have experience in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi, I'm Lin and I'm joining the platform team from infrastructure. I have a background in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi Lin, I'm joining the platform team from infrastructure. I have experience in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi, I'm Lin, joining the platform team from infrastructure with a background in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hi, I'm Lin and I'm joining the platform team from infrastructure. I have experience in distributed systems."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hello, I'm Lin. I joined the platform team from infrastructure. My background is in distributed systems."}
+{"src": "NPS dropped from 42 to 31 quarter-over-quarter. 68% cite slow response times.", "tgt": "NPS decreased from 42 to 31 in quarter-over-quarter, with 68% citing slow response times."}
+{"src": "NPS dropped from 42 to 31 quarter-over-quarter. 68% cite slow response times.", "tgt": "NPS fell from 42 to 31 quarter-over-quarter. 68% cite slow response times."}
+{"src": "Quarterly review moved to Thursday 3pm PT. Updated calendar invite sent.", "tgt": "The quarterly review has been scheduled for Thursday at 3pm PT. The calendar invite was updated."}
+{"src": "Made an offer to the senior backend candidate. Start date: April 15.", "tgt": "Sent an offer to the senior backend candidate. Start date: April 15."}
+{"src": "Made an offer to the senior backend candidate. Start date: April 15.", "tgt": "Sent an offer to the senior backend candidate, effective April 15."}
+{"src": "Rolling out lazy-load to 5% of traffic today. Full ramp by Wednesday.", "tgt": "Implementing lazy-load for 5% of traffic today. Expected full implementation by Wednesday."}
+{"src": "Rolling out lazy-load to 5% of traffic today. Full ramp by Wednesday.", "tgt": "Implementing lazy-load optimization for 5% of our traffic today. Complete rollout by Wednesday."}
+{"src": "Rolling out lazy-load to 5% of traffic today. Full ramp by Wednesday.", "tgt": "Starting to roll out lazy-load to 5% of traffic today. Full ramp by Wednesday."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month. The first two are still unresolved."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month. The previous two are still unresolved."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report for this month. The previous two have not been resolved."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month. The earlier two remain unresolved."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month. The first two have not been resolved yet."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report for the month. The previous two have not been resolved yet."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month. The previous two remain unresolved."}
+{"src": "`useEffect` cleanup not firing on route change in React 19.0.2. Repro in attached gist.", "tgt": "`useEffect` cleanup not triggering on route change in React 19.0.2. Reproduction available in the attached gist."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If alert PAGER-403 triggers, restart the api-gateway pod and examine the ratelimit dashboard."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If PAGER-403 alert triggers, restart the API-Gateway pod, and verify the ratelimit dashboard."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If PAGER-403 alert fires, restart the api-gateway pod and verify ratelimit dashboard."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If alert PAGER-403 triggers, restart the api-gateway pod and review the ratelimit dashboard."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "May 28 to June 4, cover: Maya for production, Tom for design reviews."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "May 28 to June 4. Cover: Maya for production issues, Tom for design reviews."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "May 28 to June 4, cover: Maya for production issues, Tom for design reviews."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "May 28 to June 4: Cover: Maya for prod issues, Tom for design reviews."}
+{"src": "5 rounds: phone screen, take-home, system design, behavioral, founder. Total ~6 hours over 2 weeks.", "tgt": "5 rounds: phone screen, take-home, system design, behavioral, founder. Total approximately 6 hours over 2 weeks."}
+{"src": "Migrating 2.4M rows from MySQL to Postgres. ETA 4 hours, downtime ~10 minutes.", "tgt": "Migrating 2.4M rows from MySQL to PostgreSQL. Expected downtime: ~10 minutes. ETA: 4 hours."}
+{"src": "Migrating 2.4M rows from MySQL to Postgres. ETA 4 hours, downtime ~10 minutes.", "tgt": "Migrating 2.4M rows from MySQL to PostgreSQL. Estimated downtime: ~10 minutes. Total time: 4 hours."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "I'm sorry, I missed your message on Slack yesterday. Here's my response."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "I missed your Slack from yesterday, sorry. I'm answering now."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "I missed your Slack from yesterday, sorry. Here's the update now."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "Missed your Slack yesterday, sorry! Will respond now."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "I missed your Slack yesterday, sorry about that. Checking in now."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "Missed your Slack yesterday, sorry. Answering now."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "I missed your Slack from yesterday, sorry. Responding now."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "Sorry for missing your Slack yesterday. I'm responding now."}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Our budget exceeds $15K/year. Is there a cap of $9K?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "We are over our budget at $15K. Should we adjust the cap to $9K?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Our budget is $9K, but we're looking at $15K/year. Can we adjust?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Our budget exceeds $15K annually. We're currently capped at $9K. Can you assist with that?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Our budget exceeds $15K/year. The cap is set at $9K. Is there another cap you'd like to adjust?"}
+{"src": "v2.4.1: fix crash on empty selection, add dark mode, bump deps. No breaking changes.", "tgt": "v2.4.1: fix crash on empty selection, add dark mode, update dependencies. No changes that affect functionality."}
+{"src": "v2.4.1: fix crash on empty selection, add dark mode, bump deps. No breaking changes.", "tgt": "v2.4.1: fixes crash on empty selection, adds dark mode, updates dependencies. No significant changes."}
+{"src": "v2.4.1: fix crash on empty selection, add dark mode, bump deps. No breaking changes.", "tgt": "v2.4.1: resolves crash with empty selection, introduces dark mode, updates dependencies. No changes."}
+{"src": "v2.4.1: fix crash on empty selection, add dark mode, bump deps. No breaking changes.", "tgt": "v2.4.1: fix crash on empty selection, add dark mode, update dependencies. No changes to existing functionality."}
+{"src": "v2.4.1: fix crash on empty selection, add dark mode, bump deps. No breaking changes.", "tgt": "v2.4.1: fix crash on empty selection, add dark mode, update dependencies. No changes to the API."}
+{"src": "Q3 OKRs: 50K MAU, 99.9% uptime, launch 2 new integrations.", "tgt": "OKRs for Q3: Achieve 50K MAU, achieve 99.9% uptime, launch 2 new integrations."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for covering the on-call last week. I owe you one!"}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for handling the on-call shift last week. It was much appreciated."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for covering the on-call last week. It means a lot to me."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for covering the on-call last week. I'll definitely owe you one."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for handling the on-call last week. I owe you one."}
+{"src": "DB capacity at 78%. Auto-scale triggers at 85%. Manual scale recommended this week.", "tgt": "DB capacity is at 78%. Auto-scale triggers are set at 85%. A manual scale is recommended this week."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "The legacy export API will be sunset on August 31. A migration guide has been published."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "Sunset of the legacy export API scheduled for August 31. Migration guide available."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "The legacy export API will be sunset on August 31. A migration guide is available."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "The legacy export API will sunset on August 31. A migration guide has been published."}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Would you be available to align on the H1 roadmap for 30 minutes next week?"}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Would you be available next week to discuss the H1 roadmap for 30 minutes?"}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Would you be free for 30 minutes next week to align on the H1 roadmap?"}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Let's dedicate 30 minutes next week to align on the H1 roadmap?"}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Can we schedule 30 minutes next week to align on the H1 roadmap?"}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "How about we dedicate 30 minutes next week to align on the H1 roadmap?"}
+{"src": "GPU pool at 92% utilization. Two more training jobs queued. Cluster will be saturated in ~40 min.", "tgt": "GPU pool at 92% utilization. Two more training jobs queued. Cluster will reach saturation in approximately 40 minutes."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting talk to KubeCon EU 2026: \"Edge inference at scale\" - 45-minute slot"}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting talk to KubeCon EU 2026: \"Edge inference at scale\" - 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale', 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting talk to KubeCon EU 2026: \"Edge inference at scale\" - 45-min slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting talk to KubeCon EU 2026: \"Edge Inference at Scale\" for a 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale' for a 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting my talk titled \"Edge inference at scale\" to KubeCon EU 2026 for a 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting a talk titled \"Edge inference at scale\" to KubeCon EU 2026 for a 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting talk to KubeCon EU 2026: \"Edge inference at scale\" for a 45-minute slot."}
+{"src": "Customer feedback: 'Switching from competitor saved us 6 hours of manual reconciliation per week.'", "tgt": "Customer testimonial: \"Switching from competitor saved us 6 hours of manual reconciliation per week.\""}
+{"src": "Customer feedback: 'Switching from competitor saved us 6 hours of manual reconciliation per week.'", "tgt": "Customer feedback: Switching from competitor resulted in 6 hours of manual reconciliation savings per week."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "Let's add a keyboard shortcut for archive. It's currently 3 clicks deep in the menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut to archive, which is currently 3 clicks deep in the menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for keyboard shortcut to archive. It's 3 clicks deep now."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for adding keyboard shortcut for archive. It's currently 3 clicks deep in the menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut for archive. It's 3 clicks deep in the menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut to archive. It's currently 3 clicks deep in the menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut to archive, currently 3 clicks deep in the menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut for the archive. It's currently 3 clicks deep in the menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut for archive. It's currently 3 clicks deep in the menu."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, weaker in coding. Recommend passing for senior IC position."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, but weaker in coding. Recommend passing for the senior IC role."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design but weaker in coding. Recommend passing for a senior IC role."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, weaker in coding. Recommend passing for senior IC role."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, weaker in coding. Recommend passing for a senior IC role."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, but weak on coding. Recommend passing for a senior IC position."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "The recommendation is for a senior IC role to pass based on strong system design, with weaker coding skills."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, but weak in coding. Recommend passing for the senior IC position."}
+{"src": "SLA renewal due in 14 days. Last review uncovered 3 unmet targets.", "tgt": "SLA renewal is due in 14 days. The last review identified 3 unmet targets."}
+{"src": "SLA renewal due in 14 days. Last review uncovered 3 unmet targets.", "tgt": "SLA renewal is due in 14 days. The last review revealed 3 unmet targets."}
+{"src": "SLA renewal due in 14 days. Last review uncovered 3 unmet targets.", "tgt": "SLA renewal is scheduled in 14 days. Recent review revealed 3 unmet targets."}
+{"src": "SLA renewal due in 14 days. Last review uncovered 3 unmet targets.", "tgt": "SLA renewal is scheduled for 14 days. The last review identified 3 unmet targets."}
+{"src": "SLA renewal due in 14 days. Last review uncovered 3 unmet targets.", "tgt": "SLA renewal is due in 14 days. Recent review revealed 3 unmet targets."}
+{"src": "SLA renewal due in 14 days. Last review uncovered 3 unmet targets.", "tgt": "SLA renewal is scheduled in 14 days. Review of the last period identified 3 unfulfilled targets."}
+{"src": "Annual contract: 24 months prepaid, 18% discount versus monthly.", "tgt": "Annual contract: 24 months prepaid, offering a 18% discount compared to monthly rates."}
+{"src": "Annual contract: 24 months prepaid, 18% discount versus monthly.", "tgt": "Annual contract: 24 months prepaid, offering a 18% discount compared to monthly payments."}
+{"src": "Annual contract: 24 months prepaid, 18% discount versus monthly.", "tgt": "Annual contract: prepaid for 24 months, with a 18% discount compared to monthly rates."}
+{"src": "Annual contract: 24 months prepaid, 18% discount versus monthly.", "tgt": "Annual contract: prepaid for 24 months, offering a 18% discount compared to monthly rates."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "p99's latency jumped from 180ms to 740ms after the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "p99 transitioned from 180ms to 740ms after the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "The jump from 180ms to 740ms occurred after the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "P99 experienced a latency jump from 180ms to 740ms following the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "P99 jumped from 180ms to 740ms after the v3.2 deployment on March 4."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "p99 transitioned from 180ms to 740ms following the v3.2 deployment on March 4."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut slips from May 12 to May 19 unless one is delivered by EOD Friday."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut slips from May 12 to May 19 unless one arrives by EOD Friday."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs are still unresolved. Please cut slips dated May 12 to May 19 if they are not completed by Friday's deadline."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Do not cut date slips from May 12 to May 19 unless an update is received by EOD Friday."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut slips from May 12 to May 19, or one by EOD Friday."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut slips dated May 12 to May 19 unless one is delivered by EOD Friday."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs still need to be resolved. Cut slips from May 12 to May 19, unless one is completed by Friday's end."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Please cut date slips from May 12 to May 19, except one that lands by EOD Friday."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs are still unresolved. Please cut slips dated May 12 to May 19, unless one is resolved by EOD Friday."}
+{"src": "MAU up 23% QoQ, ARR crossed $4.2M last week.", "tgt": "MAU up 23% QoQ, ARR exceeded $4.2M last week."}
+{"src": "MAU up 23% QoQ, ARR crossed $4.2M last week.", "tgt": "MAU up 23% QoQ, ARR crosses $4.2M."}
+{"src": "Coverage dropped to 78.4% after the auth refactor. Goal is 85% by Q3.", "tgt": "Coverage decreased to 78.4% following the auth refactor. The goal is to achieve 85% by Q3."}
+{"src": "Audit flagged 11 GDPR violations. Remediation deadline: November 30, 2026.", "tgt": "Audit identified 11 GDPR violations. Remediation is due by November 30, 2026."}
+{"src": "Audit flagged 11 GDPR violations. Remediation deadline: November 30, 2026.", "tgt": "Audit identified 11 GDPR violations. Remedy by November 30, 2026."}
+{"src": "Page oncall when 95th percentile latency exceeds 250ms for 3 consecutive minutes.", "tgt": "Notify page when the 95th percentile latency exceeds 250ms for 3 consecutive minutes."}
+{"src": "Model scored 0.87 BLEU on the test split, up from 0.81 in v2.3.", "tgt": "The model scored 0.87 BLEU on the test split, an improvement from 0.81 in v2.3."}
+{"src": "Model scored 0.87 BLEU on the test split, up from 0.81 in v2.3.", "tgt": "The model scored 0.87 BLEU on the test split, improving from 0.81 in v2.3."}
+{"src": "Model scored 0.87 BLEU on the test split, up from 0.81 in v2.3.", "tgt": "The model achieved a BLEU score of 0.87 on the test split, improving from 0.81 in v2.3."}
+{"src": "Outside counsel estimates 8-12 months to resolution. Settlement range: $400k-$700k. Trial unlikely.", "tgt": "The estimated timeframe for resolution is 8-12 months. The settlement range is $400k-$700k. A trial is unlikely."}
+{"src": "Outside counsel estimates 8-12 months to resolution. Settlement range: $400k-$700k. Trial unlikely.", "tgt": "The resolution is expected to take 8-12 months. The settlement range is $400k-$700k. A trial is unlikely."}
+{"src": "Outside counsel estimates 8-12 months to resolution. Settlement range: $400k-$700k. Trial unlikely.", "tgt": "The estimated resolution time is 8-12 months. The settlement range is $400k-$700k. A trial is unlikely."}
+{"src": "Outside counsel estimates 8-12 months to resolution. Settlement range: $400k-$700k. Trial unlikely.", "tgt": "Outside counsel estimates a resolution of 8-12 months. The settlement range is $400k-$700k, and a trial is unlikely."}
+{"src": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, ship to 100% by end of week.", "tgt": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, reaching 100% by the end of the week."}
+{"src": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, ship to 100% by end of week.", "tgt": "Cohort A converted at 3.4%, while Cohort B converted at 5.1%. Cohort B will reach 100% conversion by the end of the week."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms. A 1.5% late fee applies monthly. Renewal occurs automatically unless a 60-day notice is provided."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms: late fee 1.5% per month. Renewal auto-rolls unless 60-day notice is given."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms with a late fee of 1.5% per month. Renewal is auto-rolled unless a 60-day notice is given."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms. Late fees: 1.5% per month. Auto-rollover unless 60-day notice is provided."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms: late fees are 1.5% per month. Renewal auto-rolls unless 60-day notice is given."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice is given."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms. Late fee: 1.5% per month. Renewal automatically rolls unless 60-day notice is provided."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms: late fee is 1.5% per month. Renewal auto-rolls unless 60-day notice is given."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "According to the SLA, customers receive a 5% credit per hour of downtime exceeding 99.95% monthly uptime."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "According to the SLA, customers are entitled to a 5% credit for every hour of downtime beyond 99.95% monthly uptime."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "According to the SLA, customers receive a 5% credit for every hour of downtime beyond the 99.95% monthly uptime."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "According to the SLA, customers are entitled to a 5% credit per hour of downtime exceeding 99.95% monthly uptime."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "Under the SLA, customers are entitled to a 5% credit for each hour of downtime beyond 99.95% monthly uptime."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "According to the SLA, customers will receive a 5% credit for each hour of downtime beyond 99.95% monthly uptime."}
+{"src": "Per the SLA, customers receive 5% credit per hour of downtime beyond 99.95% monthly uptime.", "tgt": "According to the SLA, customers are entitled to a 5% credit for each hour of downtime exceeding 99.95% monthly uptime."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your $47.30 refund was successfully processed on March 14, and should be delivered within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your $47.30 refund was successfully processed on March 14, and should be arriving within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was processed on March 14, and should arrive within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 has been processed on March 14, and should be arriving within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was processed on March 14, and it should arrive within 5-7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was successfully processed on March 14 and should arrive within 5-7 business days."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login to Safari 17 with 2FA fails due to a CORS error at /api/auth/token in the console."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login fails in Safari 17 when 2FA is enabled. Console displays a CORS error at /api/auth/token."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "Login fails in Safari 17 when two-factor authentication (2FA) is enabled. The console displays a CORS error at /api/auth/token."}
+{"src": "New analytics dashboard launches Tuesday. Includes 14 metrics, exportable to CSV.", "tgt": "New analytics dashboard launches on Tuesday, featuring 14 metrics and CSV exportable."}
+{"src": "Revenue grew 12% QoQ. Churn dropped to 2.1%. ARPU steady at $48.", "tgt": "Revenue saw a 12% QoQ increase. Churn rate reduced to 2.1%. ARPU remains at $48."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "Add a maxAttempts guard to handleRequest() to set a constant of 5."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Acme Corp requests a refund and credit, but the account manager is unavailable until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Acme Corp requests a refund and credit, but the account manager is not available until Wednesday."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay includes 4 months' base salary plus benefits through the year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay includes 4 months' base pay plus benefits up to year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay includes 4 months' base pay plus benefits through the year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. The severance package includes 4 months' base pay plus benefits through year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay consists of 4 months' base pay plus benefits through the year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay is 4 months' base pay plus benefits through the year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay consists of 4 months' base salary plus benefits through year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay consists of 4 months' base salary plus benefits through the year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay consists of 4 months' base pay plus benefits through year-end."}
+{"src": "15% of staff impacted. Severance is 4 months base + benefits through year-end.", "tgt": "15% of the staff are affected. Severance pay is 4 months' base pay plus benefits through year-end."}
+{"src": "Our pricing starts at $99/month for 5 seats. Annual contracts get 20% off.", "tgt": "Pricing begins at $99 per month for 5 seats. Annual contracts offer a 20% discount."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thank you for our conversation yesterday. Sending the technical document by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thank you for our conversation yesterday. I'll send the technical document by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "Thanks for our conversation yesterday. I'll send the technical document by Friday."}
+{"src": "Termination requires 30 days written notice. Auto-renews annually unless cancelled.", "tgt": "Termination involves providing 30 days' written notice. It auto-renews annually unless canceled."}
+{"src": "Quarterly review moved to Thursday 3pm PT. Updated calendar invite sent.", "tgt": "Quarterly review scheduled for Thursday at 3pm PT. Updated calendar invite sent."}
+{"src": "Made an offer to the senior backend candidate. Start date: April 15.", "tgt": "Sent an offer to the senior backend candidate, starting on April 15."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This is the third bug report this month, with earlier two still unresolved."}
+{"src": "Pro tier increases from $19 to $24/month on July 1. Existing subs grandfathered for 12 months.", "tgt": "Pro tier prices increase from $19 to $24 per month on July 1, with existing subscribers grandfathered for an additional 12 months."}
+{"src": "Pro tier increases from $19 to $24/month on July 1. Existing subs grandfathered for 12 months.", "tgt": "Pro tier prices rise from $19 to $24 per month on July 1, with existing subscribers grandfathered for an additional 12 months."}
+{"src": "Pro tier increases from $19 to $24/month on July 1. Existing subs grandfathered for 12 months.", "tgt": "Pro tier fee changes from $19 to $24 per month on July 1, with existing subscribers grandfathered for an additional 12 months."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If PAGER-403 alerts, restart the api-gateway pod and verify the ratelimit dashboard."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "May 28th to June 4th: Cover: Maya for production issues, Tom for design reviews."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "May 28 to June 4: Cover: Maya for production, Tom for design reviews."}
+{"src": "Migrating 2.4M rows from MySQL to Postgres. ETA 4 hours, downtime ~10 minutes.", "tgt": "Migrating 2.4M rows from MySQL to Postgres. Estimated time: 4 hours, with ~10 minutes of downtime."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "Sorry, I missed your Slack yesterday."}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Our budget exceeds $15K/year. The cap is set at $9K. Can adjustments be made?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "Is $15K/year over our budget and can it be reduced to $9K?"}
+{"src": "v2.4.1: fix crash on empty selection, add dark mode, bump deps. No breaking changes.", "tgt": "v2.4.1: fixes crash on empty selection, adds dark mode, updates dependencies. No changes affecting existing functionality."}
+{"src": "Customer threatens lawsuit over data leak. Escalating to legal. Need response by EOD.", "tgt": "Customer files lawsuit over data breach. Situation escalating to legal action. Urgent: Response required by EOD."}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Remember: standup at 10, design crit at 2."}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Don't forget: Standup at 10, design critique at 2."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for handling the on-call last week. You're a lifesaver!"}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "Legacy export API will be sunsetted on August 31. Migration guide available."}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Would you be able to set aside 30 minutes next week to align on the H1 roadmap?"}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Submitting talk titled \"Edge inference at scale\" to KubeCon EU 2026 for a 45-min slot."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for keyboard shortcut for archive, currently 3 clicks deep."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for keyboard shortcut for archive, 3 clicks deep now."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "Let's add keyboard shortcut for archive, currently 3 clicks deep."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut for archive, currently 3 clicks deep."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for keyboard shortcut for archive, currently 3 clicks deep in the menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for keyboard shortcut for archive, 3 clicks deep in menu."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut for archive, which is 3 clicks deep."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut to archive, 3 clicks deep now."}
+{"src": "+1 to keyboard shortcut for archive. Currently 3 clicks deep in the menu.", "tgt": "+1 for a keyboard shortcut for archive, which is 3 clicks deep now."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, weak on coding. Recommend passing for senior IC role."}
+{"src": "Strong on system design, weaker on coding. Recommend pass for senior IC role.", "tgt": "Strong in system design, but weaker on coding. Recommend passing for senior IC role."}
+{"src": "p99 jumped from 180ms to 740ms after the v3.2 deploy on March 4.", "tgt": "P99 experienced a jump from 180ms to 740ms after the v3.2 deployment on March 4."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs still need to be resolved. Cut slips dated May 12 to May 19 unless one is completed by Friday's deadline."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs are still unresolved. Cut slips dated May 12 to May 19 if not completed by Friday's end."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut slips dated May 12 to May 19 unless one is submitted by Friday's end."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs still require resolution. Cut slips dated May 12 to May 19 unless one is completed by Friday's end."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs are still unresolved. Cut slips dated May 12 to May 19 unless one arrives by Friday's end."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut slips dated May 12 to May 19 unless one arrives by Friday's end."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs still need to be resolved. Cut slips dated May 12 to May 19 unless one is completed by Friday's end."}
+{"src": "Three P0 bugs remain. Cut date slips from May 12 to May 19 unless one lands by EOD Friday.", "tgt": "Three P0 bugs remain. Cut slips dated May 12 to May 19 unless one is completed by Friday's end."}
+{"src": "Audit flagged 11 GDPR violations. Remediation deadline: November 30, 2026.", "tgt": "Audit identified 11 GDPR violations. Deadline: November 30, 2026."}
+{"src": "Audit flagged 11 GDPR violations. Remediation deadline: November 30, 2026.", "tgt": "Audit identified 11 GDPR violations. Compliance deadline: November 30, 2026."}
+{"src": "Audit flagged 11 GDPR violations. Remediation deadline: November 30, 2026.", "tgt": "Audit identified 11 GDPR non-compliances. Resolution deadline: November 30, 2026."}
+{"src": "Audit flagged 11 GDPR violations. Remediation deadline: November 30, 2026.", "tgt": "Audit identified 11 GDPR non-compliances. Deadline: November 30, 2026."}
+{"src": "Requesting 2 senior backend hires for Q4. Backfill replaces Mia (leaves Aug 22) and Theo (returns from leave Oct 14).", "tgt": "Requesting 2 senior backend hires for Q4. Backfill: replaces Mia (leaves Aug 22) and Theo (returns from leave Oct 14)."}
+{"src": "Free tier capped at 500 req/min. Pro tier stays at 10k req/min, Enterprise unchanged.", "tgt": "Free tier: 500 req/min\nPro tier: 10k req/min\nEnterprise: unchanged"}
+{"src": "Free tier capped at 500 req/min. Pro tier stays at 10k req/min, Enterprise unchanged.", "tgt": "Free tier limits to 500 req/min. Pro tier maintains 10k req/min. Enterprise remains unchanged."}
+{"src": "Free tier capped at 500 req/min. Pro tier stays at 10k req/min, Enterprise unchanged.", "tgt": "Free tier limited to 500 req/min. Pro tier remains at 10k req/min. Enterprise tier stays unchanged."}
+{"src": "Outside counsel estimates 8-12 months to resolution. Settlement range: $400k-$700k. Trial unlikely.", "tgt": "Outside counsel estimates a resolution time of 8-12 months. Settlement range: $400k-$700k. Trial unlikely."}
+{"src": "Outside counsel estimates 8-12 months to resolution. Settlement range: $400k-$700k. Trial unlikely.", "tgt": "Outside counsel estimates a resolution taking 8-12 months. Settlement range: $400k-$700k. Trial unlikely."}
+{"src": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, ship to 100% by end of week.", "tgt": "Cohort A converted at 3.4%, Cohort B at 5.1%. B wins, reaching 100% by week's end."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms with a 1.5% monthly late fee. Auto-rolls unless 60-day notice is given."}
+{"src": "Net 30 payment terms. Late fee 1.5% per month. Renewal auto-rolls unless 60-day notice given.", "tgt": "Net 30 payment terms with a 1.5% monthly late fee. Auto-rolls unless 60-day notice is provided."}
+{"src": "Strong Q2: shipped 4 of 5 OKRs. Promotion case ready for January cycle.", "tgt": "Strong Q2: Shipped 4 of 5 OKRs. Promotion case prepared for January cycle."}
+{"src": "manage users: 1 Day", "tgt": "Manage users: 1 Day"}
+{"src": "manage users: 1 Day", "tgt": "Manage users: 1 day."}
+{"src": "Sarah will own the migration. Deadline is May 30. Two engineers assigned.", "tgt": "Sarah is responsible for the migration. The deadline is May 30. Two engineers are assigned."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Sure thing! I'll be ready to go over it in about 20 minutes."}
+{"src": "hey can you push the latest changes? i'll review in like 20 min", "tgt": "Sure thing! Just a quick note on the updates—ready to go in about 20 minutes."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 has been successfully processed on March 14 and is expected to arrive within 5 to 7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was successfully processed on March 14 and is expected to arrive within 5 to 7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was processed on March 14 and should be available within 5 to 7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 has been successfully processed on March 14 and is expected to be delivered within 5 to 7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was processed on March 14 and is expected to arrive within 5 to 7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was successfully processed on March 14 and is expected to be delivered within 5 to 7 business days."}
+{"src": "Your refund of $47.30 was processed on March 14 and should arrive within 5-7 business days.", "tgt": "Your refund of $47.30 was successfully processed on March 14 and should be delivered within 5 to 7 business days."}
+{"src": "Login fails on Safari 17 when 2FA is enabled. Console shows CORS error at /api/auth/token.", "tgt": "The login process encounters an error in Safari 17 with 2FA activated, displaying a CORS issue at the API endpoint /api/auth/token."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "I won't be there Thursday. Got a dentist appointment this time."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "Can't make Thursday's standup. Got a dentist appointment this week."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "Can't make Thursday's standup. Got a dentist appointment this time."}
+{"src": "Can't make Thursday's standup. Out for a dentist appointment.", "tgt": "Can't make Thursday's standup. I'm out for a dentist appointment."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "The retry loop in handleRequest() lacks a maxAttempts restriction. Implement a constant limit of 5 attempts."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "The retry loop in handleRequest() lacks a maxAttempts limit. Implement a constant with a value of 5."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "The retry loop in handleRequest() lacks a maxAttempts guard. Implement a constant limit of 5 attempts."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "The retry loop in handleRequest() lacks a maxAttempts limit. A constant should be set to 5 to cap the attempts."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "The retry loop in handleRequest() lacks a maxAttempts safeguard. Implement a constant with a cap of 5."}
+{"src": "The retry loop in handleRequest() is missing a maxAttempts guard. Add a constant cap of 5.", "tgt": "The retry loop in handleRequest() lacks a maxAttempts guard. A constant limit of 5 attempts should be applied."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation required: Acme Corp requests a refund and credit. Account management is unavailable until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation requested: Acme Corp requires a refund and credit. Account manager out of service until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Acme Corp requests a refund and credit; account manager availability is unavailable until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation details: Acme Corp requests a refund and credit. The account manager is unavailable until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation required: Acme Corp requires a refund and credit; account manager is out of office until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation: Acme Corp requires a refund and credit. The account manager is unavailable until Wednesday."}
+{"src": "Customer escalation: Acme Corp wants a refund AND credit. Account manager unavailable until Wednesday.", "tgt": "Customer escalation required: Acme Corp requires a refund and credit. Account management is unavailable until Wednesday."}
+{"src": "could you send me the deck before tomorrow's call", "tgt": "I understand you need the deck before tomorrow's call. Let me check the details."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load time decreased from 3.2 seconds to 0.8 seconds following the bundle split."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load speed increased from 3.2 seconds to 0.8 seconds following the bundle split."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load speed improved from 3.2 seconds to 0.8 seconds following the bundle split."}
+{"src": "Page load improved from 3.2s to 0.8s after the bundle split.", "tgt": "Page load speed decreased from 3.2 seconds to 0.8 seconds following the bundle split."}
+{"src": "Status: degraded. Affected endpoint: /v2/search. Error rate 8%. Investigating.", "tgt": "Status: degraded. Endpoint /v2/search impacted. Error rate stands at 8%. Investigation ongoing."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "The launch has been scheduled from June 3 to June 10. Three blockers remain unresolved."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "The launch is scheduled from June 3 to June 10. There are still three blockers remaining."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "The launch will move from June 3 to June 10. Three blockers remain unresolved."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "The launch is scheduled for June 3 to June 10. Three blockers remain unresolved."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "The launch is scheduled from June 3 to June 10. Three blockers remain unresolved."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "The launch is set from June 3 to June 10. Three blockers remain unresolved."}
+{"src": "Pushing the launch from June 3 to June 10. Three blockers still open.", "tgt": "The launch will shift from June 3 to June 10. Three blockers remain unresolved."}
+{"src": "Bake at 180°C for 25 minutes. Let cool 10 min before serving.", "tgt": "Bake at 180°C for 25 minutes, then let it cool for 10 minutes before serving."}
+{"src": "Bake at 180°C for 25 minutes. Let cool 10 min before serving.", "tgt": "Preheat to 180°C and bake for 25 minutes. Cool for 10 minutes before serving."}
+{"src": "Bake at 180°C for 25 minutes. Let cool 10 min before serving.", "tgt": "Bake at 180°C for 25 minutes. Cool for 10 minutes before serving."}
+{"src": "Bake at 180°C for 25 minutes. Let cool 10 min before serving.", "tgt": "Preheat oven to 180°C. Bake for 25 minutes. Let cool 10 minutes before serving."}
+{"src": "Bake at 180°C for 25 minutes. Let cool 10 min before serving.", "tgt": "Preheat oven to 180°C and bake for 25 minutes. Cool for 10 minutes before serving."}
+{"src": "Bake at 180°C for 25 minutes. Let cool 10 min before serving.", "tgt": "Set the oven to 180°C and bake for 25 minutes. Wait 10 minutes before serving."}
+{"src": "Bake at 180°C for 25 minutes. Let cool 10 min before serving.", "tgt": "Preheat to 180°C, bake for 25 minutes, then let it rest for 10 minutes."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "I’ve received your message and will send the technical document by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "I've sent the technical document you requested by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "I've prepared the technical document and will send it by Friday as requested."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "I’ll share the technical document by Friday as requested."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "I've prepared the technical document for you and will deliver it by Friday."}
+{"src": "Thanks for talking yesterday. Sending the technical doc you asked about by Friday.", "tgt": "I’m glad we discussed it. The technical document will be sent by Friday."}
+{"src": "Hi, I'm Lin, joining the platform team from infrastructure. Background in distributed systems.", "tgt": "Hello Lin, you're joining the platform team from infrastructure with experience in distributed systems."}
+{"src": "NPS dropped from 42 to 31 quarter-over-quarter. 68% cite slow response times.", "tgt": "The NPS declined from 42 to 31 over the quarter, with 68% indicating slow response times as a key concern."}
+{"src": "NPS dropped from 42 to 31 quarter-over-quarter. 68% cite slow response times.", "tgt": "NPS declined from 42 to 31 over the quarter, with 68% attributing the issue to slow response times."}
+{"src": "NPS dropped from 42 to 31 quarter-over-quarter. 68% cite slow response times.", "tgt": "The NPS declined from 42 to 31, with 68% indicating slow response times as a key concern."}
+{"src": "NPS dropped from 42 to 31 quarter-over-quarter. 68% cite slow response times.", "tgt": "The performance indicators show a decline in NPS from 42 to 31, with 68% attributing this to slow response times."}
+{"src": "Made an offer to the senior backend candidate. Start date: April 15.", "tgt": "The offer was made to the senior backend candidate with a start date of April 15."}
+{"src": "Made an offer to the senior backend candidate. Start date: April 15.", "tgt": "The offer was submitted to the senior backend candidate with a start date of April 15."}
+{"src": "Rolling out lazy-load to 5% of traffic today. Full ramp by Wednesday.", "tgt": "Launching lazy-load to 5% of traffic today. Completing the full rollout by Wednesday."}
+{"src": "Rolling out lazy-load to 5% of traffic today. Full ramp by Wednesday.", "tgt": "Implementing lazy-load for 5% of traffic today and completing the full rollout by Wednesday."}
+{"src": "Rolling out lazy-load to 5% of traffic today. Full ramp by Wednesday.", "tgt": "Deploying lazy-load to 5% of traffic today. Completion expected by Wednesday."}
+{"src": "Rolling out lazy-load to 5% of traffic today. Full ramp by Wednesday.", "tgt": "The rollout of lazy-load is beginning at 5% of traffic today, with full implementation expected by Wednesday."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This month's third bug report persists, with two unresolved issues remaining."}
+{"src": "This is the third bug report this month. Earlier two are still unresolved.", "tgt": "This month has witnessed the third bug report, with two remaining unresolved cases."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "Execute the procedure to restart the API-gateway pod upon receiving alert PAGER-403 and verify the ratelimit dashboard status."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "Upon detection of alert PAGER-403, initiate restart of the api-gateway pod and verify status on the ratelimit dashboard."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If alert PAGER-403 triggers, initiate the restart of the api-gateway pod and verify the ratelimit dashboard status."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "Upon activation of alert PAGER-403, initiate restart of the api-gateway pod and verify the ratelimit dashboard status."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If the alert PAGER-403 triggers, initiate the restart of the api-gateway pod and verify the ratelimit dashboard status."}
+{"src": "If alert PAGER-403 fires, restart the api-gateway pod and check the ratelimit dashboard.", "tgt": "If the alert PAGER-403 is triggered, initiate the restart of the api-gateway pod and verify the ratelimit dashboard."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "Looking ahead to May 28 through June 4, the agenda includes Maya handling prod issues and Tom leading design reviews."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "Here’s the text with a casual tone:  \nMay 28 through June 4—Maya handles prod issues, Tom does design reviews."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "The schedule runs from May 28 to June 4. Cover details: Maya handles prod issues, Tom oversees design reviews."}
+{"src": "OOO May 28 through June 4. Cover: Maya for prod issues, Tom for design reviews.", "tgt": "The update runs from May 28 to June 4. Cover: Maya handling prod issues, Tom leading design reviews."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "Missed your slack from yesterday, sorry. Answering now."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "Missed your Slack update from yesterday, sorry. Let’s jump into the details now."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "Missed your Slack from yesterday, sorry. Let's get this over with."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "Missed your Slack message yesterday, sorry. I'm here to help now."}
+{"src": "missed your slack from yesterday, sorry. answering now.", "tgt": "Missed your Slack from yesterday, sorry. I'm here to help now."}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "The budget limit is $9K, but the requirement is $15K per year."}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "The amount of $15K per year exceeds the budget limit. The cap is $9K. Yes, I can help adjust it."}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "The budget cap is $9K, but $15K exceeds it. Adjustments can be made."}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "The request is $15K/year, which exceeds the budget. The cap is $9K. Can the budget be adjusted?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "The current amount is $15K/year, which exceeds the budget limit of $9K. Can you adjust it?"}
+{"src": "$15K/year is over our budget. Cap is $9K. Can you do that?", "tgt": "The amount of $15K per year exceeds the budget limit of $9K."}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Just a quick note: standup at 10, design crit at 2."}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Reminder: standup at 10, design crit at 2"}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Reminder set: standup at 10, design crit at 2."}
+{"src": "reminder: standup at 10, design crit at 2", "tgt": "Just a heads up: standup at 10, design crit at 2."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for the update on the on-call last week! Appreciate your message."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for the update on last week’s on-call. It means a lot."}
+{"src": "Appreciate you covering the on-call last week. Owe you one.", "tgt": "Thanks for the update on the on-call last week. I appreciate it!"}
+{"src": "DB capacity at 78%. Auto-scale triggers at 85%. Manual scale recommended this week.", "tgt": "The DB capacity is at 78%, with auto-scale activated at 85%. A manual scale is advised for this week."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "The legacy export API will be retired on August 31. The updated migration guide is now available."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "The legacy export API will be decommissioned on August 31. A migration guide has been published."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "The legacy export API will be decommissioned by August 31. A migration guide has been published."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "The legacy export API will be decommissioned by August 31. The migration guide has been published."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "The legacy export API will be decommissioned on August 31. The migration guide has been published."}
+{"src": "Sunsetting the legacy export API on August 31. Migration guide published.", "tgt": "The legacy export API will be decommissioned by August 31. A migration guide has been released."}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Consider setting aside 30 minutes next week to synchronize on the H1 roadmap."}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Would you like to set aside 30 minutes next week for discussing the H1 roadmap?"}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Consider setting aside 30 minutes next week for alignment on the H1 roadmap."}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Consider setting aside 30 minutes next week to discuss the H1 roadmap."}
+{"src": "Want to grab 30 min next week to align on the H1 roadmap?", "tgt": "Consider allocating 30 minutes next week for alignment on the H1 roadmap."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Preparing a submission for KubeCon EU 2026 titled \"Edge inference at scale\" with a 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Preparing a presentation titled 'Edge inference at scale' for the KubeCon EU 2026 talk with a 45-minute duration."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Preparing your presentation for the KubeCon EU 2026 talk titled \"Edge inference at scale\" with a 45-minute time slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Preparing a presentation titled 'Edge inference at scale' for the KubeCon EU 2026 talk in a 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Preparing a presentation titled \"Edge inference at scale\" for the KubeCon EU 2026, scheduled for a 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Preparing a 45-minute presentation on \"Edge inference at scale\" for the KubeCon EU 2026 submission."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Preparing presentation for KubeCon EU 2026 talk titled 'Edge inference at scale' within a 45-minute slot."}
+{"src": "Submitting talk to KubeCon EU 2026: 'Edge inference at scale'. 45-min slot.", "tgt": "Preparing a presentation titled \"Edge inference at scale\" for the 45-minute slot at KubeCon EU 2026."}
