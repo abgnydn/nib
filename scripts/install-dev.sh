@@ -175,12 +175,16 @@ xattr -dr com.apple.quarantine "$INSTALL_PATH" 2>/dev/null || true
 
 echo "[nib] ad-hoc codesign with stable identifier…"
 codesign --force --deep --sign - "$INSTALL_PATH" 2>&1 | tail -1
-codesign --display --verbose=2 "$INSTALL_PATH" 2>&1 | grep -E "Identifier|Signature" || true
+# Capture once, match in bash: piping codesign straight into `grep -q`
+# breaks under `set -o pipefail` (grep quits on first match, codesign
+# then dies with SIGPIPE=141 and the pipeline reports failure).
+ident_out=$(codesign --display --verbose=2 "$INSTALL_PATH" 2>&1 || true)
+echo "$ident_out" | grep -E "Identifier|Signature" || true
 # Fail fast if the identifier drifted — the TCC Accessibility grant is tied
 # to app.nib, so a mismatch silently drops the grant.
-if ! codesign --display --verbose=2 "$INSTALL_PATH" 2>&1 | grep -q "Identifier=app.nib"; then
+if [[ "$ident_out" != *"Identifier=app.nib"* ]]; then
   echo "[nib] ERROR: codesign Identifier mismatch (expected app.nib) — TCC grant would break" >&2
-  codesign --display --verbose=2 "$INSTALL_PATH" 2>&1 >&2 || true
+  echo "$ident_out" >&2 || true
   exit 1
 fi
 

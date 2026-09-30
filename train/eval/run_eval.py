@@ -140,6 +140,7 @@ class Score:
     ok: bool
     word_count: int
     word_count_ok: bool
+    sentence_type_ok: bool = True
     forbidden_hits: list[str] = field(default_factory=list)
     missing_keeps: list[str] = field(default_factory=list)
     output: str = ""
@@ -268,6 +269,27 @@ def score_output(
         sc.word_count_ok = False
         sc.ok = False
         sc.failure_reasons.append(f"words: {sc.word_count} not in [{min_w},{max_w}]")
+
+    # sentence-type gate (statement→question): a statement source must not
+    # become a question in the output; a question source must stay a question.
+    source_text = case.get("source", "")
+    source_has_question = "?" in source_text
+    source_ends_with_question = source_text.strip().endswith("?")
+    output_has_question = "?" in output
+    sentence_type_ok = True
+    if not source_has_question and output_has_question:
+        # statement-question mismatch: statement turned into a question
+        sentence_type_ok = False
+    elif source_ends_with_question and not output_has_question:
+        # question-statement mismatch: question lost its question mark
+        sentence_type_ok = False
+    sc.sentence_type_ok = sentence_type_ok
+    if not sentence_type_ok:
+        sc.ok = False
+        sc.failure_reasons.append(
+            f"sentence-type: source_has_question={source_has_question} "
+            f"output_has_question={output_has_question}"
+        )
 
     out_lower = output.lower()
 
