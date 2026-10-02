@@ -5,6 +5,7 @@
 //! builds a fresh context (cheap for small models) so concurrent calls
 //! don't share KV cache state.
 
+use std::borrow::Cow;
 use std::num::NonZeroU32;
 use std::path::{Path, PathBuf};
 use std::pin::pin;
@@ -33,6 +34,82 @@ const PROMPT_TEMPLATE: &str =
 
 /// Generation stop marker for LFM2.5 ChatML.
 const STOP_MARKER: &str = "<|im_end|>";
+
+/// Qwen3 no-think suffix. Appended to the user source (engine-level, NOT
+/// in JS/PY `composeInstruction`) when the loaded model is a thinking
+/// model (general.architecture == "qwen3"). Probe: 6/6 non-empty vs 2/6,
+/// ~0.2s vs ~1.0s, never leaks. Non-thinking models (LFM2.5, Qwen2.5)
+/// must NEVER see this — LFM echo risk untested.
+const NO_THINK_SUFFIX: &str = " /no_think";
+
+/// True only for thinking architectures. Exact match on purpose:
+/// "qwen2", "qwen2.5", "lfm2", … must not match.
+fn arch_disables_thinking(arch: &str) -> bool {
+    arch == "qwen3"
+}
+
+/// Sniff the loaded GGUF for a thinking architecture. Missing/unreadable
+/// metadata → false (never append the suffix blindly).
+fn model_disables_thinking(model: &LlamaModel) -> bool {
+    model
+        .meta_val_str("general.architecture")
+        .map(|a| arch_disables_thinking(&a))
+        .unwrap_or(false)
+}
+
+/// Append [`NO_THINK_SUFFIX`] to the user source when thinking is
+/// disabled for this engine. Returns borrowed when disabled=false so
+/// non-thinking models see byte-identical prompts to before.
+fn apply_no_think_suffix<'a>(source: &'a str, disable_thinking: bool) -> Cow<'a, str> {
+    if disable_thinking {
+        Cow::Owned(format!("{source}{NO_THINK_SUFFIX}"))
+    } else {
+        Cow::Borrowed(source)
+    }
+}
+
+/// Strip Qwen3-style `<think>...</think>` reasoning blocks (model-agnostic
+/// cleanup). Removes ALL blocks, case-sensitive exact tags, multiline-safe.
+/// An unclosed `<think>` drops to end-of-text — a truncated thought must
+/// never ship to the user.
+fn strip_think_blocks(text: &str) -> String {
+    const OPEN: &str = "<think>";
+    const CLOSE: &str = "</think>";
+    let mut out = String::with_capacity(text.len());
+    let mut rest = text;
+    loop {
+        match rest.find(OPEN) {
+            None => {
+                out.push_str(rest);
+                break;
+            }
+            Some(start) => {
+                out.push_str(&rest[..start]);
+                let after_open = &rest[start + OPEN.len()..];
+                match after_open.find(CLOSE) {
+                    None => break, // unclosed: drop to end-of-text
+                    Some(end) => rest = &after_open[end + CLOSE.len()..],
+                }
+            }
+        }
+    }
+    out
+}
+
+/// Apply post-generation cleanup: STOP_MARKER stripping, then
+/// `<think>` stripping. If nothing remains (model ONLY thought), force
+/// `truncated=true` — callers already refuse to paste truncated output.
+fn finalize_generation(raw: &str, truncated: bool) -> Generation {
+    let no_stop = raw.replace(STOP_MARKER, "");
+    let text = strip_think_blocks(&no_stop).trim().to_string();
+    if text.is_empty() {
+        return Generation {
+            text,
+            truncated: true,
+        };
+    }
+    Generation { text, truncated }
+}
 
 /// Default system message when no explicit instruction is supplied.
 /// Kept short on purpose — small models degrade with long checklists
@@ -211,6 +288,11 @@ pub struct RewriteEngine {
     adapter_scale: f32,
     ctx_size: u32,
     max_new_tokens: i32,
+    /// True when the loaded model is a thinking model (Qwen3). When set,
+    /// [`NO_THINK_SUFFIX`] is appended to the user source in `generate()`
+    /// before templating. Auto-detected from GGUF
+    /// `general.architecture` at load; false for everything else.
+    disable_thinking: bool,
 }
 
 impl RewriteEngine {
@@ -242,6 +324,13 @@ impl RewriteEngine {
             None => (None, None),
         };
 
+        // Arch sniffing: Qwen3 thinks by default; disable it engine-level.
+        // Anything else (LFM2.5, Qwen2.5, unknown) stays exactly as before.
+        let disable_thinking = model_disables_thinking(&model);
+        if disable_thinking {
+            eprintln!("[nib] qwen3 thinking model detected — /no_think suffix enabled");
+        }
+
         Ok(Self {
             backend,
             model,
@@ -250,7 +339,20 @@ impl RewriteEngine {
             adapter_scale: 1.0,
             ctx_size: 2048,
             max_new_tokens: 256,
+            disable_thinking,
         })
+    }
+
+    /// True when this engine appends the Qwen3 `/no_think` suffix.
+    pub fn disable_thinking(&self) -> bool {
+        self.disable_thinking
+    }
+
+    /// Explicit override (tests / future registry wiring). Normal path is
+    /// auto-detect at load; this only exists so callers can force the
+    /// suffix on or off without reloading.
+    pub fn set_disable_thinking(&mut self, v: bool) {
+        self.disable_thinking = v;
     }
 
     pub fn has_adapter(&self) -> bool {
@@ -428,9 +530,10 @@ impl RewriteEngine {
                 let mut outs = Vec::with_capacity(chunks.len());
                 let mut any_truncated = false;
                 for c in &chunks {
+                    let src = apply_no_think_suffix(c, self.disable_thinking);
                     let prompt = PROMPT_TEMPLATE
                         .replace("{instruction}", instr)
-                        .replace("{source}", c);
+                        .replace("{source}", &src);
                     let g = self.generate_prompt(&prompt, &mut sampler, &mut on_token)?;
                     any_truncated |= g.truncated;
                     outs.push(g.text);
@@ -442,9 +545,10 @@ impl RewriteEngine {
             }
         }
 
+        let src = apply_no_think_suffix(text, self.disable_thinking);
         let prompt = PROMPT_TEMPLATE
             .replace("{instruction}", instruction.unwrap_or(DEFAULT_INSTRUCTION))
-            .replace("{source}", text);
+            .replace("{source}", &src);
         self.generate_prompt(&prompt, &mut sampler, &mut on_token)
     }
 
@@ -526,16 +630,16 @@ impl RewriteEngine {
             n_cur += 1;
         }
 
-        Ok(Generation {
-            text: out.replace(STOP_MARKER, "").trim().to_string(),
-            truncated,
-        })
+        Ok(finalize_generation(&out, truncated))
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::{DEFAULT_INSTRUCTION, estimate_tokens, split_for_context};
+    use super::{
+        DEFAULT_INSTRUCTION, NO_THINK_SUFFIX, PROMPT_TEMPLATE, apply_no_think_suffix,
+        arch_disables_thinking, estimate_tokens, finalize_generation, split_for_context,
+    };
 
     #[test]
     fn estimate_tokens_is_chars_over_four() {
@@ -609,5 +713,76 @@ mod tests {
             lower.contains("word count") && lower.contains("20%"),
             "instruction should guard word count ±20%: {DEFAULT_INSTRUCTION}"
         );
+    }
+
+    #[test]
+    fn think_block_removed() {
+        let raw = "<think>reasoning\nacross\nlines</think>Fixed text.";
+        let g = finalize_generation(raw, false);
+        assert_eq!(g.text, "Fixed text.");
+        assert!(!g.truncated);
+    }
+
+    #[test]
+    fn unclosed_think_dropped() {
+        let raw = "Fixed text.<think>truncated thought never ends";
+        let g = finalize_generation(raw, false);
+        assert_eq!(g.text, "Fixed text.");
+        assert!(!g.truncated);
+    }
+
+    #[test]
+    fn no_think_text_untouched() {
+        let raw = "Just the rewrite, nothing else.";
+        let g = finalize_generation(raw, false);
+        assert_eq!(g.text, "Just the rewrite, nothing else.");
+        assert!(!g.truncated);
+    }
+
+    #[test]
+    fn think_only_yields_truncated() {
+        let raw = "<think>only thinking, no answer</think>";
+        let g = finalize_generation(raw, false);
+        assert!(g.text.is_empty());
+        assert!(g.truncated);
+    }
+
+    #[test]
+    fn only_qwen3_arch_disables_thinking() {
+        assert!(arch_disables_thinking("qwen3"));
+        // Non-thinking models must never match (exact equality).
+        for arch in ["qwen2", "qwen2.5", "lfm2", "llama", "", "Qwen3", "qwen3-foo"] {
+            assert!(!arch_disables_thinking(arch), "arch {arch:?} must not disable thinking");
+        }
+    }
+
+    #[test]
+    fn no_think_suffix_present_only_when_disabled() {
+        let src = "I has a apple.";
+        let on = apply_no_think_suffix(src, true);
+        assert_eq!(on.as_ref(), format!("{src}{NO_THINK_SUFFIX}"));
+        assert!(on.ends_with(" /no_think"));
+
+        let off = apply_no_think_suffix(src, false);
+        assert_eq!(off.as_ref(), src, "non-thinking path must be byte-identical");
+    }
+
+    #[test]
+    fn prompt_contains_suffix_only_for_qwen3_path() {
+        let src = "I has a apple.";
+        // Thinking path: suffix lands inside the user block before templating.
+        let thinking_src = apply_no_think_suffix(src, true);
+        let thinking_prompt = PROMPT_TEMPLATE
+            .replace("{instruction}", DEFAULT_INSTRUCTION)
+            .replace("{source}", &thinking_src);
+        assert!(thinking_prompt.contains(" /no_think"));
+
+        // Non-thinking path: template output contains no trace of the suffix.
+        let plain_src = apply_no_think_suffix(src, false);
+        let plain_prompt = PROMPT_TEMPLATE
+            .replace("{instruction}", DEFAULT_INSTRUCTION)
+            .replace("{source}", &plain_src);
+        assert!(!plain_prompt.contains("no_think"));
+        assert!(plain_prompt.contains(src));
     }
 }
