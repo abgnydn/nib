@@ -233,14 +233,31 @@ def _keep_variants(term: str) -> set[str]:
     return out
 
 
+# CJK ranges treated as non-word for keep-match anchoring (CJK has no
+# spaces, so terms glue to particles): Hiragana \u3040-\u309f, Katakana
+# \u30a0-\u30ff, CJK Unified \u4e00-\u9fff + Extension A \u3400-\u4dbf,
+# Hangul \uac00-\ud7af + Jamo \u1100-\u11ff, Halfwidth/Fullwidth \uff00-\uffef.
+_CJK_RANGES = "\u3040-\u309f\u30a0-\u30ff\u4e00-\u9fff\u3400-\u4dbf\uac00-\ud7af\u1100-\u11ff\uff00-\uffef"
+
+
 def _anchored(variant: str) -> re.Pattern[str]:
     """Word-boundary regex for a keep variant: anchor the ends that are
     word characters so "45" can't match inside "450"/"145" and "nine"
     can't match inside "ninety". Ends that are already non-word ("$",
     "%", "/") need no anchor — "$47.30", "12%", "/v2/search" still match
-    as before."""
-    prefix = r"(?<!\w)" if variant and re.match(r"\w", variant[0]) else ""
-    suffix = r"(?!\w)" if variant and re.match(r"\w", variant[-1]) else ""
+    as before.
+
+    CJK note: Python \\w matches CJK chars, but CJK has no spaces so
+    keep terms glue to particles (e.g. "HND" in "HND\\u304b\\u3089",
+    "JAL 516" in "516\\u4fbf"). Anchors therefore check ASCII word chars
+    only ([A-Za-z0-9_]); a CJK neighbor ([_CJK_RANGES] above) never blocks
+    a match, while ASCII neighbors still do ("45" won't match "450",
+    "nine" won't match "ninety").
+
+    Self-test: "HND" matches "HND\\u304b\\u3089" ("HND" in "HND\\u304b\\u3089"),
+    "JAL 516" matches "516\\u4fbf" context ("JAL 516" in "JAL 516\\u4fbf")."""
+    prefix = r"(?<![A-Za-z0-9_])" if variant and re.match(r"\w", variant[0]) else ""
+    suffix = r"(?![A-Za-z0-9_])" if variant and re.match(r"\w", variant[-1]) else ""
     return re.compile(prefix + re.escape(variant) + suffix)
 
 

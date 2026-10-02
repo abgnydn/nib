@@ -64,6 +64,18 @@ pub const REGISTRY: &[ModelInfo] = &[
         filename: "lfm2.5-350m-q4_k_m.gguf",
         requires_base: None,
     },
+    // Stock Qwen3 0.6B — thinking disabled in-engine (no_think).
+    ModelInfo {
+        id: "qwen3-0.6b",
+        display_name: "Qwen3 0.6B (no-think)",
+        params: "0.6B",
+        size_mb: 462,
+        blurb: "74.4% traps, best small; thinking disabled in-engine",
+        bundled: false,
+        url: Some("https://huggingface.co/lm-kit/qwen-3-0.6b-instruct-gguf/resolve/main/Qwen3-0.6B-Q4_K_M.gguf?download=true"),
+        filename: "Qwen3-0.6B-Q4_K_M.gguf",
+        requires_base: None,
+    },
     // Stock Qwen 2.5-1.5B base — the substrate every Nib adapter v2.x+
     // layers on top of. Standalone-usable but the registry hides it
     // unless an adapter that needs it is selected.
@@ -511,6 +523,20 @@ mod tests {
     fn lookup_finds_known_models() {
         assert_eq!(lookup("nib-qwen-v2").id, "nib-qwen-v2");
         assert_eq!(lookup("qwen2.5-1.5b-instruct").id, "qwen2.5-1.5b-instruct");
+    }
+
+    #[test]
+    fn qwen3_0_6b_lookup_resolves() {
+        let m = lookup("qwen3-0.6b");
+        assert_eq!(m.id, "qwen3-0.6b");
+        assert_eq!(m.filename, "Qwen3-0.6B-Q4_K_M.gguf");
+        assert!(
+            m.filename.ends_with(".gguf"),
+            "filename must match resources gguf convention",
+        );
+        assert!(!m.bundled, "qwen3 is download-only");
+        assert!(m.url.is_some(), "download-only entry must have a url");
+        assert!(m.requires_base.is_none());
     }
 
     #[test]
