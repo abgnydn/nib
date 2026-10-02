@@ -1,0 +1,787 @@
+{
+  "label": "qwen3-06b-nothink-extended60",
+  "model": "train/checkpoints/Qwen3-0.6B-Q4_K_M.gguf",
+  "adapter": null,
+  "n_cases": 60,
+  "n_pass": 49,
+  "pass_rate": 81.7,
+  "duration_s": 33.3,
+  "avg_words": 18.9,
+  "scores": [
+    {
+      "id": "ext60_sci_ph2",
+      "ok": true,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Phase 2 trial n=214 drug vs n=209 placebo. Remission 38% vs 21% (p<0.001) at week 12.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_meta",
+      "ok": true,
+      "word_count": 23,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Meta-analysis n=4,820 across 11 trials. Pooled OR 1.31, 95% CI 1.12-1.53, p<0.001, I2 34%.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_gwas_lead",
+      "ok": true,
+      "word_count": 18,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "GWAS N=9,310, replication N=11,205. Lead SNP rs218756 reaches p<5e-8, OR 1.28.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_phq",
+      "ok": true,
+      "word_count": 22,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "RCT n=128 CBT vs n=121, PHQ-9 drop 4.2 points, d=0.52, p<0.01 at 8 weeks.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_vax",
+      "ok": true,
+      "word_count": 19,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Vaccine efficacy 91.4% (n=1,524 vaccinated, n=1,511 placebo). Breakthrough 12 vs 96, p<0.001.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_sleep_cog",
+      "ok": true,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "In n=873 adults, sleep correlates with cognition (r=0.34, p<1e-4) after education adjustment.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_anova_dose",
+      "ok": true,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "ANOVA F(3,116)=5.12, p=0.002, n=120. Tukey shows high-dose beats placebo and low-dose.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_adherence",
+      "ok": true,
+      "word_count": 18,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Adherence 142/180 vs 118/182 differs (chi2=7.21, df=1, p<0.01, n=362 total).",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_statin",
+      "ok": true,
+      "word_count": 19,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Statin therapy reduces events (HR 0.74, 95% CI 0.61-0.89, p=0.002, n=2,340).",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_sleep_mem",
+      "ok": true,
+      "word_count": 21,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Each hour of sleep predicts 0.18 SD memory gain (beta=0.18, SE=0.05, p<0.001, n=455).",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_null_bayes",
+      "ok": true,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "No effect detected (t=0.42, p=0.68 n.s., n=58). Bayes factor BF01 4.1 favors null.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_boost",
+      "ok": true,
+      "word_count": 19,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Antibody titers rise 3.2-fold (n=96, GMT 842 vs 263, p<0.001) 28 days post-boost.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_microbiome",
+      "ok": true,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Alpha diversity lower in cases (n=210 vs n=198 controls, Shannon 3.1 vs 3.8, p<0.01).",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_survival",
+      "ok": true,
+      "word_count": 19,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Median survival 18.4 months vs 12.7 months (n=340, log-rank p<0.005, HR 0.62).",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_sci_interim",
+      "ok": true,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Preregistered n=300 with alpha p<0.01. Interim at n=150 shows conditional power 0.81.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_ed",
+      "ok": true,
+      "word_count": 24,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "ED triage: BP 158/96, HR 112, SpO2 96% on room air, RR 24, temp 38.9\u00b0C. WBC 13.1, lactate 3.1.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_saas",
+      "ok": true,
+      "word_count": 21,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Q3 SaaS: ARR $8.4M up 32% YoY, NRR 118%, churn 2.1%, CAC payback 7.2 months, runway 22 months.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_mobile",
+      "ok": true,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Mobile API p50 68ms, p95 412ms, p99 1.1s. Crash-free 99.4%, ANR 0.31%, DAU 84,200 yesterday.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_match",
+      "ok": true,
+      "word_count": 21,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Final 2-1: possession 58% vs 42%, shots 17 vs 9, xG 2.31 vs 0.87, fouls 11 vs 14.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_marathon",
+      "ok": true,
+      "word_count": 23,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Marathon 2:48:36, splits 5k 19:42, half 1:22:10, 30k 2:01:55. Cadence 182 spm, HR avg 162 bpm.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_grid",
+      "ok": true,
+      "word_count": 25,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Grid load 42.8 GW, wind 11.2 GW, solar 6.4 GW. Frequency 50.02 Hz, reserve 3.1 GW, price $68.40/MWh.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_retail",
+      "ok": true,
+      "word_count": 16,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Flagship weekend: traffic 12,840, conversion 21.3%, ATV $86.20, returns 6.4%, NPS 62.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_enroll",
+      "ok": true,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Fall enrollment 4,812, up 6.2% YoY. Retention 88.4%, avg class 24, aid $12,400 median, waitlist 312.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_site",
+      "ok": false,
+      "word_count": 13,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "May 30"
+      ],
+      "output": "Tower B: Concrete 68% placed, steel 412 tons, crew 96, crane hours 310.",
+      "failure_reasons": [
+        "missing_keep: ['May 30']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_airline_ops",
+      "ok": true,
+      "word_count": 18,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Yesterday 1,240 flights, on-time 81.3%, cancellations 14, misconnects 322, NPS 48, fuel $3.12/gal.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_loan",
+      "ok": true,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Loan book $212M, delinquency 1.8%, NPL 0.9%, coverage 142%, NIM 3.42%, CET1 12.8%.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_stream",
+      "ok": true,
+      "word_count": 22,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Stream peak 88,400 CCU, avg watch 42min, chat 12.6 msg/s, drops 0.4%, VOD views 1.2M in 48h.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_farm",
+      "ok": true,
+      "word_count": 22,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Wheat yield 4.8 t/ha on 620 ha, rain 312 mm, soil N 18 ppm, moisture 14.2%, harvest Aug 18.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_fleet",
+      "ok": true,
+      "word_count": 22,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Fleet 148 vans, utilization 91.6%, on-time 96.8%, fuel 8.4 L/100km, maintenance $0.18/mi, idle 4.2%",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_dense_abg",
+      "ok": true,
+      "word_count": 21,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "ABG pH 7.31, pCO2 48, pO2 82, HCO3 22.4, lactate 2.8. Vent FiO2 40%, PEEP 8, rate 16.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_iata_iad_muc",
+      "ok": true,
+      "word_count": 21,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Outbound UA 918 IAD-MUC, depart 17:20 ET Mar 4, arrive 07:55 CET Mar 5. Seat 22C, group 3.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_iata_lax_nrt",
+      "ok": false,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "Apr 9"
+      ],
+      "output": "Return AA 292 LAX-NRT, dep 11:05 PT, arr 14:40 JT, Seat 18H, baggage 2x23kg.",
+      "failure_reasons": [
+        "missing_keep: ['Apr 9']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "ext60_iata_atl_cdg",
+      "ok": true,
+      "word_count": 23,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "DL 65 ATL-CDG dep 16:15 ET Jun 6 arr 07:30 CET Jun 7. Delay 40min, new gate F2, group C.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_iata_lhr_gru",
+      "ok": true,
+      "word_count": 21,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "BA 249 LHR-GRU dep 09:40 GMT Oct 2 arr 17:15 BRT. Duration 11h 35min, seat 31K, terminal 5.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_iata_hnd_jfk",
+      "ok": true,
+      "word_count": 23,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "JL 3 HND-JFK dep 10:55 JT Sep 14 arr 10:40 ET Sep 14. Aircraft 777-300ER, seat 12A, group 1.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_iata_dfw_syd",
+      "ok": true,
+      "word_count": 21,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "QF 8 DFW-SYD dep 22:25 CT Nov 11 arr 06:10 AEDT Nov 13. Duration 17h 45min, seat 44C.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_iata_fra_icn",
+      "ok": true,
+      "word_count": 23,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "LH 715 FRA-ICN dep 13:40 CET Jan 21 arr 07:25 KST Jan 22. Gate Z18, seat 26F, on-time 78%",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_iata_cdg_lax",
+      "ok": true,
+      "word_count": 23,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "AF 66 CDG-LAX dep 10:10 CET May 8 arr 12:45 PT May 8. Codeshare DL 8531, seat 20D, meal VGML.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_iata_den_sea",
+      "ok": true,
+      "word_count": 22,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "UA 1204 DEN-SEA dep 08:15 MT Jul 19 arr 10:05 PT. Gate B32, seat 9D, tail N472UA, standby 4.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_iata_akl_lax",
+      "ok": true,
+      "word_count": 23,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "NZ 1 AKL-LAX dep 19:30 NZST Dec 3 arr 10:55 PT Dec 3. Duration 12h 25min, seat 52A, bag 1x23kg.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_abbr_48h_culture",
+      "ok": true,
+      "word_count": 16,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Wound culture final at 48h shows no growth. Continue dressing changes every 24h for 5 days.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_abbr_96h_holter",
+      "ok": false,
+      "word_count": 18,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "96h",
+        "24h"
+      ],
+      "output": "Holter monitor 96 hours starting Monday 09:00. Return device within 24 hours of finish, log symptoms hourly.",
+      "failure_reasons": [
+        "missing_keep: ['96h', '24h']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "ext60_abbr_15min_standup",
+      "ok": true,
+      "word_count": 15,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Standup 15min at 09:30 daily, camera on. Parking lot 30min after for blockers only.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_abbr_45sec_rest",
+      "ok": true,
+      "word_count": 14,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Sprint 200m in 32sec, rest 45sec, repeat 6x. Cool jog 10min, total session 40min.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_abbr_8wks_boot",
+      "ok": false,
+      "word_count": 22,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "8wks",
+        "3x/wk",
+        "5hrs/wk"
+      ],
+      "output": "Bootcamp runs 8 weeks, 3 weeks per week live, 5 hours per week homework. Capstone due week 8, demo day August 22.",
+      "failure_reasons": [
+        "missing_keep: ['8wks', '3x/wk', '5hrs/wk']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "ext60_abbr_9mos_cover",
+      "ok": false,
+      "word_count": 17,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "9mos",
+        "2wks",
+        "3wks"
+      ],
+      "output": "Maternity cover 9 months from February 1, handover 2 weeks before. Backfill interviews 3 months in January.",
+      "failure_reasons": [
+        "missing_keep: ['9mos', '2wks', '3wks']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "ext60_abbr_3yrs_lease",
+      "ok": false,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "3yrs",
+        "3%/yr",
+        "18mos"
+      ],
+      "output": "Office lease 3 years at $4,200/mo, escalator 3% per year, deposit 2 months, break clause after 18 months.",
+      "failure_reasons": [
+        "missing_keep: ['3yrs', '3%/yr', '18mos']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "ext60_abbr_20min_roast",
+      "ok": false,
+      "word_count": 19,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "20min",
+        "15min",
+        "10min"
+      ],
+      "output": "Roast 20 minutes at 220\u00b0C, flip, then 15 minutes more. Rest 10 minutes. Serves 4, prep 15 minutes.",
+      "failure_reasons": [
+        "missing_keep: ['20min', '15min', '10min']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "ext60_abbr_10sec_wingate",
+      "ok": false,
+      "word_count": 20,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "10sec",
+        "50sec",
+        "842W"
+      ],
+      "output": "Wingate 10 sec all-out, 50 sec easy, repeat 8x. Warmup 5 min, cooldown 5 min, peak power 842 W.",
+      "failure_reasons": [
+        "missing_keep: ['10sec', '50sec', '842W']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "ext60_abbr_36h_fast",
+      "ok": true,
+      "word_count": 14,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Fast 36h water-only, electrolytes allowed. Refeed over 12h, first meal 600 kcal max.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_emoji_ship",
+      "ok": true,
+      "word_count": 19,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "\ud83d\ude80 Ship v2.4.1 at 16:00 PT, freeze main at 14:00. Rollback window 45min, on-call Priya.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_emoji_incident",
+      "ok": false,
+      "word_count": 16,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "us-west-2"
+      ],
+      "output": "\ud83d\udea8 DB failover at 03:12 PT. Lag 42s, errors 1.8%, ETA 20min. Updates in #incidents.",
+      "failure_reasons": [
+        "missing_keep: ['us-west-2']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "ext60_emoji_lunch",
+      "ok": false,
+      "word_count": 16,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "Wed 17:00"
+      ],
+      "output": "\ud83c\udf89 Team lunch Friday 12:30 at Dishoom, 8 tables, \u00a325 each, RSVP by Wednesday 17:00.",
+      "failure_reasons": [
+        "missing_keep: ['Wed 17:00']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "ext60_emoji_flight",
+      "ok": true,
+      "word_count": 19,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "\u2708\ufe0f UA 857 SFO-NRT boards 11:35 PT, gate G92. Delay 30min, new depart 12:05 PT, seat 34L.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_emoji_sale",
+      "ok": true,
+      "word_count": 19,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "Flash sale: 30% off sitewide, code FLASH30. Ends Sun 23:59 ET, was $59/mo now $41.30/mo.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_cjk_osaka",
+      "ok": true,
+      "word_count": 9,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "\u5927\u962a\u51fa\u5f35: 7\u67083\u65e5 NH 885 KIX\u304b\u3089NRT\u3001SFO\u884c\u304d\u3002\u30db\u30c6\u30eb2\u6cca\u3001\u4f1a\u8b704\u65e513:00\u3002",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_cjk_shenzhen",
+      "ok": true,
+      "word_count": 8,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "\u6df1\u5733\u9a8c\u8d277\u670815\u65e5\uff0c\u8ba2\u5355PO-77120\u51718,000\u4ef6\uff0c\u62bd\u68c0\u6bd4\u4f8b5%\uff0c\u4e0d\u826f\u7387\u4e0a\u96501.2%\u3002\u8054\u7cfb\u4eba\u9648\u9759\u3002",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_cjk_busan",
+      "ok": true,
+      "word_count": 16,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "\ubd80\uc0b0 \uc7a5: 8\uc6d4 2\uc77c LJ 312 PUS\uc5d0\uc11c NRT, \ud638\ud154 2\ubc15. \ubbf8\ud305\uc740 3\uc77c 10:30, \ud574\uc6b4\ub300 \uc624\uc2a4.",
+      "failure_reasons": [],
+      "judge": null
+    },
+    {
+      "id": "ext60_cjk_q3",
+      "ok": false,
+      "word_count": 11,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [
+        "35h"
+      ],
+      "output": "Q3\u603b\u7ed3: \u552e\u989d610\u4e07\u65e5\u5143, \u6bd4+12.6%\u3002\u56e2\u961f18\u4eba, \u52a0\u73ed35\u5c0f\u65f6, \u610f\u5ea64.5/5\u3002Next\u51b2750\u4e07\u3002",
+      "failure_reasons": [
+        "missing_keep: ['35h']"
+      ],
+      "judge": null
+    },
+    {
+      "id": "ext60_cjk_kyoto",
+      "ok": true,
+      "word_count": 9,
+      "word_count_ok": true,
+      "sentence_type_ok": true,
+      "forbidden_hits": [],
+      "missing_keeps": [],
+      "output": "\u4eac\u90fd\u6703\u8b70: \u5e2d12\u4eba, \u50471\u4eba\u3002\u4e0b\u6b218\u67086\u65e510:00, \u9ede\u70cf\u4e38\u901a\u3002\u9810\u7b97NT$62,400\u3002",
+      "failure_reasons": [],
+      "judge": null
+    }
+  ]
+}
