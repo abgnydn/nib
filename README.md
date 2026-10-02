@@ -59,12 +59,19 @@ Settings shows what's installed:
 | Tier | Model | Notes | Size |
 |---|---|---|---|
 | **Default** | LFM2.5-350M-Instruct | bundled in the `.app`; fast, best for grammar fixes | ~219 MB |
+| **Recommended** | Qwen3-0.6B (no-think) | stock **83.3%** strict holdout90 (75/90) — beats the premium adapter's 81.1% at ~1/3 the download | ~462 MB download |
 | **Premium** | Qwen 2.5-1.5B + **Nib-Faithful LoRA** | preserves facts/numbers/technical tokens; **81.1%** strict / **88.9%** legacy on the 90-case held-out eval (v2.2 adapter) vs **64.4%** for stock Qwen | base ~940 MB (download once) + adapter ~36 MB |
 
 The premium tier is an adapter applied at runtime on top of the shared Qwen
 base — every future iteration ships as a tiny adapter swap. How that adapter is
 trained (a $0 rejection-sampling self-play loop) is documented in
 [`train/RSFT_BOOTSTRAP.md`](train/RSFT_BOOTSTRAP.md).
+
+Qwen3 runs with thinking disabled (no_think) — without it the model emits
+`<think>` traces that break the rewrite format. Stock Qwen3-0.6B scores
+75/90=83.3% strict holdout90, 50/60=83.3% holdout60, 49/60=81.7% extended60, and
+67/90=74.4% on traps round2-90 (74/90=82.2% rescored with the CJK scorer fix); a
+20-row smoke LoRA lifts traps to 80/90=88.9%.
 
 *Scoring note:* the eval harness now word-boundary-matches must-keep terms by
 default (**81.1%**); the older unanchored-substring matching (**88.9%**,
