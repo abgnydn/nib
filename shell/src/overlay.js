@@ -521,7 +521,6 @@
   fallbackEl.tabIndex = 0;
   fallbackEl.setAttribute("role", "listbox");
   fallbackEl.setAttribute("aria-label", "Nib suggestions");
-  fallbackEl.style.overflowY = "auto";
 
   const truncateStr = (s, max) => {
     const chars = [...String(s || "")];
@@ -640,7 +639,11 @@
     if (y + 300 > H) y = Math.max(8, H - 320);
     fallbackEl.style.left = Math.max(8, x) + "px";
     fallbackEl.style.top  = Math.max(8, y) + "px";
-    fallbackEl.style.maxHeight = Math.max(180, H - Math.max(8, y) - 8) + "px";
+    // Cap vertical growth so long lists scroll internally (see #fb-list)
+    // instead of running under the dock. max-height only binds when
+    // content exceeds it — single-issue panels are unchanged.
+    const fbCap = Math.min(480, Math.floor(H * 0.6));
+    fallbackEl.style.maxHeight = Math.min(fbCap, Math.max(180, H - Math.max(8, y) - 8)) + "px";
     fallbackEl.classList.add("visible");
     const activeEl = fbList.querySelector(`.fb-row[data-fb-idx="${fbActiveIdx}"]`);
     if (activeEl && activeEl.scrollIntoView) {
