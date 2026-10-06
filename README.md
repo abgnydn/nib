@@ -1,14 +1,13 @@
 # Nib
 
 A local-first grammar and writing assistant for macOS. A native overlay that
-watches whatever text field you're in across every app, runs Harper rules + a
+watches whatever text field you're in across everyday prose apps (Notes, Mail, TextEdit, Messages, web composers; never in terminals, code editors, URL/search bars, password fields), runs Harper rules + a
 small fine-tuned local LLM over the text, and offers click-to-fix suggestions
-and full-sentence AI rewrites — 100% on-device, no network calls, no account.
+and full-sentence AI rewrites — checks and rewrites run 100% on-device with no account; model downloads + strictly-opt-in cloud training are the only network uses.
 
-> **Status:** v2.3. Two-tier local model: **LFM2.5-350M** bundled by default,
+> **Status:** v2.3. **Qwen3-0.6B** bundled by default (462MB); hot-reload + multi-display shipped.
 > **Qwen 2.5-1.5B + the Nib-Faithful RSFT LoRA** as a premium tier. Full
-> feature set in native Cocoa apps (TextEdit, Notes, Mail, Messages); clipboard
-> fallback for browsers / Electron. See the [roadmap](#roadmap).
+> feature set in native Cocoa apps (TextEdit, Notes, Mail, Messages); clipboard fallback for browsers / Electron. See the [roadmap](#roadmap).
 >
 > **Naming:** the product, Cargo crate (`nib` / `nib_lib`), binaries (`nib`,
 > `nib-rewrite`), logs, `NIB_*` env vars, the
@@ -58,7 +57,7 @@ Settings shows what's installed:
 
 | Tier | Model | Notes | Size |
 |---|---|---|---|
-| **Default** | Qwen3-0.6B (no-think) | stock **83.3%** strict holdout90 (75/90) — beats the premium adapter's 81.1% at ~1/3 the download; bundled in the `.app` | ~462 MB bundled |
+| **Default** | Qwen3-0.6B (no-think) | stock **83.3%** strict holdout90 (75/90) — beats the premium adapter's 81.1% at ~1/2 the download; bundled in the `.app` | ~462 MB bundled |
 | Legacy | LFM2.5-350M-Instruct | legacy default, download removed – use Qwen3 | ~219 MB |
 | **Premium** | Qwen 2.5-1.5B + **Nib-Faithful LoRA** | preserves facts/numbers/technical tokens; **81.1%** strict / **88.9%** legacy on the 90-case held-out eval (v2.2 adapter) vs **64.4%** for stock Qwen | base ~940 MB (download once) + adapter ~36 MB |
 
@@ -83,9 +82,9 @@ the numeric value is preserved but the notation changes.
 > (`nib-faithful-f16.gguf`, sha256 `aee9fe37…232b`) is a faithful
 > reproduction of the v2.2 adapter — 88.9% legacy / 81.1% strict on the
 > held-out benchmark, trained from `train/data/rsft-round3.jsonl` via
-> `train/colab/train_nib_v2.ipynb`. It ships as the
+> `train/colab/train_nib_v2.ipynb`. It is planned as the
 > [`v2.1.0`](https://github.com/abgnydn/nib/releases/tag/v2.1.0) GitHub
-> release (`gh release create v2.1.0 nib-faithful-f16.gguf`).
+> release (`gh release create v2.1.0 nib-faithful-f16.gguf`) (not yet published — in-app download currently 404s, surfaced as a clear error).
 
 ## Architecture
 
@@ -129,8 +128,8 @@ nib/                            # repo dir (product = "Nib")
 
 ### Features
 
-The default Cargo features are **empty** — a bare `cargo build` produces a
-Harper-only shell with no LLM and no overlay. The real app needs both:
+The default Cargo features are **["llm"]** — a bare `cargo build` includes the
+LLM, only `overlay` is opt-in (macOS AXUI). The real app needs `overlay`:
 
 ```bash
 cd shell/src-tauri
@@ -162,7 +161,7 @@ the runtime log. The ad-hoc codesign with the stable `app.nib` identifier is
 
 Nib keeps a private edit journal at
 `~/Library/Application Support/Nib/journal.jsonl` — every accepted suggestion
-and AI rewrite, never sent anywhere. The main-window footer shows the count.
+and AI rewrite, leaves only for strictly-opt-in cloud training. The main-window footer shows the count.
 
 When you've accumulated enough edits (~50+), Nib can train a **personal LoRA
 adapter** on top of the base model. Two backends, picked automatically:
@@ -179,7 +178,7 @@ adapter** on top of the base model. Two backends, picked automatically:
 
 Auto-retrain can run in the background once a configurable number of new edits
 accumulate (Settings → personalization). After training, the new adapter loads
-on next relaunch; the footer shows a green **personal** pill when it's active.
+live without relaunch (badge only if reload fails); the footer shows a green **personal** pill when it's active.
 Your edits never leave the machine on the local path.
 
 ## Per-app compatibility
@@ -188,9 +187,10 @@ Your edits never leave the machine on the local path.
 |---|:--:|:--:|:--:|---|
 | TextEdit / Notes / Mail / Messages | ✅ | ✅ | ✅ | AXUI text-set |
 | Slack (native) | ✅ | ✅ | ✅ | AXUI text-set, clipboard fallback |
-| Safari address bar | ✅ | ✅ | ✅ | AXUI text-set |
+| Safari address bar | ❌ | ❌ | ❌ | denied — URL bars never engage |
 | Safari/Chrome web inputs | ❌ | fallback panel | ✅ | **clipboard fallback** |
-| VS Code / Cursor / Discord | ❌ | fallback panel | ✅ | **clipboard fallback** |
+| VS Code / Cursor | ❌ | ❌ | ❌ | denied — no fallback |
+| Discord | ✅ | ✅ | ✅ | engages as composer |
 | Nib's own window (WKWebView) | ✅ | ✅ | ✅ | AXUI text-set |
 
 How the tiered apply works:
@@ -207,7 +207,7 @@ The strategy used per apply lands in the runtime log as
 `[nib][apply] strategy=AxuiText|Clipboard …` so per-app behavior is observable.
 Inline underlines still don't render in browsers/Electron (those don't expose
 `kAXBoundsForRangeParameterizedAttribute`), but the fallback summary panel
-beside the field lists every suggestion and click-to-fix works everywhere.
+beside the field lists every suggestion and click-to-fix works everywhere Nib engages (denied surfaces get nothing).
 
 ## Tests
 
@@ -215,7 +215,7 @@ beside the field lists every suggestion and click-to-fix works everywhere.
 ./scripts/test.sh            # Rust lib tests + Python AST-parse + JS --check
 ```
 
-Rust: ~67 tests (+2 ignored) with `--features llm,overlay` on macOS — covering
+Rust: ~86 tests (+2 ignored) with `--features llm,overlay` on macOS — covering
 Harper integration and the curated/extra rule set, the IPC wire-format contract,
 the AXUI bounds-plausibility filter (rejects garbage like
 `x=-1, y=-17899, w=1711, h=19017`), the engagement policy (terminals/IDEs/URL
@@ -229,15 +229,13 @@ model+adapter load and run only when `NIB_TEST_MODEL` points at a `.gguf`.
 - **BitNet inference path.** A `RewriteEngine::Qvac` variant shelling out to the
   bundled `llama-cli` for ternary (b1.58) GGUFs, to push the bundle toward the
   sub-Grammarly footprint the wedge wants.
-- **Adapter hot-reload.** Swap the engine in place after a successful retrain
-  instead of the "relaunch to apply" badge.
+- **Adapter hot-reload.** ✅ Shipped — swaps the engine in place after a successful retrain
+  instead of the "relaunch to apply" badge (badge is fallback only).
 - **Rebase the Modal personal-training path** onto the v2.x LFM2.5/Qwen bases
   (the local QVAC path already works).
 - **Per-app coverage matrix** — push the compatibility table from ~50% to ~95%
   of common apps.
-- **Multi-display overlay.** The overlay is one fixed window on the primary
-  display today; secondary displays get suggestions only via the fallback
-  panel. Needs a window per display.
+- **Multi-display overlay.** ✅ Shipped — a window per display.
 
 ## License
 
@@ -247,7 +245,7 @@ MIT — see [LICENSE-MIT](LICENSE-MIT). Previously unlicensed (ask before using)
 
 - [`harper-core`](https://github.com/Automattic/harper) by Automattic — the rule
   engine and most of the spelling/grammar coverage
-- [LiquidAI LFM2.5](https://huggingface.co/LiquidAI) — the bundled default model
+- [LiquidAI LFM2.5](https://huggingface.co/LiquidAI) — legacy default model (Qwen3-0.6B is bundled now)
 - [Qwen 2.5](https://huggingface.co/Qwen) — the premium-tier base
 - [`llama.cpp`](https://github.com/ggerganov/llama.cpp) +
   [`llama-cpp-2`](https://github.com/utilityai/llama-cpp-rs) — GGUF inference + LoRA
