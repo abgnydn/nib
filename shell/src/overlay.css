@@ -256,9 +256,11 @@ html, body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   z-index: 90;
+  max-height: min(60vh, 480px);
 }
-#fallback.visible { display: block; }
+#fallback.visible { display: flex; flex-direction: column; }
 .fb-header {
+  flex-shrink: 0;
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.07em;
@@ -267,6 +269,10 @@ html, body {
   margin-bottom: 7px;
 }
 .fb-header::before { content: "✎  "; }
+#fb-list {
+  overflow-y: auto;
+  min-height: 0;
+}
 .fb-row {
   background: var(--bg-row);
   border-radius: 6px;
