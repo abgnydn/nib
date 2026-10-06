@@ -36,7 +36,7 @@
       "icons/icon.ico"
     ],
     "resources": [
-      "resources/lfm2.5-350m-q4_k_m.gguf",
+      "resources/Qwen3-0.6B-Q4_K_M.gguf",
       "resources/qwen2.5-1.5b-instruct-q4_k_m.gguf",
       "resources/nib-faithful-f16.gguf",
       "resources/qvac/*",

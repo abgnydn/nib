@@ -7,8 +7,8 @@ before building each flavor:
 
 | Build flavor | Config | Files required here |
 |---|---|---|
-| **Default** | `tauri.conf.json` | `lfm2.5-350m-q4_k_m.gguf` (~219 MB, bundled default model) |
-| **Full** | `tauri.conf.full.json` (`cargo tauri build --config tauri.conf.full.json`) | `lfm2.5-350m-q4_k_m.gguf` + `qwen2.5-1.5b-instruct-q4_k_m.gguf` (~940 MB premium base) + `nib-faithful-f16.gguf` (~36 MB premium LoRA adapter) |
+| **Default** | `tauri.conf.json` | `Qwen3-0.6B-Q4_K_M.gguf` (~462 MB, bundled default model) |
+| **Full** | `tauri.conf.full.json` (`cargo tauri build --config tauri.conf.full.json`) | `Qwen3-0.6B-Q4_K_M.gguf` + `qwen2.5-1.5b-instruct-q4_k_m.gguf` (~940 MB premium base) + `nib-faithful-f16.gguf` (~36 MB premium LoRA adapter) |
 
 Filenames must match the model registry in `src/models.rs` exactly —
 `resolve_path` looks up `resources/{filename}` inside the built `.app`, so a
@@ -21,4 +21,4 @@ dylibs, metallib) staged per-machine by `scripts/install-dev.sh`
 (`prepare_qvac`); only its README placeholder is committed.
 
 CI has no model files and stubs the default entry with
-`touch resources/lfm2.5-350m-q4_k_m.gguf` (see `.github/workflows/ci.yml`).
+`touch resources/Qwen3-0.6B-Q4_K_M.gguf` (see `.github/workflows/ci.yml`).

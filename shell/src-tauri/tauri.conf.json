@@ -36,7 +36,7 @@
       "icons/icon.ico"
     ],
     "resources": [
-      "resources/lfm2.5-350m-q4_k_m.gguf",
+      "resources/Qwen3-0.6B-Q4_K_M.gguf",
       "resources/qvac/*",
       "icons/tray-icon.png",
       "icons/tray-icon@2x.png"

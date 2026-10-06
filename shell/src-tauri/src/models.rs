@@ -1,6 +1,6 @@
 //! Registry of LLM models Nib can run + download orchestration.
 //!
-//! The default `lfm2.5-350m` ships bundled inside the .app. Additional
+//! The default `qwen3-0.6b` ships bundled inside the .app. Additional
 //! models are downloaded on demand into
 //!   `~/Library/Application Support/Nib/models/<id>.gguf`
 //! and selected via `config.selected_model`. The focus tracker / inference
@@ -28,7 +28,8 @@ pub struct ModelInfo {
     /// True when the .gguf ships inside the .app bundle. False = needs
     /// download to `~/Library/Application Support/Nib/models/`.
     pub bundled: bool,
-    /// Download URL (HuggingFace direct GGUF). None for bundled.
+    /// Download URL (HuggingFace direct GGUF). None when no download
+    /// fallback exists; bundled entries may keep a URL as fallback.
     pub url: Option<&'static str>,
     /// On-disk filename (also used as bundle resource name when bundled).
     pub filename: &'static str,
@@ -52,28 +53,29 @@ pub struct ModelPaths {
 /// Base entries (no `requires_base`) come first so adapter entries can
 /// reference them by id.
 pub const REGISTRY: &[ModelInfo] = &[
-    ModelInfo {
-        id: "lfm2.5-350m",
-        display_name: "LFM2.5 350M",
-        params: "350M",
-        size_mb: 219,
-        blurb: "Default. Fast and light. Best for grammar fixes; \
-                rewrites may pad or invent content.",
-        bundled: true,
-        url: None,
-        filename: "lfm2.5-350m-q4_k_m.gguf",
-        requires_base: None,
-    },
     // Stock Qwen3 0.6B — thinking disabled in-engine (no_think).
+    // Bundled default.
     ModelInfo {
         id: "qwen3-0.6b",
         display_name: "Qwen3 0.6B (no-think)",
         params: "0.6B",
         size_mb: 462,
-        blurb: "74.4% traps, best small; thinking disabled in-engine",
-        bundled: false,
+        blurb: "Bundled default. 83.3% strict holdout90; thinking disabled in-engine",
+        bundled: true,
         url: Some("https://huggingface.co/lm-kit/qwen-3-0.6b-instruct-gguf/resolve/main/Qwen3-0.6B-Q4_K_M.gguf?download=true"),
         filename: "Qwen3-0.6B-Q4_K_M.gguf",
+        requires_base: None,
+    },
+    ModelInfo {
+        id: "lfm2.5-350m",
+        display_name: "LFM2.5 350M",
+        params: "350M",
+        size_mb: 219,
+        blurb: "Legacy default, download removed – use Qwen3. Fast and light. \
+                Best for grammar fixes; rewrites may pad or invent content.",
+        bundled: false,
+        url: None,
+        filename: "lfm2.5-350m-q4_k_m.gguf",
         requires_base: None,
     },
     // Stock Qwen 2.5-1.5B base — the substrate every Nib adapter v2.x+
@@ -510,7 +512,7 @@ mod tests {
     fn registry_has_a_bundled_default() {
         let first = &REGISTRY[0];
         assert!(first.bundled, "first registry entry must be bundled");
-        assert_eq!(first.id, "lfm2.5-350m");
+        assert_eq!(first.id, "qwen3-0.6b");
     }
 
     #[test]
@@ -534,8 +536,8 @@ mod tests {
             m.filename.ends_with(".gguf"),
             "filename must match resources gguf convention",
         );
-        assert!(!m.bundled, "qwen3 is download-only");
-        assert!(m.url.is_some(), "download-only entry must have a url");
+        assert!(m.bundled, "qwen3 is the bundled default");
+        assert!(m.url.is_some(), "bundled default keeps a download fallback url");
         assert!(m.requires_base.is_none());
     }
 

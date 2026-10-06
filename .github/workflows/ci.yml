@@ -25,11 +25,11 @@ jobs:
           sudo apt-get install -y --no-install-recommends \
             libwebkit2gtk-4.1-dev libgtk-3-dev libsoup-3.0-dev \
             libjavascriptcoregtk-4.1-dev cmake build-essential pkg-config libssl-dev
-      # The ~219 MB model GGUF ships at release, not in git, but Tauri's build
+      # The ~462 MB model GGUF ships at release, not in git, but Tauri's build
       # script validates every bundle.resources path exists. Stub it so the lib
       # compiles (no test loads the real model).
       - name: Stub bundled model resource
-        run: touch shell/src-tauri/resources/lfm2.5-350m-q4_k_m.gguf
+        run: touch shell/src-tauri/resources/Qwen3-0.6B-Q4_K_M.gguf
       - name: Rust tests (llm; overlay is macOS-only)
         working-directory: shell/src-tauri
         run: cargo test --features llm --lib
@@ -61,7 +61,7 @@ jobs:
       - name: Ensure cmake (for llama-cpp-2)
         run: cmake --version || brew install cmake
       - name: Stub bundled model resource
-        run: touch shell/src-tauri/resources/lfm2.5-350m-q4_k_m.gguf
+        run: touch shell/src-tauri/resources/Qwen3-0.6B-Q4_K_M.gguf
       - name: Rust tests (llm + overlay)
         working-directory: shell/src-tauri
         run: cargo test --features llm,overlay --lib
