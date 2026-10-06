@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Nib — run the entire automated test suite.
 #
-#   - Rust:   `cargo test --features llm,overlay --lib`   (~67 tests, +2 ignored, macOS)
+#   - Rust:   `cargo test --features llm,overlay --lib`   (~86 tests, +2 ignored, macOS)
 #   - Python: AST-parse every train/ script               (all train/**/*.py)
 #   - Optional: `--with-model` runs the gated full-model test
 #               (requires NIB_TEST_MODEL=path/to/.gguf set).
