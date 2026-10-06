@@ -58,8 +58,8 @@ Settings shows what's installed:
 
 | Tier | Model | Notes | Size |
 |---|---|---|---|
-| **Default** | LFM2.5-350M-Instruct | bundled in the `.app`; fast, best for grammar fixes | ~219 MB |
-| **Recommended** | Qwen3-0.6B (no-think) | stock **83.3%** strict holdout90 (75/90) — beats the premium adapter's 81.1% at ~1/3 the download | ~462 MB download |
+| **Default** | Qwen3-0.6B (no-think) | stock **83.3%** strict holdout90 (75/90) — beats the premium adapter's 81.1% at ~1/3 the download; bundled in the `.app` | ~462 MB bundled |
+| Legacy | LFM2.5-350M-Instruct | legacy default, download removed – use Qwen3 | ~219 MB |
 | **Premium** | Qwen 2.5-1.5B + **Nib-Faithful LoRA** | preserves facts/numbers/technical tokens; **81.1%** strict / **88.9%** legacy on the 90-case held-out eval (v2.2 adapter) vs **64.4%** for stock Qwen | base ~940 MB (download once) + adapter ~36 MB |
 
 The premium tier is an adapter applied at runtime on top of the shared Qwen

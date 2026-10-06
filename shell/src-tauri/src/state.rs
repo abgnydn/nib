@@ -288,7 +288,7 @@ pub fn resolve_model_paths<R: tauri::Runtime, M: tauri::Manager<R>>(app: &M) -> 
         );
     }
 
-    let selected_id = read_selected_model_id().unwrap_or_else(|| "lfm2.5-350m".to_string());
+    let selected_id = read_selected_model_id().unwrap_or_else(|| "qwen3-0.6b".to_string());
     if let Some(paths) = crate::models::resolve_paths(app, &selected_id) {
         eprintln!(
             "[nib] resolved selected model '{selected_id}' → {} (adapter={})",
@@ -298,7 +298,7 @@ pub fn resolve_model_paths<R: tauri::Runtime, M: tauri::Manager<R>>(app: &M) -> 
         return Some(paths);
     }
     eprintln!("[nib] selected model '{selected_id}' not fully installed — falling back");
-    crate::models::resolve_paths(app, "lfm2.5-350m")
+    crate::models::resolve_paths(app, "qwen3-0.6b")
 }
 
 /// Peek at config.json's selected_model without spinning up the full
